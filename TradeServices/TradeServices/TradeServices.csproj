@@ -40,6 +40,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -57,6 +58,9 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="_1C8Trade_Srv">
+      <HintPath>D:\D\Projects\VitmarkTfs\_1C8Trade_Srv\_1C8Trade_Srv\bin\_1C8Trade_Srv.dll</HintPath>
+    </Reference>
     <Reference Include="_1CUtilsEnterra">
       <HintPath>D:\D\Projects\VitmarkTfs14\Vitmark\VitmarkTfs14\Common\EnterraClasses\_1CUtilsEnterra\bin\Debug\_1CUtilsEnterra.dll</HintPath>
     </Reference>
@@ -66,6 +70,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Invalid1CConnect.cs" />
+    <Compile Include="Classes\_1CUtManager.cs" />
     <Compile Include="Interfaces\IResultArray.cs" />
     <Compile Include="SVC\Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
@@ -75,7 +81,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Classes\" />
     <Folder Include="DataEntitys\" />
   </ItemGroup>
   <ItemGroup>
