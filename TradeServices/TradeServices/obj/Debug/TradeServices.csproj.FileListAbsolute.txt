@@ -1,0 +1,5 @@
+C:\Users\g.shestakov\Source\Repos\NewRepo\TradeServices\TradeServices\bin\TradeServices.dll.config
+C:\Users\g.shestakov\Source\Repos\NewRepo\TradeServices\TradeServices\bin\TradeServices.dll
+C:\Users\g.shestakov\Source\Repos\NewRepo\TradeServices\TradeServices\bin\TradeServices.pdb
+C:\Users\g.shestakov\Source\Repos\NewRepo\TradeServices\TradeServices\obj\Debug\TradeServices.dll
+C:\Users\g.shestakov\Source\Repos\NewRepo\TradeServices\TradeServices\obj\Debug\TradeServices.pdb
