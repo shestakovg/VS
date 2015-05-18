@@ -66,6 +66,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Dictionary.svc" />
     <Content Include="SVC\Service1.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -76,6 +77,10 @@
     <Compile Include="DataEntitys\Branch.cs" />
     <Compile Include="DataEntitys\Route.cs" />
     <Compile Include="Interfaces\IResultArray.cs" />
+    <Compile Include="Dictionary.svc.cs">
+      <DependentUpon>Dictionary.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\IDictionary.cs" />
     <Compile Include="SVC\Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
