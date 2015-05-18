@@ -72,6 +72,8 @@
   <ItemGroup>
     <Compile Include="Classes\Invalid1CConnect.cs" />
     <Compile Include="Classes\_1CUtManager.cs" />
+    <Compile Include="DataEntitys\Branch.cs" />
+    <Compile Include="DataEntitys\Route.cs" />
     <Compile Include="Interfaces\IResultArray.cs" />
     <Compile Include="SVC\Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
@@ -81,7 +83,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="DataEntitys\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web.Debug.config">
