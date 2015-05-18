@@ -12,7 +12,14 @@ namespace TradeServices.Classes
     {
         private _1CUtilsEnterra._1CEntParameter[] paramList;
         #region _1cquery
-        const string _1CQuery = "выбрать ссылка id , Наименование Description из Справочник.Организации";
+        const string _1CQuery = @"ВЫБРАТЬ
+	                                    Организации.Ссылка КАК id,
+	                                    Организации.Наименование КАК Description
+                                    ИЗ
+	                                    Справочник.Организации КАК Организации
+                                    ГДЕ
+	                                    НЕ Организации.ПометкаУдаления
+	                                    И Организации.Наименование <> ""Управленческая организация""";
         #endregion
 
         public Branch[] ConvertToArray(IQueryable<System.Data.DataRow> queryable = null)

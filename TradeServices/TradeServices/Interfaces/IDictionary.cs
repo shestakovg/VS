@@ -22,5 +22,13 @@ namespace TradeServices
             ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
            ]
         Branch[] GetBranch();
+
+        [OperationContract]
+        [WebGet(
+            UriTemplate = "/getroute/{branchid}",
+            //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+           ]
+        Route[] GetRoute(string branchid);
     }
 }

@@ -3,7 +3,6 @@ C:\Users\g.shestakov\Source\Repos\NewRepo\TradeServices\TradeServices\bin\TradeS
 C:\Users\g.shestakov\Source\Repos\NewRepo\TradeServices\TradeServices\bin\TradeServices.pdb
 C:\Users\g.shestakov\Source\Repos\NewRepo\TradeServices\TradeServices\obj\Debug\TradeServices.dll
 C:\Users\g.shestakov\Source\Repos\NewRepo\TradeServices\TradeServices\obj\Debug\TradeServices.pdb
-c:\Users\g.shestakov\Documents\GitHub\VS\TradeServices\TradeServices\obj\Debug\TradeServices.dll
 c:\Users\g.shestakov\Documents\GitHub\VS\TradeServices\TradeServices\bin\TradeServices.dll.config
 c:\Users\g.shestakov\Documents\GitHub\VS\TradeServices\TradeServices\bin\TradeServices.dll
 c:\Users\g.shestakov\Documents\GitHub\VS\TradeServices\TradeServices\bin\TradeServices.pdb
@@ -18,4 +17,5 @@ c:\Users\g.shestakov\Documents\GitHub\VS\TradeServices\TradeServices\bin\_1CUtil
 c:\Users\g.shestakov\Documents\GitHub\VS\TradeServices\TradeServices\bin\DataBaseUtils.pdb
 c:\Users\g.shestakov\Documents\GitHub\VS\TradeServices\TradeServices\bin\CommonClasses.pdb
 c:\Users\g.shestakov\Documents\GitHub\VS\TradeServices\TradeServices\bin\1cv8.xml
+c:\Users\g.shestakov\Documents\GitHub\VS\TradeServices\TradeServices\obj\Debug\TradeServices.dll
 c:\Users\g.shestakov\Documents\GitHub\VS\TradeServices\TradeServices\obj\Debug\TradeServices.pdb

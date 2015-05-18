@@ -14,6 +14,10 @@ namespace TradeServices.Classes
     {
         private _1CEntClass connectionUt = null;
 
+        public _1CEntClass ConnectionUt
+        {
+            get { return connectionUt; }
+        }
         public void Connect1C()
         {
             if (this.connectionUt == null)

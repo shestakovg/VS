@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="TradeServices.SVC.Dictionary" CodeBehind="Dictionary.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="TradeServices.Dictionary" CodeBehind="Dictionary.svc.cs" %>

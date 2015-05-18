@@ -20,5 +20,7 @@ namespace TradeServices.DataEntitys
 
         [DataMember(Name = "Employee")]
         public string Employee { get; set; }
+        [DataMember(Name = "EmployeeId")]
+        public Guid EmployeeId { get; set; }
     }
 }
