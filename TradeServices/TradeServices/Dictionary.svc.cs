@@ -7,7 +7,7 @@ using System.Text;
 using TradeServices.Classes;
 using TradeServices.DataEntitys;
 
-
+//dddf
 namespace TradeServices
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Dictionary" in code, svc and config file together.
