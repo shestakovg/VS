@@ -67,11 +67,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Dictionary.svc" />
+    <Content Include="Lib\_1C8Trade_Srv.dll" />
+    <Content Include="Lib\_1CUtilsEnterra.dll" />
     <Content Include="SVC\Service1.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Invalid1CConnect.cs" />
+    <Compile Include="Classes\_1CRouteSet.cs" />
+    <Compile Include="DataEntitys\RouteSet.cs" />
     <Compile Include="Classes\_1CBranches.cs" />
     <Compile Include="Classes\_1CRoutes.cs" />
     <Compile Include="Classes\_1CUtManager.cs" />
@@ -90,7 +94,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Lib\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web.Debug.config">

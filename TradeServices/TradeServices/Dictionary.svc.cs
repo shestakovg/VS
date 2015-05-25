@@ -26,5 +26,13 @@ namespace TradeServices
             _1CRoutes branches = new _1CRoutes(branchid);
             return branches.ConvertToArray() as Route[];
         }
+
+
+        public RouteSet[] GetRouteSet(string routeid)
+        {
+            _1CRouteSet routeSet = new _1CRouteSet(routeid);
+            return routeSet.ConvertToArray() as RouteSet[];
+
+        }
     }
 }
