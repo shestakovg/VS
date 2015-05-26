@@ -30,5 +30,13 @@ namespace TradeServices
             ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
            ]
         Route[] GetRoute(string branchid);
+
+        [OperationContract]
+        [WebGet(
+            UriTemplate = "/getrouteset/{routeid}",
+            //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+           ]
+        RouteSet[] GetRouteSet(string routeid);
     }
 }
