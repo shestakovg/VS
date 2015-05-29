@@ -27,3 +27,15 @@ C:\Users\shestakov.g\Documents\GitHub\VS\TradeServices\TradeServices\obj\Debug\T
 C:\Users\shestakov.g\Documents\GitHub\VS\TradeServices\TradeServices\obj\Debug\TradeServices.dll
 C:\Users\shestakov.g\Documents\GitHub\VS\TradeServices\TradeServices\obj\Debug\TradeServices.pdb
 C:\Users\g.shestakov\Documents\GitHub\VS\TradeServices\TradeServices\obj\Debug\TradeServices.csprojResolveAssemblyReference.cache
+C:\Users\t.sokol\Source\Repos\VS\TradeServices\TradeServices\bin\TradeServices.dll.config
+C:\Users\t.sokol\Source\Repos\VS\TradeServices\TradeServices\bin\TradeServices.dll
+C:\Users\t.sokol\Source\Repos\VS\TradeServices\TradeServices\bin\TradeServices.pdb
+C:\Users\t.sokol\Source\Repos\VS\TradeServices\TradeServices\bin\_1C8Trade_Srv.dll
+C:\Users\t.sokol\Source\Repos\VS\TradeServices\TradeServices\bin\_1CUtilsEnterra.dll
+C:\Users\t.sokol\Source\Repos\VS\TradeServices\TradeServices\bin\DataBaseUtils.dll
+C:\Users\t.sokol\Source\Repos\VS\TradeServices\TradeServices\bin\CommonClasses.dll
+C:\Users\t.sokol\Source\Repos\VS\TradeServices\TradeServices\bin\1cv8.dll
+C:\Users\t.sokol\Source\Repos\VS\TradeServices\TradeServices\bin\Enterra.V8x1C.dll
+C:\Users\t.sokol\Source\Repos\VS\TradeServices\TradeServices\obj\Debug\TradeServices.csprojResolveAssemblyReference.cache
+C:\Users\t.sokol\Source\Repos\VS\TradeServices\TradeServices\obj\Debug\TradeServices.dll
+C:\Users\t.sokol\Source\Repos\VS\TradeServices\TradeServices\obj\Debug\TradeServices.pdb

@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="Classes\Invalid1CConnect.cs" />
     <Compile Include="Classes\_1CRouteSet.cs" />
+    <Compile Include="DataEntitys\Contract.cs" />
     <Compile Include="DataEntitys\RouteSet.cs" />
     <Compile Include="Classes\_1CBranches.cs" />
     <Compile Include="Classes\_1CRoutes.cs" />
