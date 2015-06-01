@@ -13,6 +13,8 @@ namespace TradeServices.DataEntitys
         /// </summary>
         [DataMember(Name = "Id")]
         public Guid Id { get; set; }
+        [DataMember(Name = "CustomerId")]
+        public string CustomerId { get; set; }
 
         [DataMember(Name = "Description")]
         public string Description { get; set; }

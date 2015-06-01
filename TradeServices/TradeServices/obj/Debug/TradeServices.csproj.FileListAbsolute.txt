@@ -23,7 +23,6 @@ C:\Users\shestakov.g\Documents\GitHub\VS\TradeServices\TradeServices\bin\DataBas
 C:\Users\shestakov.g\Documents\GitHub\VS\TradeServices\TradeServices\bin\CommonClasses.dll
 C:\Users\shestakov.g\Documents\GitHub\VS\TradeServices\TradeServices\bin\1cv8.dll
 C:\Users\shestakov.g\Documents\GitHub\VS\TradeServices\TradeServices\bin\Enterra.V8x1C.dll
-C:\Users\shestakov.g\Documents\GitHub\VS\TradeServices\TradeServices\obj\Debug\TradeServices.csprojResolveAssemblyReference.cache
 C:\Users\shestakov.g\Documents\GitHub\VS\TradeServices\TradeServices\obj\Debug\TradeServices.dll
 C:\Users\shestakov.g\Documents\GitHub\VS\TradeServices\TradeServices\obj\Debug\TradeServices.pdb
 C:\Users\g.shestakov\Documents\GitHub\VS\TradeServices\TradeServices\obj\Debug\TradeServices.csprojResolveAssemblyReference.cache
