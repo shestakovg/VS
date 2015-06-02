@@ -20,7 +20,7 @@ namespace TradeServices.DataEntitys
         public string Description { get; set; }
 
         [DataMember(Name = "PriceId")]
-        public Guid PriceId { get; set; }
+        public Guid PriceId { get; set; }///
 
         [DataMember(Name = "Price")]
         public string Price { get; set; }
