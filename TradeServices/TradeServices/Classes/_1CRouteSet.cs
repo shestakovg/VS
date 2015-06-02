@@ -52,7 +52,8 @@ namespace TradeServices.Classes
                         CustomerId = new Guid(row["CustomerId"].ToString()),
                         CustomerName = row["CustomerName"].ToString(),
                         PartnerId = new Guid(row["PartnerID"].ToString()),
-                        PartnerName = row["PartnerName"].ToString().Trim()
+                        PartnerName = row["PartnerName"].ToString().Trim(),
+                        address = row["address"].ToString().Trim()
                     };
 
             return result.Cast<RouteSet>().ToArray();
