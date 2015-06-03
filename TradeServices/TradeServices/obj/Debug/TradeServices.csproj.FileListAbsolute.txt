@@ -35,7 +35,6 @@ C:\Users\t.sokol\Source\Repos\VS\TradeServices\TradeServices\bin\DataBaseUtils.d
 C:\Users\t.sokol\Source\Repos\VS\TradeServices\TradeServices\bin\CommonClasses.dll
 C:\Users\t.sokol\Source\Repos\VS\TradeServices\TradeServices\bin\1cv8.dll
 C:\Users\t.sokol\Source\Repos\VS\TradeServices\TradeServices\bin\Enterra.V8x1C.dll
-C:\Users\t.sokol\Source\Repos\VS\TradeServices\TradeServices\obj\Debug\TradeServices.csprojResolveAssemblyReference.cache
 C:\Users\t.sokol\Source\Repos\VS\TradeServices\TradeServices\obj\Debug\TradeServices.dll
 C:\Users\t.sokol\Source\Repos\VS\TradeServices\TradeServices\obj\Debug\TradeServices.pdb
 C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\TradeServices\bin\TradeServices.dll.config

@@ -34,5 +34,12 @@ namespace TradeServices
             return routeSet.ConvertToArray() as RouteSet[];
 
         }
+
+
+        public Contract[] GetContracts(string routeid)
+        {
+            _1CContract routeSet = new _1CContract(routeid);
+            return routeSet.ConvertToArray() as Contract[]; 
+        }
     }
 }
