@@ -67,7 +67,8 @@ namespace TradeServices.Classes
              {
                  var entParameter = new _1CUtilsEnterra._1CEntParameter();
                  entParameter.AddCatalogReferenceParameterByID(this.ConnectionUt, "МаршрутыТорговыхПредставителей", routeId, "RouteID");
-                 this.paramList = new _1CUtilsEnterra._1CEntParameter[1] { entParameter };
+                 //_1CUtilsEnterra._1CEntParameter paramDate = new _1CUtilsEnterra._1CEntParameter("имя_параметра", DateTime.Today);
+                 this.paramList = new _1CUtilsEnterra._1CEntParameter[1] { entParameter};
              }
              else
              {
