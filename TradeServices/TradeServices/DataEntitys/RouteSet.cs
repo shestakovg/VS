@@ -27,5 +27,8 @@ namespace TradeServices.DataEntitys
         public Guid PartnerId { get; set; }
         [DataMember(Name = "PartnerName")]
         public string PartnerName { get; set; }
+        [DataMember(Name = "address")]
+        public string address { get; set; }
+        
     }
 }
