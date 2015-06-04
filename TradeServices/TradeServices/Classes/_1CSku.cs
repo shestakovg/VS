@@ -31,6 +31,7 @@ namespace TradeServices.Classes
                                             ГДЕ
 	                                            НЕ Номенклатура.ЭтоГруппа
 	                                            И  НЕ Номенклатура.ПометкаУдаления
+    
                                         ";
         #endregion
         public Sku[] ConvertToArray(IQueryable<System.Data.DataRow> queryable =  null)
