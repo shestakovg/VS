@@ -46,5 +46,14 @@ namespace TradeServices
             ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
            ]
         Contract[] GetContracts(string routeid);
+
+        [OperationContract]
+        [WebGet(
+            UriTemplate = "/getskugroup",
+            //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+           ]
+        SkuGroup[] GetSkuGroup();
+    
     }
 }

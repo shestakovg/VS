@@ -68,6 +68,7 @@ namespace TradeServices.Classes
                     };
             return result.Cast<Contract>().ToArray();
         }
+
         public _1CContract(string routeId)
             : base()
         {
