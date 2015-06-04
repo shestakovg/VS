@@ -30,6 +30,8 @@ namespace TradeServices.Classes
                                         ;
                                         ВЫБРАТЬ
 	                                        СоставМаршрутаТорговогоАгентаСрезПоследних.ТорговаяТочка.Владелец как CustomerId,
+                                            СоставМаршрутаТорговогоАгентаСрезПоследних.ТорговаяТочка.Владелец.Партнер как PartnerId,
+                                            СоставМаршрутаТорговогоАгентаСрезПоследних.ТорговаяТочка.Владелец.Партнер.Наименование как PartnerName,
 	                                        СоставМаршрутаТорговогоАгентаСрезПоследних.ТорговаяТочка.Владелец.Наименование как  CustomerName,
 	                                        СоглашенияСКлиентами.ВидЦен как PriceId,
 	                                        СоглашенияСКлиентами.ВидЦен.Наименование как PriceName,
@@ -60,10 +62,13 @@ namespace TradeServices.Classes
                         PriceId = new Guid(row["PriceId"].ToString()),
                         PriceName = row["PriceName"].ToString(),
                         LimitSum = Int32.Parse(row["LimitSum"].ToString()),
-                        Reprieve =  row["Reprieve"].ToString()    
+                        Reprieve =  row["Reprieve"].ToString(),
+                        PartnerId = new Guid(row["PartnerId"].ToString()),
+                        PartnerName = row["PartnerName"].ToString()
                     };
             return result.Cast<Contract>().ToArray();
         }
+
         public _1CContract(string routeId)
             : base()
         {

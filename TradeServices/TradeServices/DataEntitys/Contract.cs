@@ -30,5 +30,11 @@ namespace TradeServices.DataEntitys
 
         [DataMember(Name = "Reprieve")]
         public string Reprieve { get; set; }
-    }
+
+        [DataMember(Name = "PartnerId")]
+        public Guid PartnerId { get; set; }
+
+        [DataMember(Name = "PartnerName")]
+        public string PartnerName { get; set; }
+}
 }

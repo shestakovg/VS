@@ -76,6 +76,7 @@
     <Compile Include="Classes\_1CContract.cs" />
     <Compile Include="Classes\Invalid1CConnect.cs" />
     <Compile Include="Classes\_1CRouteSet.cs" />
+    <Compile Include="Classes\_1CSkuGroup.cs" />
     <Compile Include="DataEntitys\Contract.cs" />
     <Compile Include="DataEntitys\RouteSet.cs" />
     <Compile Include="Classes\_1CBranches.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Classes\_1CUtManager.cs" />
     <Compile Include="DataEntitys\Branch.cs" />
     <Compile Include="DataEntitys\Route.cs" />
+    <Compile Include="DataEntitys\SkuGroup.cs" />
     <Compile Include="Interfaces\IResultArray.cs" />
     <Compile Include="Dictionary.svc.cs">
       <DependentUpon>Dictionary.svc</DependentUpon>

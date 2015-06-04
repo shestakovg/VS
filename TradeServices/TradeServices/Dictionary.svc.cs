@@ -41,5 +41,12 @@ namespace TradeServices
             _1CContract routeSet = new _1CContract(routeid);
             return routeSet.ConvertToArray() as Contract[]; 
         }
+
+
+        public SkuGroup[] GetSkuGroup()
+        {
+            _1CSkuGroup getskugroup = new _1CSkuGroup();
+            return getskugroup.ConvertToArray() as SkuGroup[];
+        }
     }
 }
