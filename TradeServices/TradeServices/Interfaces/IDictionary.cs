@@ -54,6 +54,13 @@ namespace TradeServices
             ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
            ]
         SkuGroup[] GetSkuGroup();
-    
+
+        [OperationContract]
+        [WebGet(
+            UriTemplate = "/getsku",
+            //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+           ]
+        Sku[] GetSku();
     }
 }

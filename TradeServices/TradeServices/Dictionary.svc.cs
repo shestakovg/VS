@@ -48,5 +48,12 @@ namespace TradeServices
             _1CSkuGroup getskugroup = new _1CSkuGroup();
             return getskugroup.ConvertToArray() as SkuGroup[];
         }
+
+
+        public Sku[] GetSku()
+        {
+            _1CSku getsku = new _1CSku();
+            return getsku.ConvertToArray() as Sku[];
+        }
     }
 }
