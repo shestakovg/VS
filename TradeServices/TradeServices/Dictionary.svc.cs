@@ -55,5 +55,19 @@ namespace TradeServices
             _1CSku getsku = new _1CSku();
             return getsku.ConvertToArray() as Sku[];
         }
+
+
+        public Price[] GetPrice(string routeid)
+        {
+            _1CPrice getprice = new _1CPrice(routeid);
+            return getprice.ConvertToArray() as Price[];
+        }
+
+
+        public BalanceSku[] GetBalanceSku(string branchId)
+        {
+            _1CBalanceSku getprice = new _1CBalanceSku(branchId);
+            return getprice.ConvertToArray() as BalanceSku[];
+        }
     }
 }

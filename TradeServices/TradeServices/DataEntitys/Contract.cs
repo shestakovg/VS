@@ -15,9 +15,6 @@ namespace TradeServices.DataEntitys
         [DataMember(Name = "CustomerId")]
         public Guid CustomerId { get; set; }
 
-        [DataMember(Name = "CustomerName")]
-        public string CustomerName { get; set; }
-
         [DataMember(Name = "PriceId")]
         public Guid PriceId { get; set; }///
 
@@ -34,7 +31,6 @@ namespace TradeServices.DataEntitys
         [DataMember(Name = "PartnerId")]
         public Guid PartnerId { get; set; }
 
-        [DataMember(Name = "PartnerName")]
-        public string PartnerName { get; set; }
+
 }
 }

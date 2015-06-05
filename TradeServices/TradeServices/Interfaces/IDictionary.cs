@@ -62,5 +62,21 @@ namespace TradeServices
             ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
            ]
         Sku[] GetSku();
+
+        [OperationContract]
+        [WebGet(
+            UriTemplate = "/getprice/{routeid}",
+            //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+           ]
+        Price[] GetPrice(string routeid);
+
+        [OperationContract]
+        [WebGet(
+            UriTemplate = "/getbalancesku/{branchId}",
+            //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+           ]
+        BalanceSku[] GetBalanceSku(string branchId);
     }
 }

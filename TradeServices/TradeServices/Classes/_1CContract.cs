@@ -31,8 +31,6 @@ namespace TradeServices.Classes
                                         ВЫБРАТЬ
 	                                        СоставМаршрутаТорговогоАгентаСрезПоследних.ТорговаяТочка.Владелец как CustomerId,
                                             СоставМаршрутаТорговогоАгентаСрезПоследних.ТорговаяТочка.Владелец.Партнер как PartnerId,
-                                            СоставМаршрутаТорговогоАгентаСрезПоследних.ТорговаяТочка.Владелец.Партнер.Наименование как PartnerName,
-	                                        СоставМаршрутаТорговогоАгентаСрезПоследних.ТорговаяТочка.Владелец.Наименование как  CustomerName,
 	                                        СоглашенияСКлиентами.ВидЦен как PriceId,
 	                                        СоглашенияСКлиентами.ВидЦен.Наименование как PriceName,
 	                                        СоглашенияСКлиентами.ГрафикОплаты.Наименование   как Reprieve,
@@ -58,13 +56,11 @@ namespace TradeServices.Classes
                     select new Contract()
                     {
                         CustomerId = new Guid(row["CustomerId"].ToString()),
-                        CustomerName = row["CustomerName"].ToString(),
                         PriceId = new Guid(row["PriceId"].ToString()),
                         PriceName = row["PriceName"].ToString(),
                         LimitSum = Int32.Parse(row["LimitSum"].ToString()),
                         Reprieve =  row["Reprieve"].ToString(),
-                        PartnerId = new Guid(row["PartnerId"].ToString()),
-                        PartnerName = row["PartnerName"].ToString()
+                        PartnerId = new Guid(row["PartnerId"].ToString())
                     };
             return result.Cast<Contract>().ToArray();
         }
