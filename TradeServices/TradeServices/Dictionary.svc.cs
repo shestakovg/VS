@@ -34,5 +34,40 @@ namespace TradeServices
             return routeSet.ConvertToArray() as RouteSet[];
 
         }
+
+
+        public Contract[] GetContracts(string routeid)
+        {
+            _1CContract routeSet = new _1CContract(routeid);
+            return routeSet.ConvertToArray() as Contract[]; 
+        }
+
+
+        public SkuGroup[] GetSkuGroup()
+        {
+            _1CSkuGroup getskugroup = new _1CSkuGroup();
+            return getskugroup.ConvertToArray() as SkuGroup[];
+        }
+
+
+        public Sku[] GetSku()
+        {
+            _1CSku getsku = new _1CSku();
+            return getsku.ConvertToArray() as Sku[];
+        }
+
+
+        public Price[] GetPrice(string routeid)
+        {
+            _1CPrice getprice = new _1CPrice(routeid);
+            return getprice.ConvertToArray() as Price[];
+        }
+
+
+        public BalanceSku[] GetBalanceSku(string branchId)
+        {
+            _1CBalanceSku getprice = new _1CBalanceSku(branchId);
+            return getprice.ConvertToArray() as BalanceSku[];
+        }
     }
 }

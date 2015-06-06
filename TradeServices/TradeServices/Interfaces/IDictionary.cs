@@ -38,5 +38,45 @@ namespace TradeServices
             ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
            ]
         RouteSet[] GetRouteSet(string routeid);
+
+        [OperationContract]
+        [WebGet(
+            UriTemplate = "/getcontract/{routeid}",
+            //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+           ]
+        Contract[] GetContracts(string routeid);
+
+        [OperationContract]
+        [WebGet(
+            UriTemplate = "/getskugroup",
+            //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+           ]
+        SkuGroup[] GetSkuGroup();
+
+        [OperationContract]
+        [WebGet(
+            UriTemplate = "/getsku",
+            //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+           ]
+        Sku[] GetSku();
+
+        [OperationContract]
+        [WebGet(
+            UriTemplate = "/getprice/{routeid}",
+            //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+           ]
+        Price[] GetPrice(string routeid);
+
+        [OperationContract]
+        [WebGet(
+            UriTemplate = "/getbalancesku/{branchId}",
+            //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+           ]
+        BalanceSku[] GetBalanceSku(string branchId);
     }
 }

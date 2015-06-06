@@ -73,15 +73,24 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\_1CBalanceSku.cs" />
+    <Compile Include="Classes\_1CContract.cs" />
     <Compile Include="Classes\Invalid1CConnect.cs" />
+    <Compile Include="Classes\_1CPrice.cs" />
     <Compile Include="Classes\_1CRouteSet.cs" />
+    <Compile Include="Classes\_1CSku.cs" />
+    <Compile Include="Classes\_1CSkuGroup.cs" />
+    <Compile Include="DataEntitys\BalanceSku.cs" />
     <Compile Include="DataEntitys\Contract.cs" />
+    <Compile Include="DataEntitys\Price.cs" />
     <Compile Include="DataEntitys\RouteSet.cs" />
     <Compile Include="Classes\_1CBranches.cs" />
     <Compile Include="Classes\_1CRoutes.cs" />
     <Compile Include="Classes\_1CUtManager.cs" />
     <Compile Include="DataEntitys\Branch.cs" />
     <Compile Include="DataEntitys\Route.cs" />
+    <Compile Include="DataEntitys\Sku.cs" />
+    <Compile Include="DataEntitys\SkuGroup.cs" />
     <Compile Include="Interfaces\IResultArray.cs" />
     <Compile Include="Dictionary.svc.cs">
       <DependentUpon>Dictionary.svc</DependentUpon>
