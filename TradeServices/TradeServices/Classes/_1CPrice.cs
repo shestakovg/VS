@@ -15,12 +15,12 @@ namespace TradeServices.Classes
         private _1CUtilsEnterra._1CEntParameter[] paramList;
 
         #region 1cquery
-        private const string _1CQuery = @" ВЫБРАТЬ
-	                                            ЦеныНоменклатурыСрезПоследних.Цена как Pric,
-	                                            ЦеныНоменклатурыСрезПоследних.Номенклатура как SkuId,
-	                                            ЦеныНоменклатурыСрезПоследних.ВидЦены как PriceId
-                                            ИЗ
-	                                            РегистрСведений.ЦеныНоменклатуры.СрезПоследних(&Дата, ) КАК ЦеныНоменклатурыСрезПоследних
+        private const string _1CQuery = @"ВЫБРАТЬ
+                                            ЦеныНоменклатурыСрезПоследних.Цена как Pric,
+                                            ЦеныНоменклатурыСрезПоследних.Номенклатура как SkuId,
+                                            ЦеныНоменклатурыСрезПоследних.ВидЦены как PriceId
+                                        ИЗ
+                                            РегистрСведений.ЦеныНоменклатуры.СрезПоследних(&Дата, ВИдЦены = &priceId) КАК ЦеныНоменклатурыСрезПоследних
                                         ";
         #endregion
      public Price[] ConvertToArray(IQueryable<System.Data.DataRow> queryable =  null)
@@ -41,13 +41,15 @@ namespace TradeServices.Classes
             return result.Cast<Price>().ToArray();
         }
 
-     public _1CPrice(string routeid)
+     public _1CPrice(string priceId)
             : base()
         {
 
            
                 _1CUtilsEnterra._1CEntParameter paramDate = new _1CUtilsEnterra._1CEntParameter("Дата", DateTime.Today);
-                this.paramList = new _1CUtilsEnterra._1CEntParameter[1] { paramDate};
+                _1CUtilsEnterra._1CEntParameter entParameter = new _1CUtilsEnterra._1CEntParameter();
+                entParameter.AddCatalogReferenceParameterByID(this.ConnectionUt, "ВидыЦен", priceId, "priceId");
+                this.paramList = new _1CUtilsEnterra._1CEntParameter[2] { paramDate, entParameter};
            
         }
         //

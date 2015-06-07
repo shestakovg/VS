@@ -11,7 +11,7 @@ namespace TradeServices.Classes
     public class _1CBalanceSku : _1CUtManager, IResultArray<BalanceSku>
     {
 
-        private _1CUtilsEnterra._1CEntParameter[] paramList;
+        private _1CUtilsEnterra._1CEntParameter[] paramList = null;
 
         #region 1cquery
         private const string _1CQuery = @"   
