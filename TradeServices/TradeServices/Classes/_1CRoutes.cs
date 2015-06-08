@@ -52,7 +52,7 @@ namespace TradeServices.Classes
                          Id = new Guid(row["id"].ToString()),
                          Description = row["Description"].ToString().Trim(),
                          Code = row["Code"].ToString(),
-                         EmployeeId = new Guid(row["EmployeeId"].ToString()),
+                         EmployeeId = (row["EmployeeId"] == DBNull.Value ? Guid.Empty : new Guid(row["EmployeeId"].ToString())),
                          Employee = row["Employee"].ToString().Trim()
                      };
 

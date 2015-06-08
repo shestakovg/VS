@@ -65,11 +65,11 @@ namespace TradeServices
 
         [OperationContract]
         [WebGet(
-            UriTemplate = "/getprice/{routeid}",
+            UriTemplate = "/getprice/{priceId}",
             //BodyStyle = WebMessageBodyStyle.WrappedRequest,
             ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
            ]
-        Price[] GetPrice(string routeid);
+        Price[] GetPrice(string priceId);
 
         [OperationContract]
         [WebGet(

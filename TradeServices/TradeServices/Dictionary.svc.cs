@@ -57,9 +57,9 @@ namespace TradeServices
         }
 
 
-        public Price[] GetPrice(string routeid)
+        public Price[] GetPrice(string priceId)
         {
-            _1CPrice getprice = new _1CPrice(routeid);
+            _1CPrice getprice = new _1CPrice(priceId);
             return getprice.ConvertToArray() as Price[];
         }
 
