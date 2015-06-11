@@ -49,4 +49,3 @@ C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\TradeServices\bin\Ente
 C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\TradeServices\obj\Debug\TradeServices.dll
 C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\TradeServices\obj\Debug\TradeServices.pdb
 C:\Users\t.sokol\Source\Repos\VS\TradeServices\TradeServices\obj\Debug\TradeServices.csprojResolveAssemblyReference.cache
-C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\TradeServices\obj\Debug\TradeServices.csprojResolveAssemblyReference.cache

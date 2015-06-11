@@ -73,6 +73,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\SaveData.cs" />
+    <Compile Include="Classes\TradeUtils.cs" />
+    <Compile Include="DataEntitys\IncomingData\MarcOrder.cs" />
+    <Compile Include="DataEntitys\IncomingData\OrderDetail.cs" />
+    <Compile Include="DataEntitys\IncomingData\OrderHeader.cs" />
     <Compile Include="Classes\_1CBalanceSku.cs" />
     <Compile Include="Classes\_1CContract.cs" />
     <Compile Include="Classes\Invalid1CConnect.cs" />
@@ -96,6 +101,11 @@
       <DependentUpon>Dictionary.svc</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IDictionary.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="SVC\Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
@@ -106,6 +116,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

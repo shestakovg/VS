@@ -5,7 +5,9 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using TradeServices.Classes;
+using TradeServices.Classes.IncomingData;
 using TradeServices.DataEntitys;
+using TradeServices.DataEntitys.IncomingData;
 
 //dddf
 namespace TradeServices
@@ -68,6 +70,25 @@ namespace TradeServices
         {
             _1CBalanceSku getprice = new _1CBalanceSku(branchId);
             return getprice.ConvertToArray() as BalanceSku[];
+        }
+
+
+        public void SaveHeader(OrderHeader header)
+        {
+            SaveData.SaveHeader(header);
+        }
+
+
+        public void SaveOrderDetail(OrderDetail orderDetail)
+        {
+            SaveData.SaveDetailOrder(orderDetail);
+        }
+
+
+        public MarcOrder MarcOrder(string orderuuid)
+        {
+            SaveData.MarcOrder(new Guid(orderuuid)); ;
+            return new MarcOrder{result = orderuuid};
         }
     }
 }
