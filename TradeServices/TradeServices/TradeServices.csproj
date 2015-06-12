@@ -69,6 +69,7 @@
     <Content Include="Dictionary.svc" />
     <Content Include="Lib\_1C8Trade_Srv.dll" />
     <Content Include="Lib\_1CUtilsEnterra.dll" />
+    <Content Include="MobileApp1C.txt" />
     <Content Include="SVC\Service1.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -87,6 +88,9 @@
     <Compile Include="Classes\_1CSkuGroup.cs" />
     <Compile Include="DataEntitys\BalanceSku.cs" />
     <Compile Include="DataEntitys\Contract.cs" />
+    <Compile Include="Classes\Order.cs" />
+    <Compile Include="Classes\OrderWareHouse.cs" />
+    <Compile Include="DataEntitys\OrderPosition.cs" />
     <Compile Include="DataEntitys\Price.cs" />
     <Compile Include="DataEntitys\RouteSet.cs" />
     <Compile Include="Classes\_1CBranches.cs" />
