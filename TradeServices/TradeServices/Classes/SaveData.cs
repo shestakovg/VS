@@ -111,7 +111,7 @@ namespace TradeServices.Classes
         {
             bool result = true;
             #region Sql Statement
-            const string sqlDelete = @"delete from [dbo].[orderDetail] where [orderUUID] = @orderUUID";
+            const string sqlDelete = @"delete from [dbo].[orderDetail] where [orderUUID] = @orderUUID and skuId=@skuId";
             const string sqlInsert = @"INSERT INTO [dbo].[orderDetail]
                                                ([orderUUID]
                                                ,[skuId]
@@ -128,6 +128,7 @@ namespace TradeServices.Classes
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = sqlDelete;
             cmd.Parameters.AddWithValue("orderUUID", new Guid(detail.orderUUID));
+            cmd.Parameters.AddWithValue("skuId", new Guid(detail.skuId));
             cmd.ExecuteNonQuery();
 
             SqlCommand cmdDml = con.CreateCommand();
