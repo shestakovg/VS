@@ -21,7 +21,7 @@ namespace TradeServices.Classes
                                             ИЗ
 	                                            Справочник.Номенклатура КАК Номенклатура
                                             ГДЕ
-	                                            Номенклатура.ЭтоГруппа 
+	                                            Номенклатура.ЭтоГруппа и не Номенклатура.ПометкаУдаления
                                         ";
         #endregion
         public SkuGroup[] ConvertToArray(IQueryable<System.Data.DataRow> queryable =  null)

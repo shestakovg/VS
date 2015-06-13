@@ -5,7 +5,9 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using TradeServices.Classes.IncomingData;
 using TradeServices.DataEntitys;
+using TradeServices.DataEntitys.IncomingData;
 
 namespace TradeServices
 {
@@ -78,5 +80,29 @@ namespace TradeServices
             ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
            ]
         BalanceSku[] GetBalanceSku(string branchId);
+
+        #region Получение данных
+        [OperationContract]
+        [WebInvoke(Method = "POST",
+            UriTemplate = "saveheader",
+            BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        void SaveHeader(OrderHeader orderHeader);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST",
+            UriTemplate = "savedetail",
+            BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        void SaveOrderDetail(OrderDetail orderDetail);
+
+        [OperationContract]
+        [WebGet(
+            UriTemplate = "/marcorder/{orderuuid}",
+            //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+           ]
+        MarcOrder MarcOrder(string orderuuid);
+        #endregion
     }
 }

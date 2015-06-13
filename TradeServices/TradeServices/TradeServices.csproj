@@ -69,10 +69,16 @@
     <Content Include="Dictionary.svc" />
     <Content Include="Lib\_1C8Trade_Srv.dll" />
     <Content Include="Lib\_1CUtilsEnterra.dll" />
+    <Content Include="MobileApp1C.txt" />
     <Content Include="SVC\Service1.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\SaveData.cs" />
+    <Compile Include="Classes\TradeUtils.cs" />
+    <Compile Include="DataEntitys\IncomingData\MarcOrder.cs" />
+    <Compile Include="DataEntitys\IncomingData\OrderDetail.cs" />
+    <Compile Include="DataEntitys\IncomingData\OrderHeader.cs" />
     <Compile Include="Classes\_1CBalanceSku.cs" />
     <Compile Include="Classes\_1CContract.cs" />
     <Compile Include="Classes\Invalid1CConnect.cs" />
@@ -82,6 +88,9 @@
     <Compile Include="Classes\_1CSkuGroup.cs" />
     <Compile Include="DataEntitys\BalanceSku.cs" />
     <Compile Include="DataEntitys\Contract.cs" />
+    <Compile Include="Classes\Order.cs" />
+    <Compile Include="Classes\OrderWareHouse.cs" />
+    <Compile Include="DataEntitys\OrderPosition.cs" />
     <Compile Include="DataEntitys\Price.cs" />
     <Compile Include="DataEntitys\RouteSet.cs" />
     <Compile Include="Classes\_1CBranches.cs" />
@@ -96,6 +105,11 @@
       <DependentUpon>Dictionary.svc</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IDictionary.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="SVC\Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
@@ -106,6 +120,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
