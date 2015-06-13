@@ -1,0 +1,14 @@
+C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\UnitTestTradeService\bin\Debug\UnitTestTradeService.dll
+C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\UnitTestTradeService\bin\Debug\UnitTestTradeService.pdb
+C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\UnitTestTradeService\bin\Debug\TradeServices.dll
+C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\UnitTestTradeService\bin\Debug\_1CUtilsEnterra.dll
+C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\UnitTestTradeService\bin\Debug\_1C8Trade_Srv.dll
+C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\UnitTestTradeService\bin\Debug\Enterra.V8x1C.dll
+C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\UnitTestTradeService\bin\Debug\DataBaseUtils.dll
+C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\UnitTestTradeService\bin\Debug\CommonClasses.dll
+C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\UnitTestTradeService\bin\Debug\1cv8.dll
+C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\UnitTestTradeService\bin\Debug\TradeServices.pdb
+C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\UnitTestTradeService\obj\Debug\UnitTestTradeService.csprojResolveAssemblyReference.cache
+C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\UnitTestTradeService\obj\Debug\UnitTestTradeService.dll
+C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\UnitTestTradeService\obj\Debug\UnitTestTradeService.pdb
+C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\UnitTestTradeService\bin\Debug\UnitTestTradeService.dll.config
