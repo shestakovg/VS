@@ -58,6 +58,10 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="_1C.V8.Data, Version=8.0.13.1, Culture=neutral, PublicKeyToken=a2a389ea4bbb4a49">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\1Cv8Web\bin\_1C.V8.Data.dll</HintPath>
+    </Reference>
     <Reference Include="_1C8Trade_Srv">
       <HintPath>D:\D\Projects\VitmarkTfs\_1C8Trade_Srv\_1C8Trade_Srv\bin\_1C8Trade_Srv.dll</HintPath>
     </Reference>
@@ -74,8 +78,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\ProcessIncomingData.cs" />
+    <Compile Include="Classes\ProcessOrderLog.cs" />
     <Compile Include="Classes\SaveData.cs" />
     <Compile Include="Classes\TradeUtils.cs" />
+    <Compile Include="Classes\_1CConnection.cs" />
     <Compile Include="DataEntitys\IncomingData\MarcOrder.cs" />
     <Compile Include="DataEntitys\IncomingData\OrderDetail.cs" />
     <Compile Include="DataEntitys\IncomingData\OrderHeader.cs" />

@@ -4,11 +4,12 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using TradeServices.Classes;
 
 namespace TradeServices.DataEntitys
 {
 
-    public enum OrdersWareHouse
+    public enum OrdersWH
     {
         MainWareHouse, 
         ReatilWareHose
@@ -23,11 +24,16 @@ namespace TradeServices.DataEntitys
         }
 
         private SqlConnection connection;
-        private OrdersWareHouse orderWh;
-        public OrderWareHouse(OrdersWareHouse orderWh)
+        private OrdersWH orderWh;
+        public OrderWareHouse(long orderId, SqlConnection connection, OrdersWH orderWh)
+            : base(orderWh, new ProcessOrderLog(connection))
         {
-            this.orderid = orderid;
+            this.orderid = orderId;
             this.connection = connection;
+            this.orderWh = orderWh;
+            
+            loadOrderFromDB();
+            loadPositionFromDb();
         }
 
         private void loadOrderFromDB()
@@ -42,7 +48,7 @@ namespace TradeServices.DataEntitys
                                       ,[autoLoad]
                                       ,[_1CDocId1]
                                       ,[_1CDocId2]
-                                  FROM [dbo].[orderHeader]
+                                  FROM [dbo].[orderHeader] with (nolock)
                                   where 	[id] = @id";
             SqlCommand cmd = this.connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
@@ -59,11 +65,11 @@ namespace TradeServices.DataEntitys
                 this.payType = (int) reader["payType"];
                 this.autoLoad = (int)reader["autoLoad"];
                 this._1CDocId = Guid.Empty;
-                if (orderWh == OrdersWareHouse.MainWareHouse)
+                if (orderWh == OrdersWH.MainWareHouse)
                 {
                     if (reader["_1CDocId1"] != DBNull.Value) this._1CDocId = new Guid(reader["_1CDocId1"].ToString());
                 }
-                else if (orderWh == OrdersWareHouse.ReatilWareHose)
+                else if (orderWh == OrdersWH.ReatilWareHose)
                 {
                     if (reader["_1CDocId2"] != DBNull.Value) this._1CDocId = new Guid(reader["_1CDocId2"].ToString());
                 }
@@ -79,7 +85,7 @@ namespace TradeServices.DataEntitys
                                               ,[skuId]
                                               ,[qty1]
                                               ,[qty2]
-                                          FROM [dbo].[orderDetail]
+                                          FROM [dbo].[orderDetail] with (nolock)
                                           where [orderUUID] = @orderUUID";
             SqlCommand cmd = this.connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
@@ -91,7 +97,7 @@ namespace TradeServices.DataEntitys
                 List<OrderPosition> posList = new List<OrderPosition>();
                 while (reader.Read())
                 {
-                    int qty = ( (orderWh == OrdersWareHouse.MainWareHouse) ?  Convert.ToInt32(reader["qty1"]) : Convert.ToInt32(reader["qty2"]));
+                    int qty = ((orderWh == OrdersWH.MainWareHouse) ? Convert.ToInt32(reader["qty1"]) : Convert.ToInt32(reader["qty2"]));
                     if (qty>0)        posList.Add( new OrderPosition(new Guid(reader["skuId"].ToString()), qty));
                 }
                 if (posList.Count > 0)
@@ -102,6 +108,28 @@ namespace TradeServices.DataEntitys
             }
 
             reader.Close();
+        }
+
+        public void ApplyToSql()
+        {
+            const string cmdText1 = @"
+                                        update dbo.orderHeader
+                                        set _1CDocNumber1 = @DocNumber,
+	                                        _1CDocId1 = @DocId
+                                        where id = @id";
+            const string cmdText2 = @"
+                                        update dbo.orderHeader
+                                        set _1CDocNumber2 = @DocNumber,
+	                                        _1CDocId2 = @DocId
+                                        where id = @id";
+            SqlCommand cmd = this.connection.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = (orderWh == OrdersWH.MainWareHouse ? cmdText1 : cmdText2);
+            cmd.Parameters.AddWithValue("DocNumber", this._1CDocNumber);
+            cmd.Parameters.AddWithValue("DocId", this._1CDocId);
+            cmd.Parameters.AddWithValue("id", this.orderid);
+            cmd.ExecuteNonQuery();
+            cmd.Parameters.Clear();
         }
     }
 }
