@@ -12,7 +12,7 @@ namespace TradeServices.Classes
 {
     public class SaveData
     {
-        private static SqlConnection getConnection()
+        public static SqlConnection getConnection()
         {
             SqlConnection con= new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]);
             con.Open();
@@ -154,6 +154,6 @@ namespace TradeServices.Classes
             con.Close();
         }
     }
-
+    
     
 }
