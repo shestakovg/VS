@@ -10,6 +10,7 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 using TradeServices;
+using TradeServices.Classes;
 
 namespace TradeServiceHost
 {
@@ -34,6 +35,8 @@ namespace TradeServiceHost
             stp.HttpHelpPageEnabled = false;
 
             host.Open();
+
+            ProcessIncomingData.Start();
         }
 
         protected override void OnStop()
@@ -42,8 +45,11 @@ namespace TradeServiceHost
             {
                 host.Close();
                 host = null;
-                GC.Collect();
+                
             }
+
+            ProcessIncomingData.Stop();
+            GC.Collect();
         }
     }
 }
