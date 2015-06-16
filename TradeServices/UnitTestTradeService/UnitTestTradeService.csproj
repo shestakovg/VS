@@ -37,9 +37,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="_1C.V8.Data, Version=8.0.13.1, Culture=neutral, PublicKeyToken=a2a389ea4bbb4a49">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\1Cv8Web\bin\_1C.V8.Data.dll</HintPath>
+    <Reference Include="_1C.V8.Data">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\1Cv8Web\bin\_1C.V8.Data.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Choose>
