@@ -106,6 +106,7 @@
     <Compile Include="DataEntitys\Route.cs" />
     <Compile Include="DataEntitys\Sku.cs" />
     <Compile Include="DataEntitys\SkuGroup.cs" />
+    <Compile Include="DataEntitys\Version.cs" />
     <Compile Include="Interfaces\IResultArray.cs" />
     <Compile Include="Dictionary.svc.cs">
       <DependentUpon>Dictionary.svc</DependentUpon>

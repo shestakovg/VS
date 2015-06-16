@@ -18,13 +18,13 @@ namespace TradeServices.DataEntitys
         protected long orderid;
         protected Guid outletId;
         protected DateTime orderDate;
-        protected string notes;
         protected int payType;
         protected int autoLoad;
         protected Guid _1CDocId;
         protected string _1CDocNumber;
         protected string wareHouse;
         protected OrderPosition[] positions;
+        protected string notes = "";
 
         protected V8DbConnection connection;
 
@@ -62,6 +62,7 @@ namespace TradeServices.DataEntitys
             V8.Call(this.connection, this.headerStucture, "Вставить", new object[] { "docId", (this._1CDocId.ToString()) });
             V8.Call(this.connection, this.headerStucture, "Вставить", new object[] { "Самовывоз", (this.autoLoad.ToString()) });
             V8.Call(this.connection, this.headerStucture, "Вставить", new object[] { "ТипПродажи", (this.payType.ToString()) });
+            V8.Call(this.connection, this.headerStucture, "Вставить", new object[] { "notes", (this.notes.ToString()) });
             V8.Call(this.connection, this.orderStructure, "Вставить", new object[] { "СтруктураШапки", this.headerStucture });
         }
 
