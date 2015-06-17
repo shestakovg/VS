@@ -26,12 +26,12 @@ namespace TradeServices.DataEntitys
         private SqlConnection connection;
         private OrdersWH orderWh;
         public OrderWareHouse(long orderId, SqlConnection connection, OrdersWH orderWh)
-            : base(orderWh, new ProcessOrderLog(connection))
+            : base(orderWh)
         {
             this.orderid = orderId;
             this.connection = connection;
             this.orderWh = orderWh;
-            
+            this.log = new ProcessOrderLog(connection);
             loadOrderFromDB();
             loadPositionFromDb();
         }
@@ -50,11 +50,14 @@ namespace TradeServices.DataEntitys
                                       ,[_1CDocId2]
                                   FROM [dbo].[orderHeader] with (nolock)
                                   where 	[id] = @id";
+            log.WriteLog(this.orderUUID, "Получение шапки OrderWareHouse");
             SqlCommand cmd = this.connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = commadText;
             cmd.Parameters.AddWithValue("id", this.orderid);
+            string mgs;
             SqlDataReader reader =  cmd.ExecuteReader();
+           
             if (reader.HasRows)
             {
                 reader.Read();
@@ -74,12 +77,19 @@ namespace TradeServices.DataEntitys
                     if (reader["_1CDocId2"] != DBNull.Value) this._1CDocId = new Guid(reader["_1CDocId2"].ToString());
                 }
                 //this.initialized = true;
+                mgs = "Шапка OrderWareHouse запонена";
+            }
+            else
+            {
+               mgs = "Шапка OrderWareHouse пуста";
             }
             reader.Close();
+            log.WriteLog(this.orderUUID, mgs);
         }
 
         private void loadPositionFromDb()
         {
+            string msg = "";
             const string commandText = @"SELECT id
                                               ,[orderUUID]
                                               ,[skuId]
@@ -87,11 +97,13 @@ namespace TradeServices.DataEntitys
                                               ,[qty2]
                                           FROM [dbo].[orderDetail] with (nolock)
                                           where [orderUUID] = @orderUUID";
+            log.WriteLog(this.orderUUID, "Позиции OrderWareHouse ");
             SqlCommand cmd = this.connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = commandText;
             cmd.Parameters.AddWithValue("orderUUID", this.orderUUID);
             SqlDataReader reader =  cmd.ExecuteReader();
+            
             if (reader.HasRows)
             {
                 List<OrderPosition> posList = new List<OrderPosition>();
@@ -104,10 +116,21 @@ namespace TradeServices.DataEntitys
                 {
                     this.positions = posList.ToArray();
                     this.initialized = true;
+                    msg = "Позиции OrderWareHouse заполнены";
                 }
+                else
+                {
+                    msg = "Нет позиций с количеством OrderWareHouse ";
+                }
+
+            }
+            else
+            {
+                msg ="Позиций OrderWareHouse нет";
             }
 
             reader.Close();
+            log.WriteLog(this.orderUUID, msg);
         }
 
         public void ApplyToSql()

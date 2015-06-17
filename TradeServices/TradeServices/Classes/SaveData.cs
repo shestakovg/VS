@@ -32,7 +32,7 @@ namespace TradeServices.Classes
                                                     ,[autoLoad]
                                                     ,[_send]
                                                     ,[sendTime]
-                                                    ,[routeId])
+                                                    ,[routeId], _send2)
                                                 VALUES
                                                     (@orderUUID
                                                     ,@outletId
@@ -43,7 +43,7 @@ namespace TradeServices.Classes
                                                     ,@autoLoad
                                                     ,-1
                                                     ,getdate()
-                                                    ,@routeId)";
+                                                    ,@routeId, -1)";
             const string sqlUpdate = @"UPDATE [dbo].[orderHeader]
                                            SET 
                                               [orderDate] = @orderDate
@@ -52,6 +52,7 @@ namespace TradeServices.Classes
                                               ,[payType] = @payType
                                               ,[autoLoad] = @autoLoad
                                               ,[_send] = -1
+                                              ,[_send2] = -1
                                               ,[sendTime] = getdate()
                                               ,[routeId] = @routeId
                                          WHERE id = @id";
@@ -144,7 +145,7 @@ namespace TradeServices.Classes
         }
         public static void MarcOrder(Guid orderUUID)
         {
-            const string sqlUpdate = @"update orderHeader set _send=0 where [orderUUID]=@orderUUID";
+            const string sqlUpdate = @"update orderHeader set _send=0, _send2 =0  where [orderUUID]=@orderUUID";
             SqlConnection con = getConnection();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
