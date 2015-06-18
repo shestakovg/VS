@@ -138,13 +138,14 @@ namespace TradeServices.DataEntitys
             const string cmdText1 = @"
                                         update dbo.orderHeader
                                         set _1CDocNumber1 = @DocNumber,
-	                                        _1CDocId1 = @DocId
+	                                        _1CDocId1 = @DocId, _send = 1
                                         where id = @id";
             const string cmdText2 = @"
                                         update dbo.orderHeader
                                         set _1CDocNumber2 = @DocNumber,
-	                                        _1CDocId2 = @DocId
+	                                        _1CDocId2 = @DocId, _send2 = 1
                                         where id = @id";
+            log.WriteLog(this.orderUUID, "Отметим заказ как обработанный");                    
             SqlCommand cmd = this.connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = (orderWh == OrdersWH.MainWareHouse ? cmdText1 : cmdText2);
@@ -153,6 +154,7 @@ namespace TradeServices.DataEntitys
             cmd.Parameters.AddWithValue("id", this.orderid);
             cmd.ExecuteNonQuery();
             cmd.Parameters.Clear();
+            log.WriteLog(this.orderUUID, "Заказ отмечен как обработанный");                    
         }
     }
 }

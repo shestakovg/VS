@@ -20,8 +20,8 @@ namespace TradeServices.DataEntitys
         protected DateTime orderDate;
         protected int payType;
         protected int autoLoad;
-        protected Guid _1CDocId;
-        protected string _1CDocNumber;
+        protected Guid _1CDocId = Guid.Empty;
+        protected string _1CDocNumber= "без номера";
         protected string wareHouse;
         protected OrderPosition[] positions;
         protected string notes = "";
@@ -51,7 +51,7 @@ namespace TradeServices.DataEntitys
             
             bool result = true;
             this.connection = _1CConnection.CreateAndOpenConnection();
-            if (this.connection == null) return false;
+                if (this.connection == null) return false;
             this.orderStructure = (ComObject)V8.Call(this.connection, this.connection.Connection, "externalGetNewStructure");
             this.headerStucture = (ComObject)V8.Call(this.connection, this.connection.Connection, "externalGetNewStructure");
             this.positionValueTable = (ComObject)V8.Call(this.connection, this.connection.Connection, "externalGetNewOrderPosValueTable");
@@ -93,7 +93,8 @@ namespace TradeServices.DataEntitys
             try
             {
                 string createRes = (string)V8.Call(this.connection, this.connection.Connection, "externalCreateOrder", new object[] { this.orderStructure });
-                if (createRes == "OK")
+                //if (createRes == "OK")
+                if (this._1CDocId == Guid.Empty)
                 {
                     this._1CDocId = new Guid (
                                (string)V8.Call(this.connection, this.connection.Connection, "externalGetRef", new object[] {this.orderStructure})
@@ -103,6 +104,11 @@ namespace TradeServices.DataEntitys
                             
                     result = true;
                     log.WriteLog(this.orderUUID, "Заказ создан успешно");
+                }
+                else
+                {
+                    result = true;
+                    log.WriteLog(this.orderUUID, "Заказ изменен успешно");
                 }
             }
             catch (Exception e)
