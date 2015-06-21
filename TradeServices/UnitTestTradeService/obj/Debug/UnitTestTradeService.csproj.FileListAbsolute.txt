@@ -26,3 +26,5 @@ c:\Users\shestakov.g\Documents\GitHub\VS\TradeServices\UnitTestTradeService\bin\
 c:\Users\shestakov.g\Documents\GitHub\VS\TradeServices\UnitTestTradeService\obj\Debug\UnitTestTradeService.csprojResolveAssemblyReference.cache
 c:\Users\shestakov.g\Documents\GitHub\VS\TradeServices\UnitTestTradeService\obj\Debug\UnitTestTradeService.dll
 c:\Users\shestakov.g\Documents\GitHub\VS\TradeServices\UnitTestTradeService\obj\Debug\UnitTestTradeService.pdb
+C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\UnitTestTradeService\bin\Debug\_1C.V8.Data.dll
+C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\UnitTestTradeService\bin\Debug\_1C.V8.Data.xml

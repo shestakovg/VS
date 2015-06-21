@@ -60,7 +60,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="_1C.V8.Data, Version=8.0.13.1, Culture=neutral, PublicKeyToken=a2a389ea4bbb4a49">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\1Cv8Web\bin\_1C.V8.Data.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\1Cv8Web\bin\_1C.V8.Data.dll</HintPath>
     </Reference>
     <Reference Include="_1C8Trade_Srv">
       <HintPath>D:\D\Projects\VitmarkTfs\_1C8Trade_Srv\_1C8Trade_Srv\bin\_1C8Trade_Srv.dll</HintPath>
@@ -107,6 +107,7 @@
     <Compile Include="DataEntitys\Route.cs" />
     <Compile Include="DataEntitys\Sku.cs" />
     <Compile Include="DataEntitys\SkuGroup.cs" />
+    <Compile Include="DataEntitys\Version.cs" />
     <Compile Include="Interfaces\IResultArray.cs" />
     <Compile Include="Dictionary.svc.cs">
       <DependentUpon>Dictionary.svc</DependentUpon>

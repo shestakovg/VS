@@ -81,6 +81,21 @@ namespace TradeServices
            ]
         BalanceSku[] GetBalanceSku(string branchId);
 
+        [OperationContract]
+        [WebGet(
+            UriTemplate = "/getapk"
+            //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            )
+           ]
+        System.IO.Stream getapk();
+
+        [OperationContract]
+        [WebGet(
+            UriTemplate = "/getversion",
+            //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+           ]
+        VersionApk getversion();
         #region Получение данных
         [OperationContract]
         [WebInvoke(Method = "POST",

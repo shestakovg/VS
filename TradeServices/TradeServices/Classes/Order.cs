@@ -13,18 +13,18 @@ namespace TradeServices.DataEntitys
 
     public class Order: IDisposable
     {
-        private ProcessOrderLog log;
+        protected ProcessOrderLog log;
         protected Guid orderUUID;
         protected long orderid;
         protected Guid outletId;
         protected DateTime orderDate;
-        protected string notes;
         protected int payType;
         protected int autoLoad;
-        protected Guid _1CDocId;
-        protected string _1CDocNumber;
+        protected Guid _1CDocId = Guid.Empty;
+        protected string _1CDocNumber= "без номера";
         protected string wareHouse;
         protected OrderPosition[] positions;
+        protected string notes = "";
 
         protected V8DbConnection connection;
 
@@ -39,22 +39,31 @@ namespace TradeServices.DataEntitys
             this.log = log;
 
         }
+
+        public Order(OrdersWH wh)
+        {
+            this.wareHouse = (wh == OrdersWH.MainWareHouse ? "1" : "2");
+            
+
+        }
         public bool prepare1CStructure()
         {
-            log.WriteLog(this.orderUUID, "Начало обработки");
+            
             bool result = true;
             this.connection = _1CConnection.CreateAndOpenConnection();
-            if (this.connection == null) return false;
+                if (this.connection == null) return false;
             this.orderStructure = (ComObject)V8.Call(this.connection, this.connection.Connection, "externalGetNewStructure");
             this.headerStucture = (ComObject)V8.Call(this.connection, this.connection.Connection, "externalGetNewStructure");
             this.positionValueTable = (ComObject)V8.Call(this.connection, this.connection.Connection, "externalGetNewOrderPosValueTable");
             prepareHeader();
             preparePosition();
+            
             return result;
         }
 
         private void prepareHeader()
         {
+            log.WriteLog(this.orderUUID, "Начало обработки шапки для 1С");
             V8.Call(this.connection, this.headerStucture, "Вставить", new object[] { "НовыйЗаказ", (this._1CDocId ==  Guid.Empty ? 1 : 0) });
             V8.Call(this.connection, this.headerStucture, "Вставить", new object[] { "Дата", ПолучитьДату1СДляДокумента(DateTime.Today) });
             V8.Call(this.connection, this.headerStucture, "Вставить", new object[] { "ТорговаяТочка", this.outletId.ToString() });
@@ -62,16 +71,20 @@ namespace TradeServices.DataEntitys
             V8.Call(this.connection, this.headerStucture, "Вставить", new object[] { "docId", (this._1CDocId.ToString()) });
             V8.Call(this.connection, this.headerStucture, "Вставить", new object[] { "Самовывоз", (this.autoLoad.ToString()) });
             V8.Call(this.connection, this.headerStucture, "Вставить", new object[] { "ТипПродажи", (this.payType.ToString()) });
+            V8.Call(this.connection, this.headerStucture, "Вставить", new object[] { "notes", (this.notes.ToString()) });
             V8.Call(this.connection, this.orderStructure, "Вставить", new object[] { "СтруктураШапки", this.headerStucture });
+            log.WriteLog(this.orderUUID, "Завершение обработки шапки для 1С");
         }
 
         private void preparePosition()
         {
+            log.WriteLog(this.orderUUID, "Начало обработки таб части для 1С");
             foreach (OrderPosition pos in positions)
             {
                 V8.Call(this.connection, this.connection.Connection, "externalAddPos", new object[] { this.positionValueTable , pos.SkuId.ToString(), pos.Quantity});
             }
             V8.Call(this.connection, this.orderStructure, "Вставить", new object[] { "Позиции", this.positionValueTable});
+            log.WriteLog(this.orderUUID, "Завершение обработки таб части для 1С");
         }
 
         public bool createOrder()
@@ -80,7 +93,8 @@ namespace TradeServices.DataEntitys
             try
             {
                 string createRes = (string)V8.Call(this.connection, this.connection.Connection, "externalCreateOrder", new object[] { this.orderStructure });
-                if (createRes == "OK")
+                //if (createRes == "OK")
+                if (this._1CDocId == Guid.Empty)
                 {
                     this._1CDocId = new Guid (
                                (string)V8.Call(this.connection, this.connection.Connection, "externalGetRef", new object[] {this.orderStructure})
@@ -90,6 +104,11 @@ namespace TradeServices.DataEntitys
                             
                     result = true;
                     log.WriteLog(this.orderUUID, "Заказ создан успешно");
+                }
+                else
+                {
+                    result = true;
+                    log.WriteLog(this.orderUUID, "Заказ изменен успешно");
                 }
             }
             catch (Exception e)
@@ -147,7 +166,10 @@ namespace TradeServices.DataEntitys
         public void Dispose()
         {
             if (connection != null)
+            {
                 _1CConnection.Close1CConnection(connection);
+                connection = null;
+            }
         }
     }
 }
