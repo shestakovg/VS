@@ -50,3 +50,4 @@ c:\Users\shestakov.g\Documents\GitHub\VS\TradeServices\TradeServices\bin\1cv8.dl
 c:\Users\shestakov.g\Documents\GitHub\VS\TradeServices\TradeServices\bin\Enterra.V8x1C.dll
 c:\Users\shestakov.g\Documents\GitHub\VS\TradeServices\TradeServices\obj\Debug\TradeServices.dll
 c:\Users\shestakov.g\Documents\GitHub\VS\TradeServices\TradeServices\obj\Debug\TradeServices.pdb
+c:\Users\shestakov.g\Documents\GitHub\VS\TradeServices\TradeServices\obj\Debug\TradeServices.csprojResolveAssemblyReference.cache
