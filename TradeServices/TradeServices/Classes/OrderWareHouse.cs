@@ -42,6 +42,7 @@ namespace TradeServices.DataEntitys
                                       [orderUUID]
                                       ,[outletId]
                                       ,[orderDate]
+                                      ,[deliveryDate]
                                       ,[orderNumber]
                                       ,[notes]
                                       ,[payType]
@@ -67,6 +68,7 @@ namespace TradeServices.DataEntitys
                 this.notes = reader["notes"].ToString();
                 this.payType = (int) reader["payType"];
                 this.autoLoad = (int)reader["autoLoad"];
+                this.deliveryDate = (DateTime)reader["deliveryDate"];
                 this._1CDocId = Guid.Empty;
                 if (orderWh == OrdersWH.MainWareHouse)
                 {

@@ -13,16 +13,63 @@ namespace TradeServices.Classes
          private _1CUtilsEnterra._1CEntParameter[] paramList;
 
         #region 1cquery
-         private const string _1CQuery = @" ВЫБРАТЬ
-	                                            Номенклатура.Ссылка как GroupId,
-	                                            Номенклатура.Наименование как GroupName,
-	                                            Номенклатура.Родитель как GroupParentId,
-	                                            Номенклатура.Родитель.Наименование как GroupParentName
-                                            ИЗ
-	                                            Справочник.Номенклатура КАК Номенклатура
-                                            ГДЕ
-	                                            Номенклатура.ЭтоГруппа и не Номенклатура.ПометкаУдаления
-                                        ";
+//         private const string _1CQuery = @" ВЫБРАТЬ
+//	                                            Номенклатура.Ссылка как GroupId,
+//	                                            Номенклатура.Наименование как GroupName,
+//	                                            Номенклатура.Родитель как GroupParentId,
+//	                                            Номенклатура.Родитель.Наименование как GroupParentName
+//                                            ИЗ
+//	                                            Справочник.Номенклатура КАК Номенклатура
+//                                            ГДЕ
+//	                                            Номенклатура.ЭтоГруппа и не Номенклатура.ПометкаУдаления
+//                                        ";
+
+         private const string _1CQuery = @"выбрать ном.ссылка как номенклатурнаяГруппа   
+	поместить Бренды
+из Справочник.Номенклатура ном
+
+где ном.Ссылка в иерархии (
+	выбрать бп.Бренд 
+
+	из СПравочник.БрендыКПродаже.Бренды бп
+	где бп.Ссылка в (выбрать БрендКПРодаже из
+		Справочник.МаршрутыТорговыхПредставителей где ссылка =&RouteID ))
+и ном.ЭтоГруппа и не ном.ПометкаУдаления;
+
+ВЫБРАТЬ
+    Номенклатура.Ссылка как GroupId
+поместить группы    
+ИЗ
+    Справочник.Номенклатура КАК Номенклатура
+Левое соединение Справочник.МаршрутыТорговыхПредставителей мтп по мтп.ССылка = &RouteID   
+левое соединение Бренды бп по бп.номенклатурнаяГруппа =   Номенклатура.Ссылка
+ГДЕ
+    Номенклатура.ЭтоГруппа и не Номенклатура.ПометкаУдаления
+    и 
+    (бп.номенклатурнаяГруппа <>ЗНАЧЕНИЕ(Справочник.Номенклатура.ПустаяСсылка) или 
+    	мтп.БрендКПродаже= ЗНАЧЕНИЕ(Справочник.БрендыКПРодаже.ПустаяССылка)
+    );
+
+ВЫБРАТЬ
+                Номенклатура.Ссылка как GroupId,
+                Номенклатура.Наименование как GroupName,
+                Номенклатура.Родитель как GroupParentId,
+                Номенклатура.Родитель.Наименование как GroupParentName
+            ИЗ
+                Справочник.Номенклатура КАК Номенклатура
+            ГДЕ
+Номенклатура.Ссылка в иерархии (выбрать groupid из группы)            
+ и Номенклатура.ЭтоГруппа
+объединить
+ВЫБРАТЬ
+                Номенклатура.Ссылка как GroupId,
+                Номенклатура.Наименование как GroupName,
+                Номенклатура.Родитель как GroupParentId,
+                Номенклатура.Родитель.Наименование как GroupParentName
+            ИЗ
+                Справочник.Номенклатура КАК Номенклатура
+внутреннее соединение группы по группы.groupid.Родитель =   Номенклатура.Ссылка 
+ГДЕ   Номенклатура.Родитель=ЗНАЧЕНИЕ(Справочник.Номенклатура.ПустаяСсылка) и Номенклатура.ЭтоГРуппа ";
         #endregion
         public SkuGroup[] ConvertToArray(IQueryable<System.Data.DataRow> queryable =  null)
         {
@@ -43,12 +90,19 @@ namespace TradeServices.Classes
             return result.Cast<SkuGroup>().ToArray();
         }
 
-        public _1CSkuGroup(_1CUtilsEnterra._1CEntParameter[] paramList = null)
+        public _1CSkuGroup(string routeId)
             : base() 
         {
-            if (paramList != null)
+            if (!String.IsNullOrEmpty(routeId))
             {
-                this.paramList = paramList;
+                var entParameter = new _1CUtilsEnterra._1CEntParameter();
+                entParameter.AddCatalogReferenceParameterByID(this.ConnectionUt, "МаршрутыТорговыхПредставителей", routeId, "RouteID");
+                //_1CUtilsEnterra._1CEntParameter paramDate = new _1CUtilsEnterra._1CEntParameter("имя_параметра", DateTime.Today);
+                this.paramList = new _1CUtilsEnterra._1CEntParameter[1] { entParameter };
+            }
+            else
+            {
+                // throw new Exception("routeId is empty");
             }
         }
         public override IQueryable GetQueryResult()

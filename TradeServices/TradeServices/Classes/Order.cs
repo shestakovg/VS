@@ -18,6 +18,7 @@ namespace TradeServices.DataEntitys
         protected long orderid;
         protected Guid outletId;
         protected DateTime orderDate;
+        protected DateTime deliveryDate;
         protected int payType;
         protected int autoLoad;
         protected Guid _1CDocId = Guid.Empty;
@@ -66,6 +67,7 @@ namespace TradeServices.DataEntitys
             log.WriteLog(this.orderUUID, "Начало обработки шапки для 1С");
             V8.Call(this.connection, this.headerStucture, "Вставить", new object[] { "НовыйЗаказ", (this._1CDocId ==  Guid.Empty ? 1 : 0) });
             V8.Call(this.connection, this.headerStucture, "Вставить", new object[] { "Дата", ПолучитьДату1СДляДокумента(DateTime.Today) });
+            V8.Call(this.connection, this.headerStucture, "Вставить", new object[] { "ДатаДоставки", ПолучитьДату1СДляДокумента(this.deliveryDate) });
             V8.Call(this.connection, this.headerStucture, "Вставить", new object[] { "ТорговаяТочка", this.outletId.ToString() });
             V8.Call(this.connection, this.headerStucture, "Вставить", new object[] { "Склад", (this.wareHouse) });
             V8.Call(this.connection, this.headerStucture, "Вставить", new object[] { "docId", (this._1CDocId.ToString()) });

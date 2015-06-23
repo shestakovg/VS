@@ -83,6 +83,7 @@
     <Compile Include="Classes\SaveData.cs" />
     <Compile Include="Classes\TradeUtils.cs" />
     <Compile Include="Classes\_1CConnection.cs" />
+    <Compile Include="DataEntitys\Class1.cs" />
     <Compile Include="DataEntitys\IncomingData\MarcOrder.cs" />
     <Compile Include="DataEntitys\IncomingData\OrderDetail.cs" />
     <Compile Include="DataEntitys\IncomingData\OrderHeader.cs" />
@@ -107,7 +108,7 @@
     <Compile Include="DataEntitys\Route.cs" />
     <Compile Include="DataEntitys\Sku.cs" />
     <Compile Include="DataEntitys\SkuGroup.cs" />
-    <Compile Include="DataEntitys\Version.cs" />
+    <Compile Include="DataEntitys\Versions.cs" />
     <Compile Include="Interfaces\IResultArray.cs" />
     <Compile Include="Dictionary.svc.cs">
       <DependentUpon>Dictionary.svc</DependentUpon>

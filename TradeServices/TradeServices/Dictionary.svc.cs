@@ -48,9 +48,9 @@ namespace TradeServices
         }
 
 
-        public SkuGroup[] GetSkuGroup()
+        public SkuGroup[] GetSkuGroup(string routeid)
         {
-            _1CSkuGroup getskugroup = new _1CSkuGroup();
+            _1CSkuGroup getskugroup = new _1CSkuGroup(routeid);
             return getskugroup.ConvertToArray() as SkuGroup[];
         }
 

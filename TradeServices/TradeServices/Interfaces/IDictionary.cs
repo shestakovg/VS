@@ -51,11 +51,11 @@ namespace TradeServices
 
         [OperationContract]
         [WebGet(
-            UriTemplate = "/getskugroup",
+            UriTemplate = "/getskugroup/{routeid}",
             //BodyStyle = WebMessageBodyStyle.WrappedRequest,
             ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
            ]
-        SkuGroup[] GetSkuGroup();
+        SkuGroup[] GetSkuGroup(string routeid);
 
         [OperationContract]
         [WebGet(

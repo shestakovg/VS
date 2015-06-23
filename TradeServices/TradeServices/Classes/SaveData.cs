@@ -26,6 +26,7 @@ namespace TradeServices.Classes
                                                     ([orderUUID]
                                                     ,[outletId]
                                                     ,[orderDate]
+                                                    ,[deliveryDate]
                                                     ,[orderNumber]
                                                     ,[notes]
                                                     ,[payType]
@@ -37,6 +38,7 @@ namespace TradeServices.Classes
                                                     (@orderUUID
                                                     ,@outletId
                                                     ,convert(datetime,@orderDate,101)
+                                                    ,convert(datetime,@deliveryDate,101)
                                                     ,@orderNumber
                                                     ,@notes
                                                     ,@payType
@@ -46,7 +48,8 @@ namespace TradeServices.Classes
                                                     ,@routeId, -1)";
             const string sqlUpdate = @"UPDATE [dbo].[orderHeader]
                                            SET 
-                                              [orderDate] = @orderDate
+                                              [orderDate] = convert(datetime,@orderDate,101)
+                                              ,[deliveryDate] = convert(datetime,@deliveryDate,101)
                                               ,[orderNumber] = @orderNumber
                                               ,[notes] = @notes
                                               ,[payType] = @payType
@@ -70,6 +73,7 @@ namespace TradeServices.Classes
             cmdDml.Parameters.AddWithValue("orderUUID", new Guid(header.orderUUID));
             cmdDml.Parameters.AddWithValue("outletId", new Guid(header.outletId));
             cmdDml.Parameters.AddWithValue("orderDate", header.orderDate);
+            cmdDml.Parameters.AddWithValue("deliveryDate", header.deliveryDate);
             cmdDml.Parameters.AddWithValue("orderNumber", header.orderNumber);
             cmdDml.Parameters.AddWithValue("notes",TradeUtils.EncodeCyrilicString(header.notes));
             cmdDml.Parameters.AddWithValue("payType", header.payType);

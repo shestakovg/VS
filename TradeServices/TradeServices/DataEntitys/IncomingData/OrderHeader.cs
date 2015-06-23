@@ -15,6 +15,8 @@ namespace TradeServices.Classes.IncomingData
         public string outletId { get; set; }
         [DataMember(Name = "orderDate")]
         public string orderDate { get; set; }
+        [DataMember(Name = "deliveryDate")]
+        public string deliveryDate { get; set; }
         [DataMember(Name = "orderNumber")]
         public int orderNumber { get; set; }
         [DataMember(Name = "notes")]
