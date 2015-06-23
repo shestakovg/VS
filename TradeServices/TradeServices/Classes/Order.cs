@@ -171,6 +171,21 @@ namespace TradeServices.DataEntitys
             {
                 _1CConnection.Close1CConnection(connection);
                 connection = null;
+                if (orderStructure != null)
+                {
+                    V8.ReleaseComObject(orderStructure);
+                    orderStructure = null;
+                }
+                if (headerStucture != null)
+                {
+                    V8.ReleaseComObject(headerStucture);
+                    headerStucture = null;
+                }
+                if (positionValueTable != null)
+                {
+                    V8.ReleaseComObject(positionValueTable);
+                    positionValueTable = null;
+                }
             }
         }
     }

@@ -100,6 +100,7 @@ namespace TradeServices.Classes
                             if (wh.createOrder())
                             {
                                 wh.ApplyToSql();
+                                wh.Dispose();
                                 marcOrderProceed(connection, id, OrdersWH.MainWareHouse);
                             }
                     }
@@ -107,9 +108,6 @@ namespace TradeServices.Classes
                     {
                         marcOrderProceed(connection, id, OrdersWH.MainWareHouse);
                     }
-
-                    
-                    
                     GC.Collect();
                 }
 
@@ -122,6 +120,7 @@ namespace TradeServices.Classes
                             if (wh.createOrder())
                             {
                                 wh.ApplyToSql();
+                                wh.Dispose();
                                 marcOrderProceed(connection, id, OrdersWH.ReatilWareHose);
                             }
                     }
