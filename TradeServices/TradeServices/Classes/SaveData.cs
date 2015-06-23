@@ -10,6 +10,7 @@ using TradeServices.DataEntitys.IncomingData;
 
 namespace TradeServices.Classes
 {
+
     public class SaveData
     {
         public static SqlConnection getConnection()

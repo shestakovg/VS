@@ -48,8 +48,6 @@ Temporary Items
 /TradeServices/ConsoleHostTS/bin/Debug/ConsoleHostTS.vshost.exe
 /TradeServices/ConsoleHostTS/bin/Debug/ConsoleHostTS.vshost.exe.config
 /TradeServices/ConsoleHostTS/bin/Debug/ConsoleHostTS.vshost.exe.manifest
-/TradeServices
-/TradeServices/ConsoleHostTS
 /TradeServices/ConsoleHostTS/bin/Debug
 /TradeServices/ConsoleHostTS/bin/Debug/1cv8.dll
 /TradeServices/ConsoleHostTS/bin/Debug/DataBaseUtils.dll
@@ -82,7 +80,6 @@ Temporary Items
 /TradeServices/TradeServices/bin/Enterra.V8x1C.dll
 /TradeServices/TradeServices/bin/_1C8Trade_Srv.dll
 /TradeServices/TradeServices/bin/_1CUtilsEnterra.dll
-/TradeServices/UnitTestTradeService
 /TradeServices/UnitTestTradeService/bin/Debug
 /TradeServices/UnitTestTradeService/bin/Debug/1cv8.dll
 /TradeServices/UnitTestTradeService/bin/Debug/CommonClasses.dll
