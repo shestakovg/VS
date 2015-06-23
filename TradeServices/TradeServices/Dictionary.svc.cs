@@ -145,5 +145,11 @@ namespace TradeServices
             reader.Close();
             return vers;
         }
+
+
+        public DebtData[] GetDebt(string routeid)
+        {
+            return (new _1CDebt(routeid)).ConvertToArray() as DebtData[];
+        }
     }
 }

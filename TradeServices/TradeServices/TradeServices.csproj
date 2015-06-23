@@ -84,6 +84,7 @@
     <Compile Include="Classes\TradeUtils.cs" />
     <Compile Include="Classes\_1CConnection.cs" />
     <Compile Include="Classes\_1CDebt.cs" />
+    <Compile Include="DataEntitys\DebtData.cs" />
     <Compile Include="DataEntitys\IncomingData\MarcOrder.cs" />
     <Compile Include="DataEntitys\IncomingData\OrderDetail.cs" />
     <Compile Include="DataEntitys\IncomingData\OrderHeader.cs" />

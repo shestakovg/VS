@@ -49,6 +49,13 @@ namespace TradeServices
            ]
         Contract[] GetContracts(string routeid);
 
+        [WebGet(
+            UriTemplate = "/getdebt/{routeid}",
+            //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+           ]
+        DebtData[] GetDebt(string routeid);
+
         [OperationContract]
         [WebGet(
             UriTemplate = "/getskugroup/{routeid}",

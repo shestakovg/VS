@@ -23,6 +23,7 @@ namespace TradeServices.Classes
             if (this.connectionUt == null)
             {
                 this.connectionUt = ConnectionManager.GetConnection();
+                
             }
 
             if (this.connectionUt == null)
