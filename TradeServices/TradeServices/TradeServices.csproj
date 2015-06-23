@@ -83,7 +83,6 @@
     <Compile Include="Classes\SaveData.cs" />
     <Compile Include="Classes\TradeUtils.cs" />
     <Compile Include="Classes\_1CConnection.cs" />
-    <Compile Include="DataEntitys\Class1.cs" />
     <Compile Include="DataEntitys\IncomingData\MarcOrder.cs" />
     <Compile Include="DataEntitys\IncomingData\OrderDetail.cs" />
     <Compile Include="DataEntitys\IncomingData\OrderHeader.cs" />
