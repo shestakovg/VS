@@ -63,7 +63,7 @@ namespace TradeServices.Classes
              {
                  var entParameter = new _1CUtilsEnterra._1CEntParameter();
                  entParameter.AddCatalogReferenceParameterByID(this.ConnectionUt, "МаршрутыТорговыхПредставителей", routeId, "RouteID");
-                 _1CUtilsEnterra._1CEntParameter paramDate = new _1CUtilsEnterra._1CEntParameter("Период", DateTime.Today);
+                 _1CUtilsEnterra._1CEntParameter paramDate = new _1CUtilsEnterra._1CEntParameter("Период", DateTime.Today.AddDays(1));
                  //_1CUtilsEnterra._1CEntParameter paramDate = new _1CUtilsEnterra._1CEntParameter("имя_параметра", DateTime.Today);
                  this.paramList = new _1CUtilsEnterra._1CEntParameter[2] { entParameter, paramDate};
              }
@@ -89,9 +89,9 @@ namespace TradeServices.Classes
                         partnerId = new Guid(row["Партнер"].ToString()),
                         customerId = new Guid(row["Контрагент"].ToString()),
                         transactionNumber = row["НомерСделки"].ToString(),
-                        transactionDate = row["ДатаСделки"].ToString(),
+                        transactionDate = TradeUtils.Convert1CDateToTextDate( row["ДатаСделки"].ToString()),
                         transactionSum = Convert.ToDouble(row["СуммаСделки"]),
-                        paymentDate = row["ДатаПлатежа"].ToString(),
+                        paymentDate = TradeUtils.Convert1CDateToTextDate(row["ДатаПлатежа"].ToString()),
                         debt = Convert.ToDouble(row["ТекущаяЗадолженность"]),
                         overdueDebt = Convert.ToDouble(row["ПросроченныйДолг"]),
                         overdueDays = Convert.ToInt32(row["ДнейПросрочки"])

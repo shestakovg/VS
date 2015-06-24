@@ -27,5 +27,13 @@ namespace TradeServices.Classes
             return en.GetString(lst.ToArray());
         }
 
+        public static string Convert1CDateToTextDate(string _1cDate)
+        {
+            if (String.IsNullOrEmpty(_1cDate)) return "";
+
+            return _1cDate.Substring(6, 2) + "." + _1cDate.Substring(4, 2) + "." + _1cDate.Substring(0, 4);
+
+        }
+
     }
 }

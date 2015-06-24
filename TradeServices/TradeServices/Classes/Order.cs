@@ -170,22 +170,24 @@ namespace TradeServices.DataEntitys
             if (connection != null)
             {
                 _1CConnection.Close1CConnection(connection);
+                V8.ReleaseComObject(connection);
                 connection = null;
-                if (orderStructure != null)
-                {
-                    V8.ReleaseComObject(orderStructure);
-                    orderStructure = null;
-                }
-                if (headerStucture != null)
-                {
-                    V8.ReleaseComObject(headerStucture);
-                    headerStucture = null;
-                }
-                if (positionValueTable != null)
-                {
-                    V8.ReleaseComObject(positionValueTable);
-                    positionValueTable = null;
-                }
+                
+            }
+            if (orderStructure != null)
+            {
+                V8.ReleaseComObject(orderStructure);
+                orderStructure = null;
+            }
+            if (headerStucture != null)
+            {
+                V8.ReleaseComObject(headerStucture);
+                headerStucture = null;
+            }
+            if (positionValueTable != null)
+            {
+                V8.ReleaseComObject(positionValueTable);
+                positionValueTable = null;
             }
         }
     }

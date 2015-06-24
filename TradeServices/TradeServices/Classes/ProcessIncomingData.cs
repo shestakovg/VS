@@ -93,20 +93,22 @@ namespace TradeServices.Classes
                 SqlConnection connection = getConnection();
                 foreach (long id in getUnprocessOrder(connection, OrdersWH.MainWareHouse))
                 {
-                    OrderWareHouse wh = new OrderWareHouse(id, connection, OrdersWH.MainWareHouse);
-                    if (wh.Initialized)
+                    using (OrderWareHouse wh = new OrderWareHouse(id, connection, OrdersWH.MainWareHouse))
                     {
-                        if (wh.prepare1CStructure())
-                            if (wh.createOrder())
-                            {
-                                wh.ApplyToSql();
-                                wh.Dispose();
-                                marcOrderProceed(connection, id, OrdersWH.MainWareHouse);
-                            }
-                    }
-                    else
-                    {
-                        marcOrderProceed(connection, id, OrdersWH.MainWareHouse);
+                        if (wh.Initialized)
+                        {
+                            if (wh.prepare1CStructure())
+                                if (wh.createOrder())
+                                {
+                                    wh.ApplyToSql();
+                                    //wh.Dispose();
+                                    marcOrderProceed(connection, id, OrdersWH.MainWareHouse);
+                                }
+                        }
+                        else
+                        {
+                            marcOrderProceed(connection, id, OrdersWH.MainWareHouse);
+                        }
                     }
                     GC.Collect();
                 }
@@ -122,6 +124,7 @@ namespace TradeServices.Classes
                                 wh.ApplyToSql();
                                 wh.Dispose();
                                 marcOrderProceed(connection, id, OrdersWH.ReatilWareHose);
+                                wh = null;
                             }
                     }
                     else
