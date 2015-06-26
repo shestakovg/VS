@@ -151,5 +151,11 @@ namespace TradeServices
         {
             return (new _1CDebt(routeid)).ConvertToArray() as DebtData[];
         }
+
+
+        public RouteDebtParams[] GetDebtParams(string routeid)
+        {
+            return (new _1CRouteDebtParams(routeid)).ConvertToArray() as RouteDebtParams[];
+        }
     }
 }

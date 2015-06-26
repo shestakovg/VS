@@ -88,6 +88,13 @@ namespace TradeServices
            ]
         BalanceSku[] GetBalanceSku(string branchId);
 
+        [WebGet(
+           UriTemplate = "/getdebtparams/{routeid}",
+            //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+           ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+          ]
+        RouteDebtParams[] GetDebtParams(string routeid);
+
         [OperationContract]
         [WebGet(
             UriTemplate = "/getapk"

@@ -16,12 +16,10 @@ namespace TradeServices.Classes
         
         public static void Start()
         {
-            // MessageBox.Show("dddd");
 
+            allowProcess = Convert.ToBoolean(ConfigurationManager.AppSettings["processOrders"]);
             thread = new Thread(ProcessData);
             thread.Name = "Обработка пакетов с КПК";
-            allowProcess = true;
-
             thread.Start();
         }
 
@@ -87,31 +85,30 @@ namespace TradeServices.Classes
         }
         public static void ProcessData()
         {
-            allowProcess = true;
             while (allowProcess)
             {
                 SqlConnection connection = getConnection();
                 foreach (long id in getUnprocessOrder(connection, OrdersWH.MainWareHouse))
                 {
-                    using (OrderWareHouse wh = new OrderWareHouse(id, connection, OrdersWH.MainWareHouse))
+                    OrderWareHouse wh = new OrderWareHouse(id, connection, OrdersWH.MainWareHouse);
+                    
+                    if (wh.Initialized)
                     {
-                        if (wh.Initialized)
-                        {
-                            if (wh.prepare1CStructure())
-                                if (wh.createOrder())
-                                {
-                                    wh.ApplyToSql();
-                                    //wh.Dispose();
-                                    marcOrderProceed(connection, id, OrdersWH.MainWareHouse);
-                                }
-                        }
-                        else
-                        {
-                            marcOrderProceed(connection, id, OrdersWH.MainWareHouse);
-                        }
+                        if (wh.prepare1CStructure())
+                            if (wh.createOrder())
+                            {
+                                wh.ApplyToSql();
+                                wh.Dispose();
+                                marcOrderProceed(connection, id, OrdersWH.MainWareHouse);
+                            }
                     }
-                    GC.Collect();
-                }
+                    else
+                    {
+                        marcOrderProceed(connection, id, OrdersWH.MainWareHouse);
+                    }
+               }
+               GC.Collect();
+            
 
                 foreach (long id in getUnprocessOrder(connection, OrdersWH.ReatilWareHose))
                 {
