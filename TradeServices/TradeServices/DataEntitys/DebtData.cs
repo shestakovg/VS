@@ -13,6 +13,8 @@ namespace TradeServices.DataEntitys
         public Guid partnerId;
         [DataMember(Name = "customerId")]
         public Guid customerId;
+        [DataMember(Name = "transactionId")]
+        public Guid transactionId;
         [DataMember(Name = "transactionNumber")]
         public string transactionNumber;
         [DataMember(Name = "transactionDate")]

@@ -29,7 +29,7 @@ namespace TradeServices.Classes
                                                 ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	                                                РасчетыСКлиентамиОстатки.АналитикаУчетаПоПартнерам.Партнер КАК Партнер,
 	                                                марш.CustomerId КАК Контрагент,
-	                                                //РасчетыСКлиентамиОстатки.ЗаказКлиента,
+	                                                выразить(РасчетыСКлиентамиОстатки.ЗаказКлиента как  Документ.РеализацияТоваровУслуг) как Сделка,
 	                                                РасчетыСКлиентамиОстатки.ЗаказКлиента.Дата КАК ДатаСделки,
 	                                                РасчетыСКлиентамиОстатки.ЗаказКлиента.Номер КАК НомерСделки,
 	                                                РасчетыСКлиентамиОстатки.ЗаказКлиента.СуммаДокумента КАК СуммаСделки,
@@ -88,6 +88,7 @@ namespace TradeServices.Classes
                     {
                         partnerId = new Guid(row["Партнер"].ToString()),
                         customerId = new Guid(row["Контрагент"].ToString()),
+                        transactionId = new Guid(row["Сделка"].ToString()),
                         transactionNumber = row["НомерСделки"].ToString(),
                         transactionDate = TradeUtils.Convert1CDateToTextDate( row["ДатаСделки"].ToString()),
                         transactionSum = Convert.ToDouble(row["СуммаСделки"]),
