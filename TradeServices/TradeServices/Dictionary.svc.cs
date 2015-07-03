@@ -157,5 +157,11 @@ namespace TradeServices
         {
             return (new _1CRouteDebtParams(routeid)).ConvertToArray() as RouteDebtParams[];
         }
+
+
+        public void SavePay(ClaimedPays clamedPay)
+        {
+            SaveData.SavePay(clamedPay); 
+        }
     }
 }

@@ -132,6 +132,14 @@ namespace TradeServices
             ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
            ]
         MarcOrder MarcOrder(string orderuuid);
+
+
+        [OperationContract]
+        [WebInvoke(Method = "POST",
+            UriTemplate = "savepay",
+            BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        void SavePay(ClaimedPays clamedPay);
         #endregion
     }
 }

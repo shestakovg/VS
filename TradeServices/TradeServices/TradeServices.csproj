@@ -86,6 +86,7 @@
     <Compile Include="Classes\_1CDebt.cs" />
     <Compile Include="Classes\_1CRouteDebtParams.cs" />
     <Compile Include="DataEntitys\DebtData.cs" />
+    <Compile Include="DataEntitys\IncomingData\ClaimedPays.cs" />
     <Compile Include="DataEntitys\IncomingData\MarcOrder.cs" />
     <Compile Include="DataEntitys\IncomingData\OrderDetail.cs" />
     <Compile Include="DataEntitys\IncomingData\OrderHeader.cs" />

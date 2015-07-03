@@ -87,9 +87,11 @@ namespace TradeServices.Classes
         {
             while (allowProcess)
             {
+                bool isAvaliableNewOrder = false;
                 SqlConnection connection = getConnection();
                 foreach (long id in getUnprocessOrder(connection, OrdersWH.MainWareHouse))
                 {
+                    isAvaliableNewOrder = true;
                     OrderWareHouse wh = new OrderWareHouse(id, connection, OrdersWH.MainWareHouse);
                     
                     if (wh.Initialized)
@@ -107,11 +109,12 @@ namespace TradeServices.Classes
                         marcOrderProceed(connection, id, OrdersWH.MainWareHouse);
                     }
                }
-               GC.Collect();
+            //   GC.Collect();
             
 
                 foreach (long id in getUnprocessOrder(connection, OrdersWH.ReatilWareHose))
                 {
+                    isAvaliableNewOrder = true;
                     OrderWareHouse wh = new OrderWareHouse(id, connection, OrdersWH.ReatilWareHose);
                     if (wh.Initialized)
                     {
@@ -130,11 +133,17 @@ namespace TradeServices.Classes
                     }
 
                     
-                    GC.Collect();
+                    //GC.Collect();
                 }
 
                 connection.Close();
+                connection.Dispose();
                 
+                if (isAvaliableNewOrder)
+                {
+                    GC.Collect();
+                   // GC.WaitForFullGCComplete(500);
+                }
                 Thread.Sleep(500);
             }
         }

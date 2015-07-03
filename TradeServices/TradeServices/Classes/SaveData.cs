@@ -159,6 +159,41 @@ namespace TradeServices.Classes
             cmd.ExecuteNonQuery();
             con.Close();
         }
+
+        public static void SavePay(ClaimedPays pay)
+        {
+            const string sqlDelete = "delete from [ClaimedPays] where transactionId = @transactionId and payDate = convert(datetime,@payDate,101)";
+            const string sqlInsert = @"INSERT INTO [dbo].[ClaimedPays]
+                                               ([routeId]
+                                               ,[payDate]
+                                               ,[transactionId]
+                                               ,[paySum])
+                                         VALUES
+                                               (@routeId
+                                               ,convert(datetime,@payDate,101)
+                                               ,@transactionId
+                                               ,@paySum)";
+            SqlConnection con = getConnection();
+            using (SqlCommand cmd = con.CreateCommand())
+            {
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = sqlDelete;
+                cmd.Parameters.AddWithValue("transactionId", new Guid(pay.transactionId));
+                cmd.Parameters.AddWithValue("payDate", new Guid(pay.payDate));
+                cmd.ExecuteNonQuery();
+            }
+
+            using (SqlCommand cmd = con.CreateCommand())
+            {
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = sqlInsert;
+                cmd.Parameters.AddWithValue("transactionId", new Guid(pay.transactionId));
+                cmd.Parameters.AddWithValue("routeId", new Guid(pay.routeId));
+                cmd.Parameters.AddWithValue("paySum", pay.paySum);
+                cmd.Parameters.AddWithValue("payDate", new Guid(pay.payDate));
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
     
     
