@@ -139,7 +139,7 @@ namespace TradeServices
             UriTemplate = "savepay",
             BodyStyle = WebMessageBodyStyle.WrappedRequest,
             ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
-        void SavePay(ClaimedPays clamedPay);
+        void SavePay(ClaimedPays clamedPays);
         #endregion
     }
 }

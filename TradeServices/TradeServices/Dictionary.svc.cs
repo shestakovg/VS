@@ -159,9 +159,9 @@ namespace TradeServices
         }
 
 
-        public void SavePay(ClaimedPays clamedPay)
+        public void SavePay(ClaimedPays clamedPays)
         {
-            SaveData.SavePay(clamedPay); 
+            SaveData.SavePay(clamedPays); 
         }
     }
 }

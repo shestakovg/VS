@@ -179,8 +179,9 @@ namespace TradeServices.Classes
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = sqlDelete;
                 cmd.Parameters.AddWithValue("transactionId", new Guid(pay.transactionId));
-                cmd.Parameters.AddWithValue("payDate", new Guid(pay.payDate));
+                cmd.Parameters.AddWithValue("payDate", pay.payDate);
                 cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
             }
 
             using (SqlCommand cmd = con.CreateCommand())
@@ -190,9 +191,11 @@ namespace TradeServices.Classes
                 cmd.Parameters.AddWithValue("transactionId", new Guid(pay.transactionId));
                 cmd.Parameters.AddWithValue("routeId", new Guid(pay.routeId));
                 cmd.Parameters.AddWithValue("paySum", pay.paySum);
-                cmd.Parameters.AddWithValue("payDate", new Guid(pay.payDate));
+                cmd.Parameters.AddWithValue("payDate", pay.payDate);
                 cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
             }
+            con.Close();
         }
     }
     

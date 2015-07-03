@@ -9,13 +9,13 @@ namespace TradeServices.DataEntitys.IncomingData
     [DataContract]
     public class ClaimedPays
     {
-        [DataMember]
-        public string routeId;
-        [DataMember]
-        public string payDate;
-        [DataMember]
-        public string transactionId;
-        [DataMember]
-        public double paySum;
+        [DataMember(Name = "routeId")]
+        public string routeId { get; set; }
+        [DataMember(Name = "payDate")]
+        public string payDate { get; set; }
+        [DataMember(Name = "transactionId")]
+        public string transactionId { get; set; }
+        [DataMember(Name = "paySum")]
+        public double paySum { get; set; }
     }
 }
