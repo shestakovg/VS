@@ -56,6 +56,8 @@ namespace TradeServices.Classes
             }
         }
 
+
+
         private bool save1C(DataRow row)
         {
             bool res = true;
