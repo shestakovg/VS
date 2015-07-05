@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _1C.V8.Data;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -89,10 +90,13 @@ namespace TradeServices.Classes
             {
                 bool isAvaliableNewOrder = false;
                 SqlConnection connection = getConnection();
+                V8DbConnection _1cConnection = null;
                 foreach (long id in getUnprocessOrder(connection, OrdersWH.MainWareHouse))
                 {
                     isAvaliableNewOrder = true;
-                    OrderWareHouse wh = new OrderWareHouse(id, connection, OrdersWH.MainWareHouse);
+                    _1cConnection = _1CConnection.CreateAndOpenConnection();
+                    if (_1cConnection == null) break;
+                    OrderWareHouse wh = new OrderWareHouse(id, connection, OrdersWH.MainWareHouse, _1cConnection);
                     
                     if (wh.Initialized)
                     {
@@ -115,7 +119,10 @@ namespace TradeServices.Classes
                 foreach (long id in getUnprocessOrder(connection, OrdersWH.ReatilWareHose))
                 {
                     isAvaliableNewOrder = true;
-                    OrderWareHouse wh = new OrderWareHouse(id, connection, OrdersWH.ReatilWareHose);
+                    if (_1cConnection == null)
+                        _1cConnection = _1CConnection.CreateAndOpenConnection();
+                    if (_1cConnection == null) break;
+                    OrderWareHouse wh = new OrderWareHouse(id, connection, OrdersWH.ReatilWareHose, _1cConnection);
                     if (wh.Initialized)
                     {
                         if (wh.prepare1CStructure())
@@ -136,9 +143,27 @@ namespace TradeServices.Classes
                     //GC.Collect();
                 }
 
+                if (TradeServices.Classes.ClaimedPay.ExistsNewPays(connection))
+                {
+                    if (_1cConnection == null)
+                        _1cConnection = _1CConnection.CreateAndOpenConnection();
+                    if (_1cConnection != null)
+                    {
+                        TradeServices.Classes.ClaimedPay pays = new ClaimedPay(_1cConnection , connection);
+                        pays.ProcessPays();
+                    }
+                }
+
                 connection.Close();
                 connection.Dispose();
                 
+                if (_1cConnection != null)
+                {
+                    _1CConnection.Close1CConnection(_1cConnection);
+                    V8.ReleaseComObject(_1cConnection);
+                    _1cConnection = null;
+                }
+
                 if (isAvaliableNewOrder)
                 {
                     GC.Collect();
