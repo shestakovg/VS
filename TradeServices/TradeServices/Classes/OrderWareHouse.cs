@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _1C.V8.Data;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -25,8 +26,8 @@ namespace TradeServices.DataEntitys
 
         private SqlConnection connection;
         private OrdersWH orderWh;
-        public OrderWareHouse(long orderId, SqlConnection connection, OrdersWH orderWh)
-            : base(orderWh)
+        public OrderWareHouse(long orderId, SqlConnection connection, OrdersWH orderWh, V8DbConnection _1cConnection)
+            : base(orderWh, _1cConnection)
         {
             this.orderid = orderId;
             this.connection = connection;

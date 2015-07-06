@@ -18,12 +18,12 @@ namespace UnitTestTradeService
         [TestMethod]
         public void TestOrder()
         {
-            OrderWareHouse wh = new OrderWareHouse(30, SaveData.getConnection(), OrdersWH.MainWareHouse);
-            if (wh.Initialized)
-            {
-                if (wh.prepare1CStructure())
-                    wh.createOrder();
-            }
+            //OrderWareHouse wh = new OrderWareHouse(30, SaveData.getConnection(), OrdersWH.MainWareHouse);
+            //if (wh.Initialized)
+            //{
+            //    if (wh.prepare1CStructure())
+            //        wh.createOrder();
+            //}
         }
         [TestMethod]
         public void TestOrderThread()

@@ -53,6 +53,7 @@ namespace TradeServices.Classes
                 result = connectionUt.ReturnTable(C1QueryText).AsEnumerable().AsQueryable();
             else
                 result = connectionUt.ReturnTable(C1QueryText, paramList).AsEnumerable().AsQueryable();
+            //connectionUt = null;
             return result;
         }
 

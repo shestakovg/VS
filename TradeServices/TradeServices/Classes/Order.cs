@@ -33,26 +33,27 @@ namespace TradeServices.DataEntitys
         private ComObject headerStucture;
         private ComObject positionValueTable;
 
-        
+
         public Order(OrdersWH wh, ProcessOrderLog log)
         {
             this.wareHouse = (wh == OrdersWH.MainWareHouse ? "1" : "2") ;
             this.log = log;
+            
 
         }
 
-        public Order(OrdersWH wh)
+        public Order(OrdersWH wh,  V8DbConnection connection)
         {
             this.wareHouse = (wh == OrdersWH.MainWareHouse ? "1" : "2");
-            
+            this.connection = connection;
 
         }
         public bool prepare1CStructure()
         {
             
             bool result = true;
-            this.connection = _1CConnection.CreateAndOpenConnection();
-                if (this.connection == null) return false;
+            //this.connection = _1CConnection.CreateAndOpenConnection();
+            if (this.connection == null) return false;
             this.orderStructure = (ComObject)V8.Call(this.connection, this.connection.Connection, "externalGetNewStructure");
             this.headerStucture = (ComObject)V8.Call(this.connection, this.connection.Connection, "externalGetNewStructure");
             this.positionValueTable = (ComObject)V8.Call(this.connection, this.connection.Connection, "externalGetNewOrderPosValueTable");
@@ -134,7 +135,7 @@ namespace TradeServices.DataEntitys
         }
         
 
-        private string ПолучитьДату1СДляДокумента(DateTime dt)
+        public static string ПолучитьДату1СДляДокумента(DateTime dt)
         {
             string s, resS;
 
@@ -167,13 +168,13 @@ namespace TradeServices.DataEntitys
 
         public void Dispose()
         {
-            if (connection != null)
-            {
-                _1CConnection.Close1CConnection(connection);
-                V8.ReleaseComObject(connection);
-                connection = null;
+            //if (connection != null)
+            //{
+            //    _1CConnection.Close1CConnection(connection);
+            //    V8.ReleaseComObject(connection);
+            //    connection = null;
                 
-            }
+            //}
             if (orderStructure != null)
             {
                 V8.ReleaseComObject(orderStructure);
