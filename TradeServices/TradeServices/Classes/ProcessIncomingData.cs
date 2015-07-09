@@ -165,10 +165,12 @@ namespace TradeServices.Classes
                     _1cConnection = null;
                 }
 
-                if (isAvaliableNewOrder)
+                if (true) //(isAvaliableNewOrder)
                 {
                     GC.WaitForPendingFinalizers();
                     GC.Collect();
+                    GC.Collect(1);
+                    GC.Collect(2);
                    // GC.WaitForFullGCComplete(500);
                 }
                 Thread.Sleep(1500);
