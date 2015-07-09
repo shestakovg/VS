@@ -29,6 +29,7 @@ namespace TradeServices.Classes
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandText = sqlSelect;
             Object res = cmd.ExecuteScalar();
+            cmd.Dispose();
             if (Convert.ToInt32(res) > 0)
                 return true;
             else
@@ -54,6 +55,9 @@ namespace TradeServices.Classes
                 if (save1C(row))
                     markPay(Convert.ToInt64(row["id"]));
             }
+            cmd.Dispose();
+            da.Dispose();
+            tbl.Dispose();
         }
 
 
@@ -87,9 +91,13 @@ namespace TradeServices.Classes
 
         private void markPay(long id)
         {
-            SqlCommand cmd = this.connection.CreateCommand();
-            cmd.CommandText = "update ClaimedPays set _send = 1 where id = " + id.ToString();
-            cmd.ExecuteNonQuery();
+            using (SqlCommand cmd = this.connection.CreateCommand())
+            {
+                cmd.CommandText = "update ClaimedPays set _send = 1 where id = " + id.ToString();
+                cmd.ExecuteNonQuery();
+            }
         }
+
+        
     }
 }

@@ -44,12 +44,12 @@ namespace TradeServices.Classes
             cmd.CommandType = System.Data.CommandType.Text;
             if (wh == OrdersWH.MainWareHouse) 
                 cmd.CommandText = @"                                
-                        select top 10 h.id from orderHeader h with (nolock)
+                        select top 30 h.id from orderHeader h with (nolock)
                                 where exists (select * from dbo.orderDetail d with (nolock) where h.orderUUID = d.orderUUID and d.qty1>0 )
                                 and sendTime between DATEADD(day,-2,getdate()) and  GETDATE() and h._send=0 ";
             else
                 cmd.CommandText = @"                                
-                        select top 10 h.id from orderHeader h with (nolock)
+                        select top 30 h.id from orderHeader h with (nolock)
                                 where exists (select * from dbo.orderDetail d with (nolock) where h.orderUUID = d.orderUUID and d.qty2>0 )
                                 and sendTime between DATEADD(day,-2,getdate()) and  GETDATE() and coalesce(h._send2,0) =0 ";
 
@@ -151,12 +151,13 @@ namespace TradeServices.Classes
                     {
                         TradeServices.Classes.ClaimedPay pays = new ClaimedPay(_1cConnection , connection);
                         pays.ProcessPays();
+                        
                     }
                 }
 
                 connection.Close();
                 connection.Dispose();
-                
+                connection = null;
                 if (_1cConnection != null)
                 {
                     _1CConnection.Close1CConnection(_1cConnection);
@@ -166,10 +167,11 @@ namespace TradeServices.Classes
 
                 if (isAvaliableNewOrder)
                 {
+                    GC.WaitForPendingFinalizers();
                     GC.Collect();
                    // GC.WaitForFullGCComplete(500);
                 }
-                Thread.Sleep(500);
+                Thread.Sleep(1500);
             }
         }
 

@@ -22,21 +22,27 @@ namespace TradeServices
         public  Branch[] GetBranch()
         {
             _1CBranches branches = new _1CBranches();
-            return branches.ConvertToArray() as Branch[];
+            var res = branches.ConvertToArray() as Branch[];
+            (branches as _1CUtManager).Dispose();
+            return res;
         }
 
 
         public Route[] GetRoute(string branchid)
         {
             _1CRoutes branches = new _1CRoutes(branchid);
-            return branches.ConvertToArray() as Route[];
+            var res = branches.ConvertToArray() as Route[];
+            (branches as _1CUtManager).Dispose();
+            return res;
         }
 
 
         public RouteSet[] GetRouteSet(string routeid)
         {
             _1CRouteSet routeSet = new _1CRouteSet(routeid);
-            return routeSet.ConvertToArray() as RouteSet[];
+            var res = routeSet.ConvertToArray() as RouteSet[];
+            (routeSet as _1CUtManager).Dispose();
+            return res;
 
         }
 
@@ -44,35 +50,45 @@ namespace TradeServices
         public Contract[] GetContracts(string routeid)
         {
             _1CContract routeSet = new _1CContract(routeid);
-            return routeSet.ConvertToArray() as Contract[]; 
+            var res = routeSet.ConvertToArray() as Contract[]; 
+            (routeSet as _1CUtManager).Dispose();
+            return res;
         }
 
 
         public SkuGroup[] GetSkuGroup(string routeid)
         {
             _1CSkuGroup getskugroup = new _1CSkuGroup(routeid);
-            return getskugroup.ConvertToArray() as SkuGroup[];
+             var res =  getskugroup.ConvertToArray() as SkuGroup[];
+            (getskugroup as _1CUtManager).Dispose();
+            return res;
         }
 
 
         public Sku[] GetSku()
         {
             _1CSku getsku = new _1CSku();
-            return getsku.ConvertToArray() as Sku[];
+             Sku[] res = getsku.ConvertToArray() as Sku[];
+            (getsku as _1CUtManager).Dispose();
+            return res;
         }
 
 
         public Price[] GetPrice(string priceId)
         {
             _1CPrice getprice = new _1CPrice(priceId);
-            return getprice.ConvertToArray() as Price[];
+            Price[] res = getprice.ConvertToArray() as Price[];
+            (getprice as _1CUtManager).Dispose();
+            return res;
         }
 
 
         public BalanceSku[] GetBalanceSku(string branchId)
         {
             _1CBalanceSku getprice = new _1CBalanceSku(branchId);
-            return getprice.ConvertToArray() as BalanceSku[];
+            BalanceSku[] res = getprice.ConvertToArray() as BalanceSku[];
+            (getprice as _1CUtManager).Dispose();
+            return res;
         }
 
 

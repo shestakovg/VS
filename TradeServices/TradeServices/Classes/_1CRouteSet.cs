@@ -31,6 +31,7 @@ namespace TradeServices.Classes
 		                                            ПО СоставМаршрутаТорговогоАгентаСрезПоследних.Период = ДниПосещенияТорговыхТочек.ДатаАктуальности
 			                                            И СоставМаршрутаТорговогоАгентаСрезПоследних.Маршрут = ДниПосещенияТорговыхТочек.Маршрут
 			                                            И СоставМаршрутаТорговогоАгентаСрезПоследних.ТорговаяТочка = ДниПосещенияТорговыхТочек.ТорговаяТочка
+                                                где ДниПосещенияТорговыхТочек.ДеньВизита is not null
                                             ";
         #endregion
         public RouteSet[] ConvertToArray(IQueryable<System.Data.DataRow> queryable =  null)
@@ -55,7 +56,7 @@ namespace TradeServices.Classes
                         PartnerName = row["PartnerName"].ToString().Trim(),
                         address = row["address"].ToString().Trim()
                     };
-
+            
             return result.Cast<RouteSet>().ToArray();
         }
 
