@@ -39,6 +39,7 @@ namespace TradeServices.Classes
             {
                 connection.Close();
                 V8DbConnection.ClearPool();
+                V8DbConnection.PoolCapacity = 5;
             }
         }
         public void tt() { }

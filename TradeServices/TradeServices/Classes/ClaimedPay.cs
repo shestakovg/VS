@@ -58,6 +58,9 @@ namespace TradeServices.Classes
             cmd.Dispose();
             da.Dispose();
             tbl.Dispose();
+            da = null;
+            cmd = null;
+            tbl = null;
         }
 
 

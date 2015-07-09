@@ -77,6 +77,7 @@ namespace TradeServices.Classes
                 cmd.CommandText = @"update dbo.orderHeader
                                     set _send2 = 1  where id = " + id.ToString();
              cmd.ExecuteNonQuery();
+             cmd.Dispose();
         }
         private static SqlConnection getConnection()
         {
@@ -104,7 +105,7 @@ namespace TradeServices.Classes
                             if (wh.createOrder())
                             {
                                 wh.ApplyToSql();
-                                wh.Dispose();
+                                (wh as Order).Dispose();
                                 marcOrderProceed(connection, id, OrdersWH.MainWareHouse);
                             }
                     }
@@ -130,7 +131,7 @@ namespace TradeServices.Classes
                             if (wh.createOrder())
                             {
                                 wh.ApplyToSql();
-                                wh.Dispose();
+                                (wh as Order).Dispose();
                                 marcOrderProceed(connection, id, OrdersWH.ReatilWareHose);
                                 wh = null;
                             }
@@ -166,7 +167,7 @@ namespace TradeServices.Classes
                     _1cConnection = null;
                 }
 
-                if (true) //(isAvaliableNewOrder)
+                if (isAvaliableNewOrder)
                 {
                     GC.WaitForPendingFinalizers();
                     GC.Collect();

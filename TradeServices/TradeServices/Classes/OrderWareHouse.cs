@@ -87,6 +87,7 @@ namespace TradeServices.DataEntitys
                mgs = "Шапка OrderWareHouse пуста";
             }
             reader.Close();
+            reader.Dispose();
             cmd.Dispose();
             log.WriteLog(this.orderUUID, mgs);
         }
@@ -135,6 +136,7 @@ namespace TradeServices.DataEntitys
 
             reader.Close();
             cmd.Dispose();
+            reader.Dispose();
             log.WriteLog(this.orderUUID, msg);
         }
 

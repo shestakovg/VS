@@ -34,6 +34,7 @@ namespace TradeServices.Classes
             cmd.ExecuteNonQuery();
             cmd.Parameters.Clear();
             cmd.Dispose();
+            cmd = null;
         }
 
     }
