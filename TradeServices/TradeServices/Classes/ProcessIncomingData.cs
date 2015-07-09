@@ -112,6 +112,7 @@ namespace TradeServices.Classes
                     {
                         marcOrderProceed(connection, id, OrdersWH.MainWareHouse);
                     }
+                    wh = null;
                }
             //   GC.Collect();
             
@@ -139,7 +140,7 @@ namespace TradeServices.Classes
                         marcOrderProceed(connection, id, OrdersWH.ReatilWareHose);
                     }
 
-                    
+                    wh = null;
                     //GC.Collect();
                 }
 
@@ -151,7 +152,7 @@ namespace TradeServices.Classes
                     {
                         TradeServices.Classes.ClaimedPay pays = new ClaimedPay(_1cConnection , connection);
                         pays.ProcessPays();
-                        
+                        pays = null;
                     }
                 }
 
