@@ -19,9 +19,12 @@ namespace TradeServices.Classes
         {
 
             allowProcess = Convert.ToBoolean(ConfigurationManager.AppSettings["processOrders"]);
-            thread = new Thread(ProcessData);
-            thread.Name = "Обработка пакетов с КПК";
-            thread.Start();
+            if (allowProcess)
+            {
+                thread = new Thread(ProcessData);
+                thread.Name = "Обработка пакетов с КПК";
+                thread.Start();
+            }
         }
 
         public static void Stop()
