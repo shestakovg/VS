@@ -13,5 +13,9 @@ namespace TradeServices.DataEntitys
         public int debtControl;
         [DataMember(Name = "allowOverdueSum")]
         public double allowOverdueSum;
+        [DataMember(Name = "skuQty")]
+        public int skuQty;
+        [DataMember(Name = "minOrderSum")]
+        public double minOrderSum;
     }
 }

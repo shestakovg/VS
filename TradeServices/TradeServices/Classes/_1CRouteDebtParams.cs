@@ -14,7 +14,9 @@ namespace TradeServices.Classes
         private string _1CQuery = @"ВЫБРАТЬ
 	                                    case when МаршрутыТорговыхПредставителей.КонтрольПросрочки then 1 
 	                                    else 0 end debtControl,
-	                                    МаршрутыТорговыхПредставителей.МаксимальнаяСуммаПросрочки allowOverdueSum
+	                                    МаршрутыТорговыхПредставителей.МаксимальнаяСуммаПросрочки allowOverdueSum,
+                                        5 as skuQty,
+                                        500 as minOrderSum
                                     ИЗ
 	                                    Справочник.МаршрутыТорговыхПредставителей КАК МаршрутыТорговыхПредставителей
                                     ГДЕ
@@ -30,7 +32,9 @@ namespace TradeServices.Classes
                     select new RouteDebtParams()
                     {
                         debtControl = Int32.Parse(row["debtControl"].ToString()),
-                        allowOverdueSum = Int32.Parse(row["allowOverdueSum"].ToString())
+                        allowOverdueSum = Int32.Parse(row["allowOverdueSum"].ToString()),
+                        skuQty = Int32.Parse(row["skuQty"].ToString()),
+                        minOrderSum = Convert.ToDouble(row["minOrderSum"])
                     };
             return result.Cast<RouteDebtParams>().ToArray();
         }
