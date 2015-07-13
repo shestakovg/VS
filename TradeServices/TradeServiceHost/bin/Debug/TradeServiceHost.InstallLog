@@ -1,0 +1,56 @@
+﻿Installing assembly 'C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.exe
+   logfile = C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.InstallLog
+Installing service TradeWinService...
+Creating EventLog source TradeWinService in log Application...
+Rolling back assembly 'C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.exe
+   logfile = C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.InstallLog
+Restoring event log to previous state for source TradeWinService.
+Uninstalling assembly 'C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.exe
+   logfile = C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.InstallLog
+Removing EventLog source TradeWinService.
+Service TradeWinService is being removed from the system...
+Service TradeWinService was successfully removed from the system.
+Installing assembly 'C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.exe
+   logfile = C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.InstallLog
+Installing service TradeWinService...
+Creating EventLog source TradeWinService in log Application...
+Rolling back assembly 'C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.exe
+   logfile = C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.InstallLog
+Restoring event log to previous state for source TradeWinService.
+Uninstalling assembly 'C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.exe
+   logfile = C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.InstallLog
+Removing EventLog source TradeWinService.
+Warning: The source TradeWinService is not registered on the local machine.
+Service TradeWinService is being removed from the system...
+Service TradeWinService was successfully removed from the system.
+Installing assembly 'C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.exe
+   logfile = C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.InstallLog
+Installing service TradeWinService...
+Service TradeWinService has been successfully installed.
+Creating EventLog source TradeWinService in log Application...
+Committing assembly 'C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.exe
+   logfile = C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.InstallLog
