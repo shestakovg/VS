@@ -19,9 +19,12 @@ namespace TradeServices.Classes
         {
 
             allowProcess = Convert.ToBoolean(ConfigurationManager.AppSettings["processOrders"]);
-            thread = new Thread(ProcessData);
-            thread.Name = "Обработка пакетов с КПК";
-            thread.Start();
+            if (allowProcess)
+            {
+                thread = new Thread(ProcessData);
+                thread.Name = "Обработка пакетов с КПК";
+                thread.Start();
+            }
         }
 
         public static void Stop()
@@ -44,12 +47,12 @@ namespace TradeServices.Classes
             cmd.CommandType = System.Data.CommandType.Text;
             if (wh == OrdersWH.MainWareHouse) 
                 cmd.CommandText = @"                                
-                        select top 10 h.id from orderHeader h with (nolock)
+                        select top 30 h.id from orderHeader h with (nolock)
                                 where exists (select * from dbo.orderDetail d with (nolock) where h.orderUUID = d.orderUUID and d.qty1>0 )
                                 and sendTime between DATEADD(day,-2,getdate()) and  GETDATE() and h._send=0 ";
             else
                 cmd.CommandText = @"                                
-                        select top 10 h.id from orderHeader h with (nolock)
+                        select top 30 h.id from orderHeader h with (nolock)
                                 where exists (select * from dbo.orderDetail d with (nolock) where h.orderUUID = d.orderUUID and d.qty2>0 )
                                 and sendTime between DATEADD(day,-2,getdate()) and  GETDATE() and coalesce(h._send2,0) =0 ";
 
@@ -77,6 +80,7 @@ namespace TradeServices.Classes
                 cmd.CommandText = @"update dbo.orderHeader
                                     set _send2 = 1  where id = " + id.ToString();
              cmd.ExecuteNonQuery();
+             cmd.Dispose();
         }
         private static SqlConnection getConnection()
         {
@@ -104,7 +108,7 @@ namespace TradeServices.Classes
                             if (wh.createOrder())
                             {
                                 wh.ApplyToSql();
-                                wh.Dispose();
+                                (wh as Order).Dispose();
                                 marcOrderProceed(connection, id, OrdersWH.MainWareHouse);
                             }
                     }
@@ -112,6 +116,7 @@ namespace TradeServices.Classes
                     {
                         marcOrderProceed(connection, id, OrdersWH.MainWareHouse);
                     }
+                    wh = null;
                }
             //   GC.Collect();
             
@@ -129,7 +134,7 @@ namespace TradeServices.Classes
                             if (wh.createOrder())
                             {
                                 wh.ApplyToSql();
-                                wh.Dispose();
+                                (wh as Order).Dispose();
                                 marcOrderProceed(connection, id, OrdersWH.ReatilWareHose);
                                 wh = null;
                             }
@@ -139,7 +144,7 @@ namespace TradeServices.Classes
                         marcOrderProceed(connection, id, OrdersWH.ReatilWareHose);
                     }
 
-                    
+                    wh = null;
                     //GC.Collect();
                 }
 
@@ -151,12 +156,13 @@ namespace TradeServices.Classes
                     {
                         TradeServices.Classes.ClaimedPay pays = new ClaimedPay(_1cConnection , connection);
                         pays.ProcessPays();
+                        pays = null;
                     }
                 }
 
                 connection.Close();
                 connection.Dispose();
-                
+                connection = null;
                 if (_1cConnection != null)
                 {
                     _1CConnection.Close1CConnection(_1cConnection);
@@ -166,10 +172,13 @@ namespace TradeServices.Classes
 
                 if (isAvaliableNewOrder)
                 {
+                    GC.WaitForPendingFinalizers();
                     GC.Collect();
+                    GC.Collect(1);
+                    GC.Collect(2);
                    // GC.WaitForFullGCComplete(500);
                 }
-                Thread.Sleep(500);
+                Thread.Sleep(1500);
             }
         }
 

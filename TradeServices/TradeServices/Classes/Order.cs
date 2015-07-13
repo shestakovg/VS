@@ -177,6 +177,7 @@ namespace TradeServices.DataEntitys
             //}
             if (orderStructure != null)
             {
+
                 V8.ReleaseComObject(orderStructure);
                 orderStructure = null;
             }

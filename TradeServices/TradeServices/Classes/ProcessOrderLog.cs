@@ -33,6 +33,8 @@ namespace TradeServices.Classes
             cmd.Parameters.AddWithValue("processTime",DateTime.Now);
             cmd.ExecuteNonQuery();
             cmd.Parameters.Clear();
+            cmd.Dispose();
+            cmd = null;
         }
 
     }

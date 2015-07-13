@@ -87,6 +87,8 @@ namespace TradeServices.DataEntitys
                mgs = "Шапка OrderWareHouse пуста";
             }
             reader.Close();
+            reader.Dispose();
+            cmd.Dispose();
             log.WriteLog(this.orderUUID, mgs);
         }
 
@@ -133,6 +135,8 @@ namespace TradeServices.DataEntitys
             }
 
             reader.Close();
+            cmd.Dispose();
+            reader.Dispose();
             log.WriteLog(this.orderUUID, msg);
         }
 
@@ -157,7 +161,8 @@ namespace TradeServices.DataEntitys
             cmd.Parameters.AddWithValue("id", this.orderid);
             cmd.ExecuteNonQuery();
             cmd.Parameters.Clear();
-            log.WriteLog(this.orderUUID, "Заказ отмечен как обработанный");                    
+            log.WriteLog(this.orderUUID, "Заказ отмечен как обработанный");
+            cmd.Dispose();
         }
     }
 }

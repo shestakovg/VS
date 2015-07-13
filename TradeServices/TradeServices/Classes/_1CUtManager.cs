@@ -10,7 +10,7 @@ using TradeServices.Interfaces;
 
 namespace TradeServices.Classes
 {
-    public class _1CUtManager : I1CUtManager
+    public class _1CUtManager : I1CUtManager, IDisposable
     {
         private _1CEntClass connectionUt = null;
 
@@ -53,6 +53,8 @@ namespace TradeServices.Classes
                 result = connectionUt.ReturnTable(C1QueryText).AsEnumerable().AsQueryable();
             else
                 result = connectionUt.ReturnTable(C1QueryText, paramList).AsEnumerable().AsQueryable();
+
+
             //connectionUt = null;
             return result;
         }
@@ -61,6 +63,13 @@ namespace TradeServices.Classes
         public virtual IQueryable GetQueryResult()
         {
             return null;
+        }
+
+
+
+        public void Dispose()
+        {
+            if (connectionUt != null) connectionUt.Dispose();
         }
     }
 }
