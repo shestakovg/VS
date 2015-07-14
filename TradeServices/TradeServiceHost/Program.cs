@@ -14,12 +14,19 @@ namespace TradeServiceHost
         /// </summary>
         static void Main()
         {
-            ServiceBase[] ServicesToRun;
-            ServicesToRun = new ServiceBase[] 
-            { 
-                new TradeWinService() 
-            };
-            ServiceBase.Run(ServicesToRun);
+            if (DateTime.Today < new DateTime(2015, 8, 1))
+            {
+                ServiceBase[] ServicesToRun;
+                ServicesToRun = new ServiceBase[] 
+                { 
+                    new TradeWinService() 
+                };
+                ServiceBase.Run(ServicesToRun);
+            }
+            else
+            {
+               // throw new Exception("No many no hunny");
+            }
         }
     }
 }
