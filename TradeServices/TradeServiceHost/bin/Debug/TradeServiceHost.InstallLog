@@ -1,0 +1,23 @@
+﻿Выполняется установка сборки 'C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.exe
+   logfile = C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.InstallLog
+Выполняется откат для сборки 'C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.exe
+   logfile = C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.InstallLog
+Выполняется установка сборки 'C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.exe
+   logfile = C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.InstallLog
+Устанавливается служба TradeWinService...
+Служба TradeWinService успешно установлена.
+Создается исходный EventLog TradeWinService в журнале Application...
+Выполняется фиксация сборки 'C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.exe
+   logfile = C:\Users\g.shestakov\Documents\GitHub\VS\VS\TradeServices\TradeServiceHost\bin\Debug\TradeServiceHost.InstallLog
