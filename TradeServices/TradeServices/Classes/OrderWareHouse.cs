@@ -100,6 +100,7 @@ namespace TradeServices.DataEntitys
                                               ,[skuId]
                                               ,[qty1]
                                               ,[qty2]
+                                              ,[priceId]
                                           FROM [dbo].[orderDetail] with (nolock)
                                           where [orderUUID] = @orderUUID";
             log.WriteLog(this.orderUUID, "Позиции OrderWareHouse ");
@@ -115,7 +116,7 @@ namespace TradeServices.DataEntitys
                 while (reader.Read())
                 {
                     int qty = ((orderWh == OrdersWH.MainWareHouse) ? Convert.ToInt32(reader["qty1"]) : Convert.ToInt32(reader["qty2"]));
-                    if (qty>0)        posList.Add( new OrderPosition(new Guid(reader["skuId"].ToString()), qty));
+                    if (qty > 0) posList.Add(new OrderPosition(new Guid(reader["skuId"].ToString()), qty,(reader["priceId"]==DBNull.Value ? Guid.NewGuid() : new Guid(reader["priceId"].ToString()))));
                 }
                 if (posList.Count > 0)
                 {

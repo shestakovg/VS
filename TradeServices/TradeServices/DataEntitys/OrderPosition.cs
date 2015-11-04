@@ -22,11 +22,13 @@ namespace TradeServices.DataEntitys
             get { return quantity; }
             set { quantity = value; }
         }
-        
-        public OrderPosition(Guid skuId, int quantity)
+
+        public Guid priceId;
+        public OrderPosition(Guid skuId, int quantity, Guid priceId)
         {
             this.skuId = skuId;
             this.quantity = quantity;
+            this.priceId = priceId;
         }
     }
 }

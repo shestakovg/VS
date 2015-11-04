@@ -122,12 +122,12 @@ namespace TradeServices.Classes
                                                ([orderUUID]
                                                ,[skuId]
                                                ,[qty1]
-                                               ,[qty2])
+                                               ,[qty2], priceId)
                                          VALUES
                                                (@orderUUID
                                                ,@skuId
                                                ,@qty1
-                                               ,@qty2)";
+                                               ,@qty2, @priceId)";
             #endregion
             SqlConnection con = getConnection();
             SqlCommand cmd = con.CreateCommand();
@@ -144,6 +144,7 @@ namespace TradeServices.Classes
             cmdDml.Parameters.AddWithValue("skuId", new Guid(detail.skuId));
             cmdDml.Parameters.AddWithValue("qty1", detail.qty1);
             cmdDml.Parameters.AddWithValue("qty2", detail.qty2);
+            cmdDml.Parameters.AddWithValue("priceId", new Guid(detail.priceType));
             cmdDml.ExecuteNonQuery();
             con.Close();
             return result;

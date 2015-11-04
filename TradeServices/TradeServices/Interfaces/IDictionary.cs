@@ -125,6 +125,13 @@ namespace TradeServices
             ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
         void SaveOrderDetail(OrderDetail orderDetail);
 
+        //[OperationContract]
+        //[WebInvoke(Method = "POST",
+        //    UriTemplate = "savedetail2",
+        //    BodyStyle = WebMessageBodyStyle.WrappedRequest,
+        //    ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        //void SaveOrderDetail2(OrderDetail2 orderDetail2);
+
         [OperationContract]
         [WebGet(
             UriTemplate = "/marcorder/{orderuuid}",

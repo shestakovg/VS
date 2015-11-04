@@ -84,7 +84,7 @@ namespace TradeServices.DataEntitys
             log.WriteLog(this.orderUUID, "Начало обработки таб части для 1С");
             foreach (OrderPosition pos in positions)
             {
-                V8.Call(this.connection, this.connection.Connection, "externalAddPos", new object[] { this.positionValueTable , pos.SkuId.ToString(), pos.Quantity});
+                V8.Call(this.connection, this.connection.Connection, "externalAddPos", new object[] { this.positionValueTable , pos.SkuId.ToString(), pos.Quantity, pos.priceId.ToString()});
             }
             V8.Call(this.connection, this.orderStructure, "Вставить", new object[] { "Позиции", this.positionValueTable});
             log.WriteLog(this.orderUUID, "Завершение обработки таб части для 1С");
