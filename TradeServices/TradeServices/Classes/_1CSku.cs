@@ -24,7 +24,7 @@ namespace TradeServices.Classes
 	                                            УпаковкиНоменклатуры.Коэффициент КАК QtyPack,
 	                                            Номенклатура.Артикул как Article,
                                                 case when ПродажаТолькоФакт then 1 else 0 end как onlyFact,
-                                                case when КонтроллироватьКратностьГлСклад then 1 else 0 end как checkCountInBox
+                                                case when КонтроллироватьКратностьГлСклад then 0 else 1 end как checkCountInBox
                                             ИЗ
 	                                            Справочник.Номенклатура КАК Номенклатура
 		                                            ЛЕВОЕ СОЕДИНЕНИЕ Справочник.УпаковкиНоменклатуры КАК УпаковкиНоменклатуры
