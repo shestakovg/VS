@@ -24,5 +24,10 @@ namespace TradeServices.DataEntitys
 
         [DataMember(Name = "Article")]
         public string Article { get; set; }
+
+        [DataMember(Name = "OnlyFact")]
+        public int OnlyFact { get; set; }
+        [DataMember(Name = "CheckCountInBox")]
+        public int CheckCountInBox { get; set; }
     }
 }

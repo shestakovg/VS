@@ -22,7 +22,9 @@ namespace TradeServices.Classes
 	                                            КОНЕЦ КАК SkuName,
 	                                            Номенклатура.Родитель как SkuParentId,     
 	                                            УпаковкиНоменклатуры.Коэффициент КАК QtyPack,
-	                                            Номенклатура.Артикул как Article
+	                                            Номенклатура.Артикул как Article,
+                                                case when ПродажаТолькоФакт then 1 else 0 end как onlyFact,
+                                                case when КонтроллироватьКратностьГлСклад then 1 else 0 end как checkCountInBox
                                             ИЗ
 	                                            Справочник.Номенклатура КАК Номенклатура
 		                                            ЛЕВОЕ СОЕДИНЕНИЕ Справочник.УпаковкиНоменклатуры КАК УпаковкиНоменклатуры
@@ -50,8 +52,9 @@ namespace TradeServices.Classes
                         SkuName = row["SkuName"].ToString().Trim(), 
                         SkuParentId = (row["SkuParentId"] == System.DBNull.Value ? Guid.Empty : new Guid(row["SkuParentId"].ToString())),
                         Article = row["Article"].ToString().Trim(),
-                        QtyPack = (row["QtyPack"] == System.DBNull.Value ? 0 :double.Parse(row["QtyPack"].ToString().Replace(".",",")))
-
+                        QtyPack = (row["QtyPack"] == System.DBNull.Value ? 0 :double.Parse(row["QtyPack"].ToString().Replace(".",","))),
+                        OnlyFact = Int32.Parse(row["onlyFact"].ToString()),
+                        CheckCountInBox = Int32.Parse(row["checkCountInBox"].ToString())
                    
                     };
             return result.Cast<Sku>().ToArray();
