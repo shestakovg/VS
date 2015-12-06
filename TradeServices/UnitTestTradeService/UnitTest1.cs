@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TradeServices.Classes.IncomingData;
 using TradeServices.Classes;
+using TradeServices;
 using TradeServices.DataEntitys.IncomingData;
 
 
@@ -38,6 +40,13 @@ namespace UnitTestTradeService
                 qty2 = 200
             };
             SaveData.SaveDetailOrder(header);
+        
+        }
+          [TestMethod]
+        public void TestSkuFact()
+        {
+            IDictionary dic = new Dictionary();
+            dic.GetSkuFact();
         }
 
 

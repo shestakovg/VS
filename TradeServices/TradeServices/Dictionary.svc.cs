@@ -181,5 +181,14 @@ namespace TradeServices
         {
             SaveData.SavePay(clamedPays); 
         }
+
+
+        public SkuFact[] GetSkuFact()
+        {
+            _1CSkuFact getsku = new _1CSkuFact();
+            SkuFact[] res = getsku.ConvertToArray() as SkuFact[];
+            (getsku as _1CUtManager).Dispose();
+            return res;
+        }
     }
 }

@@ -23,7 +23,7 @@ namespace TradeServices.Classes
 	                                            Номенклатура.Родитель как SkuParentId,     
 	                                            УпаковкиНоменклатуры.Коэффициент КАК QtyPack,
 	                                            Номенклатура.Артикул как Article,
-                                                case when ПродажаТолькоФакт then 1 else 0 end как onlyFact,
+                                                case when ПродажаТолькоФакт then 0 else 0 end как onlyFact,
                                                 case when КонтроллироватьКратностьГлСклад then 0 else 1 end как checkCountInBox
                                             ИЗ
 	                                            Справочник.Номенклатура КАК Номенклатура

@@ -74,6 +74,14 @@ namespace TradeServices
 
         [OperationContract]
         [WebGet(
+            UriTemplate = "/getskufact",
+            //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+           ]
+        SkuFact[] GetSkuFact();
+
+        [OperationContract]
+        [WebGet(
             UriTemplate = "/getprice/{priceId}",
             //BodyStyle = WebMessageBodyStyle.WrappedRequest,
             ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
