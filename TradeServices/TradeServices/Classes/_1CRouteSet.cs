@@ -32,6 +32,7 @@ namespace TradeServices.Classes
 			                                            И СоставМаршрутаТорговогоАгентаСрезПоследних.Маршрут = ДниПосещенияТорговыхТочек.Маршрут
 			                                            И СоставМаршрутаТорговогоАгентаСрезПоследних.ТорговаяТочка = ДниПосещенияТорговыхТочек.ТорговаяТочка
                                                 где ДниПосещенияТорговыхТочек.ДеньВизита is not null
+                                                и ДниПосещенияТорговыхТочек.ДеньВизита.Порядок = &DayOfWeek
                                             ";
         #endregion
         public RouteSet[] ConvertToArray(IQueryable<System.Data.DataRow> queryable =  null)
@@ -69,7 +70,11 @@ namespace TradeServices.Classes
                  var entParameter = new _1CUtilsEnterra._1CEntParameter();
                  entParameter.AddCatalogReferenceParameterByID(this.ConnectionUt, "МаршрутыТорговыхПредставителей", routeId, "RouteID");
                  //_1CUtilsEnterra._1CEntParameter paramDate = new _1CUtilsEnterra._1CEntParameter("имя_параметра", DateTime.Today);
-                 this.paramList = new _1CUtilsEnterra._1CEntParameter[1] { entParameter};
+                int dayOfWeek = (int) DateTime.Today.DayOfWeek;
+                 dayOfWeek = (dayOfWeek == 0 ? 6 : dayOfWeek - 1); 
+                _1CUtilsEnterra._1CEntParameter paramDayOfWeek = new _1CUtilsEnterra._1CEntParameter("DayOfWeek",dayOfWeek);
+
+                this.paramList = new _1CUtilsEnterra._1CEntParameter[2] { entParameter, paramDayOfWeek };
              }
              else
              {

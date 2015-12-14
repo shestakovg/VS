@@ -49,6 +49,13 @@ namespace UnitTestTradeService
             dic.GetSkuFact();
         }
 
+          [TestMethod]
+          public void TestDayOfWeek()
+          {
+             DateTime dt = new DateTime(2015,12,13);
+             var d = (int)dt.DayOfWeek;
+          }
+
 
     }
 }
