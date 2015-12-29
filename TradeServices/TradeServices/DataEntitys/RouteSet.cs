@@ -29,6 +29,8 @@ namespace TradeServices.DataEntitys
         public string PartnerName { get; set; }
         [DataMember(Name = "address")]
         public string address { get; set; }
-        
+
+        [DataMember(Name = "IsRoute")]
+        public int IsRoute { get; set; }
     }
 }

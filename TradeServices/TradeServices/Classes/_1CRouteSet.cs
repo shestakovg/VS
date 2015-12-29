@@ -24,7 +24,8 @@ namespace TradeServices.Classes
 	                                            СоставМаршрутаТорговогоАгентаСрезПоследних.ТорговаяТочка.Владелец.Наименование КАК CustomerName,
 	                                            СоставМаршрутаТорговогоАгентаСрезПоследних.ТорговаяТочка.Владелец.Партнер КАК PartnerID,
 	                                            СоставМаршрутаТорговогоАгентаСрезПоследних.ТорговаяТочка.Владелец.Партнер.Наименование КАК PartnerName,
-                                                СоставМаршрутаТорговогоАгентаСрезПоследних.ТорговаяТочка.Адрес как Address
+                                                СоставМаршрутаТорговогоАгентаСрезПоследних.ТорговаяТочка.Адрес как Address,
+                                                case when ДниПосещенияТорговыхТочек.ДеньВизита.Порядок = &DayOfWeek then 1 else 0 end IsRoute
                                             ИЗ
 	                                            РегистрСведений.СоставМаршрутаТорговогоАгента.СрезПоследних(, Маршрут = &RouteID) КАК СоставМаршрутаТорговогоАгентаСрезПоследних
 		                                            ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ДниПосещенияТорговыхТочек КАК ДниПосещенияТорговыхТочек
@@ -32,7 +33,7 @@ namespace TradeServices.Classes
 			                                            И СоставМаршрутаТорговогоАгентаСрезПоследних.Маршрут = ДниПосещенияТорговыхТочек.Маршрут
 			                                            И СоставМаршрутаТорговогоАгентаСрезПоследних.ТорговаяТочка = ДниПосещенияТорговыхТочек.ТорговаяТочка
                                                 где ДниПосещенияТорговыхТочек.ДеньВизита is not null
-                                                и ДниПосещенияТорговыхТочек.ДеньВизита.Порядок = &DayOfWeek
+                                                //и ДниПосещенияТорговыхТочек.ДеньВизита.Порядок = &DayOfWeek
                                             ";
         #endregion
         public RouteSet[] ConvertToArray(IQueryable<System.Data.DataRow> queryable =  null)
@@ -55,7 +56,8 @@ namespace TradeServices.Classes
                         CustomerName = row["CustomerName"].ToString(),
                         PartnerId = new Guid(row["PartnerID"].ToString()),
                         PartnerName = row["PartnerName"].ToString().Trim(),
-                        address = row["address"].ToString().Trim()
+                        address = row["address"].ToString().Trim(),
+                        IsRoute = 1//Int32.Parse(row["IsRoute"].ToString())
                     };
             
             return result.Cast<RouteSet>().ToArray();
