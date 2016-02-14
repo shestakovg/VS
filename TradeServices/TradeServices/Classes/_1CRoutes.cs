@@ -16,16 +16,20 @@ namespace TradeServices.Classes
     {
         private _1CUtilsEnterra._1CEntParameter[] paramList;
         private const string _1CQuery = @"ВЫБРАТЬ
-	                                        МаршрутыТорговыхПредставителей.Ссылка КАК Id,
-	                                        МаршрутыТорговыхПредставителей.Наименование КАК Description,
-	                                        МаршрутыТорговыхПредставителей.Код КАК Code,
-	                                        МаршрутыТорговыхПредставителей.Сотрудник КАК EmployeeId,
-	                                        МаршрутыТорговыхПредставителей.Сотрудник.Наименование КАК Employee
-                                        ИЗ
-	                                        Справочник.МаршрутыТорговыхПредставителей КАК МаршрутыТорговыхПредставителей
-                                        ГДЕ
-	                                        МаршрутыТорговыхПредставителей.Организация = &branchid
-	                                        И МаршрутыТорговыхПредставителей.Статус = ЗНАЧЕНИЕ(Перечисление.СтатусыМаршрута.Рабочий)";
+	                                            МаршрутыТорговыхПредставителей.Ссылка КАК Id,
+	                                            МаршрутыТорговыхПредставителей.Наименование КАК Description,
+	                                            МаршрутыТорговыхПредставителей.Код КАК Code,
+	                                            МаршрутыТорговыхПредставителей.Сотрудник КАК EmployeeId,
+	                                            МаршрутыТорговыхПредставителей.Сотрудник.Наименование КАК Employee,
+	                                            ПРЕДСТАВЛЕНИЕ(МаршрутыТорговыхПредставителей.ТипМаршрута.ССылка) как RouteType,
+	                                            МаршрутыТорговыхПредставителей.ТипМаршрута.Порядок как RouteTypeID	
+                                            ИЗ
+	                                            Справочник.МаршрутыТорговыхПредставителей КАК МаршрутыТорговыхПредставителей
+                                            ГДЕ
+	                                            МаршрутыТорговыхПредставителей.Организация = &branchid
+	                                            И МаршрутыТорговыхПредставителей.Статус = ЗНАЧЕНИЕ(Перечисление.СтатусыМаршрута.Рабочий)
+                                            УПОРЯДОЧИТЬ ПО 	МаршрутыТорговыхПредставителей.ТипМаршрута,
+                                               МаршрутыТорговыхПредставителей.Наименование";
         public _1CRoutes(string branchId) : base()
         {   
              
@@ -56,7 +60,9 @@ namespace TradeServices.Classes
                          Description = row["Description"].ToString().Trim(),
                          Code = row["Code"].ToString(),
                          EmployeeId = (row["EmployeeId"] == DBNull.Value ? Guid.Empty : new Guid(row["EmployeeId"].ToString())),
-                         Employee = row["Employee"].ToString().Trim()
+                         Employee = row["Employee"].ToString().Trim(),
+                         RouteType = row["RouteType"].ToString().Trim(),
+                         RouteTypeID = Int32.Parse( row["RouteTypeID"].ToString())
                      };
 
             return result.Cast<Route>().ToArray();

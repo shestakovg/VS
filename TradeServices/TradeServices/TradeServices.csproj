@@ -87,6 +87,7 @@
     <Compile Include="Classes\_1CDebt.cs" />
     <Compile Include="Classes\_1CRouteDebtParams.cs" />
     <Compile Include="Classes\_1CSkuFact.cs" />
+    <Compile Include="Classes\_1CSpecification.cs" />
     <Compile Include="DataEntitys\DebtData.cs" />
     <Compile Include="DataEntitys\IncomingData\ClaimedPays.cs" />
     <Compile Include="DataEntitys\IncomingData\MarcOrder.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="DataEntitys\Sku.cs" />
     <Compile Include="DataEntitys\SkuFact.cs" />
     <Compile Include="DataEntitys\SkuGroup.cs" />
+    <Compile Include="DataEntitys\Specification.cs" />
     <Compile Include="DataEntitys\Versions.cs" />
     <Compile Include="Interfaces\IResultArray.cs" />
     <Compile Include="Dictionary.svc.cs">

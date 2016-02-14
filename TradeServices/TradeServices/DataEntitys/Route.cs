@@ -22,5 +22,11 @@ namespace TradeServices.DataEntitys
         public string Employee { get; set; }
         [DataMember(Name = "EmployeeId")]
         public Guid EmployeeId { get; set; }
+
+        [DataMember(Name = "RouteType")]
+        public string RouteType { get; set; }
+
+        [DataMember(Name = "RouteTypeID")]
+        public int RouteTypeID { get; set; }
     }
 }

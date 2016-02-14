@@ -91,6 +91,13 @@ namespace TradeServices
             return res;
         }
 
+        public Specification[] GetSpecification(string routeId)
+        {
+            _1CSpecification getSpec = new _1CSpecification(routeId);
+            Specification[] res = getSpec.ConvertToArray() as Specification[];
+            (getSpec as _1CUtManager).Dispose();
+            return res;
+        }
 
         public void SaveHeader(OrderHeader header)
         {

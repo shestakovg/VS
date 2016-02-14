@@ -101,7 +101,16 @@ namespace TradeServices
             //BodyStyle = WebMessageBodyStyle.WrappedRequest,
            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
           ]
+        
         RouteDebtParams[] GetDebtParams(string routeid);
+
+
+        [WebGet(
+           UriTemplate = "/getspecification/{routeid}",
+            //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+           ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+          ]
+        Specification[] GetSpecification(string routeId);
 
         [OperationContract]
         [WebGet(

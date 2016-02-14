@@ -62,3 +62,4 @@ C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServices\bin\1cv8.dll
 C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServices\bin\Enterra.V8x1C.dll
 C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServices\obj\Debug\TradeServices.dll
 C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServices\obj\Debug\TradeServices.pdb
+C:\Users\shestakov.g\Source\Repos\VS\TradeServices\TradeServices\obj\Debug\TradeServices.csprojResolveAssemblyReference.cache
