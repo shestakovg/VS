@@ -19,6 +19,8 @@ namespace TradeServices.DataEntitys.IncomingData
         public int qty2 { get; set; }
         [DataMember(Name = "priceType")]
         public string priceType { get; set; }
+        [DataMember(Name = "finalDate")]
+        public string finalDate { get; set; }
     }
 
 }

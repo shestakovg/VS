@@ -49,12 +49,12 @@ namespace TradeServices.Classes
                 cmd.CommandText = @"                                
                         select top 30 h.id from orderHeader h with (nolock)
                                 where exists (select * from dbo.orderDetail d with (nolock) where h.orderUUID = d.orderUUID and d.qty1>0 )
-                                and sendTime between DATEADD(day,-2,getdate()) and  GETDATE() and h._send=0 ";
+                                and sendTime between DATEADD(day,-2,getdate()) and  GETDATE() and h._send=0 and coalesce(h.orderType,0)=0";
             else
                 cmd.CommandText = @"                                
                         select top 30 h.id from orderHeader h with (nolock)
                                 where exists (select * from dbo.orderDetail d with (nolock) where h.orderUUID = d.orderUUID and d.qty2>0 )
-                                and sendTime between DATEADD(day,-2,getdate()) and  GETDATE() and coalesce(h._send2,0) =0 ";
+                                and sendTime between DATEADD(day,-2,getdate()) and  GETDATE() and coalesce(h._send2,0) =0 and coalesce(h.orderType,0)=0";
 
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.HasRows)

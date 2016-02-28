@@ -27,6 +27,9 @@ namespace TradeServices.Classes.IncomingData
         public int autoLoad { get; set; }
         [DataMember(Name = "routeId")]
         public string routeId { get; set; }
-        
+
+        [DataMember(Name = "orderType")]
+        public int orderType { get; set; }
+
     }
 }

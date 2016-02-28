@@ -34,7 +34,7 @@ namespace TradeServices.Classes
                                                     ,[autoLoad]
                                                     ,[_send]
                                                     ,[sendTime]
-                                                    ,[routeId], _send2)
+                                                    ,[routeId], _send2,orderType)
                                                 VALUES
                                                     (@orderUUID
                                                     ,@outletId
@@ -46,7 +46,7 @@ namespace TradeServices.Classes
                                                     ,@autoLoad
                                                     ,-1
                                                     ,getdate()
-                                                    ,@routeId, -1)";
+                                                    ,@routeId, -1, @orderType)";
             const string sqlUpdate = @"UPDATE [dbo].[orderHeader]
                                            SET 
                                               [orderDate] = convert(datetime,@orderDate,101)
@@ -59,6 +59,7 @@ namespace TradeServices.Classes
                                               ,[_send2] = -1
                                               ,[sendTime] = getdate()
                                               ,[routeId] = @routeId
+                                              ,orderType = @orderType
                                          WHERE id = @id";
             const string sqlSearchOrder = @"select id from [dbo].[orderHeader] where [orderUUID]=@orderUUID";
             #endregion
@@ -80,7 +81,7 @@ namespace TradeServices.Classes
             cmdDml.Parameters.AddWithValue("payType", header.payType);
             cmdDml.Parameters.AddWithValue("autoLoad", header.autoLoad);
             cmdDml.Parameters.AddWithValue("routeId", new Guid(header.routeId));
-
+            cmdDml.Parameters.AddWithValue("orderType", header.orderType);
             SqlDataReader reader = cmd.ExecuteReader();
             Int64 idOrder = -1;
             if (reader.HasRows)
@@ -122,12 +123,12 @@ namespace TradeServices.Classes
                                                ([orderUUID]
                                                ,[skuId]
                                                ,[qty1]
-                                               ,[qty2], priceId)
+                                               ,[qty2], priceId, finalDate)
                                          VALUES
                                                (@orderUUID
                                                ,@skuId
                                                ,@qty1
-                                               ,@qty2, @priceId)";
+                                               ,@qty2, @priceId, convert(datetime,@finalDate,101))";
             #endregion
             SqlConnection con = getConnection();
             SqlCommand cmd = con.CreateCommand();
@@ -145,6 +146,7 @@ namespace TradeServices.Classes
             cmdDml.Parameters.AddWithValue("qty1", detail.qty1);
             cmdDml.Parameters.AddWithValue("qty2", detail.qty2);
             cmdDml.Parameters.AddWithValue("priceId", new Guid(detail.priceType));
+            cmdDml.Parameters.AddWithValue("finalDate", detail.finalDate);
             cmdDml.ExecuteNonQuery();
             con.Close();
             return result;
