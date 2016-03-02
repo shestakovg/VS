@@ -24,11 +24,22 @@ namespace TradeServices.DataEntitys
         }
 
         public Guid priceId;
+
+
+        public DateTime finalDate = DateTime.Today;
+
         public OrderPosition(Guid skuId, int quantity, Guid priceId)
         {
             this.skuId = skuId;
             this.quantity = quantity;
             this.priceId = priceId;
+        }
+        public OrderPosition(Guid skuId, int quantity, Guid priceId, DateTime finalDate)
+        {
+            this.skuId = skuId;
+            this.quantity = quantity;
+            this.priceId = priceId;
+            this.finalDate = finalDate;
         }
     }
 }

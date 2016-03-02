@@ -22,6 +22,7 @@ namespace TradeServices.DataEntitys
         protected int payType;
         protected int autoLoad;
         protected Guid _1CDocId = Guid.Empty;
+        protected int orderType;
         protected string _1CDocNumber= "без номера";
         protected string wareHouse;
         protected OrderPosition[] positions;
@@ -84,7 +85,7 @@ namespace TradeServices.DataEntitys
             log.WriteLog(this.orderUUID, "Начало обработки таб части для 1С");
             foreach (OrderPosition pos in positions)
             {
-                V8.Call(this.connection, this.connection.Connection, "externalAddPos", new object[] { this.positionValueTable , pos.SkuId.ToString(), pos.Quantity, pos.priceId.ToString()});
+                V8.Call(this.connection, this.connection.Connection, "externalAddPos", new object[] { this.positionValueTable, pos.SkuId.ToString(), pos.Quantity, pos.priceId.ToString(), ПолучитьДату1СДляДокумента(pos.finalDate)});
             }
             V8.Call(this.connection, this.orderStructure, "Вставить", new object[] { "Позиции", this.positionValueTable});
             log.WriteLog(this.orderUUID, "Завершение обработки таб части для 1С");
@@ -95,16 +96,33 @@ namespace TradeServices.DataEntitys
             bool result = false;
             try
             {
-                string createRes = (string)V8.Call(this.connection, this.connection.Connection, "externalCreateOrder", new object[] { this.orderStructure });
+                if (this.orderType == 0)
+                {
+                    string createRes =
+                        (string)
+                            V8.Call(this.connection, this.connection.Connection, "externalCreateOrder",
+                                new object[] {this.orderStructure});
+                }
+                else
+                {
+                    string createRes =
+                        (string)
+                            V8.Call(this.connection, this.connection.Connection, "externalCreateStoreCheck",
+                                new object[] {this.orderStructure});
+                }
                 //if (createRes == "OK")
                 if (this._1CDocId == Guid.Empty)
                 {
-                    this._1CDocId = new Guid (
-                               (string)V8.Call(this.connection, this.connection.Connection, "externalGetRef", new object[] {this.orderStructure})
-                            );
+                    this._1CDocId = new Guid(
+                        (string)
+                            V8.Call(this.connection, this.connection.Connection, "externalGetRef",
+                                new object[] {this.orderStructure})
+                        );
                     this._1CDocNumber =
-                            (string)V8.Call(this.connection, this.connection.Connection, "externalGetDocnumber", new object[] { this.orderStructure });
-                            
+                        (string)
+                            V8.Call(this.connection, this.connection.Connection, "externalGetDocnumber",
+                                new object[] {this.orderStructure});
+
                     result = true;
                     log.WriteLog(this.orderUUID, "Заказ создан успешно");
                 }
@@ -113,6 +131,7 @@ namespace TradeServices.DataEntitys
                     result = true;
                     log.WriteLog(this.orderUUID, "Заказ изменен успешно");
                 }
+                
             }
             catch (Exception e)
             {

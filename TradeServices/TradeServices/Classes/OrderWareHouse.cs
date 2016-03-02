@@ -50,6 +50,7 @@ namespace TradeServices.DataEntitys
                                       ,[autoLoad]
                                       ,[_1CDocId1]
                                       ,[_1CDocId2]
+                                      ,coalesce(orderType,0) orderType
                                   FROM [dbo].[orderHeader] with (nolock)
                                   where 	[id] = @id";
             log.WriteLog(this.orderUUID, "Получение шапки OrderWareHouse");
@@ -66,6 +67,7 @@ namespace TradeServices.DataEntitys
                 this.orderUUID = new Guid(reader["orderUUID"].ToString());
                 this.outletId = new Guid(reader["outletId"].ToString());
                 this.orderDate = (DateTime)reader["orderDate"];
+                this.orderType = (int) reader["orderType"];
                 this.notes = reader["notes"].ToString();
                 this.payType = (int) reader["payType"];
                 this.autoLoad = (int)reader["autoLoad"];
@@ -101,6 +103,7 @@ namespace TradeServices.DataEntitys
                                               ,[qty1]
                                               ,[qty2]
                                               ,[priceId]
+                                              ,coalesce(finalDate,convert(datetime,convert(varchar(10),GETDATE(),104),104)) finalDate
                                           FROM [dbo].[orderDetail] with (nolock)
                                           where [orderUUID] = @orderUUID";
             log.WriteLog(this.orderUUID, "Позиции OrderWareHouse ");
@@ -116,7 +119,14 @@ namespace TradeServices.DataEntitys
                 while (reader.Read())
                 {
                     int qty = ((orderWh == OrdersWH.MainWareHouse) ? Convert.ToInt32(reader["qty1"]) : Convert.ToInt32(reader["qty2"]));
-                    if (qty > 0) posList.Add(new OrderPosition(new Guid(reader["skuId"].ToString()), qty,(reader["priceId"]==DBNull.Value ? Guid.NewGuid() : new Guid(reader["priceId"].ToString()))));
+                    if (qty > 0) posList.Add(
+                                    new OrderPosition(
+                                            new Guid(reader["skuId"].ToString()), 
+                                            qty,
+                                            (reader["priceId"]==DBNull.Value ? Guid.NewGuid() : new Guid(reader["priceId"].ToString())),
+                                             (DateTime)reader["finalDate"]
+                                        )
+                        );
                 }
                 if (posList.Count > 0)
                 {

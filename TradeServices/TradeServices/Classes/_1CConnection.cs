@@ -11,7 +11,12 @@ namespace TradeServices.Classes
     {
         public static string GetDataBase()
         {
-            return string.Format(@"Srvr=""{0}"";Ref=""{1}"";", ConfigurationManager.AppSettings["utServer"], ConfigurationManager.AppSettings["utDatabase"]);
+            if (ConfigurationManager.AppSettings["utLocation"] == "server")
+                return string.Format(@"Srvr=""{0}"";Ref=""{1}"";", ConfigurationManager.AppSettings["utServer"], ConfigurationManager.AppSettings["utDatabase"]);
+            else
+            {
+                return string.Format(@"File=""{0}""", ConfigurationManager.AppSettings["utDatabase"]);
+            }
         }
         //
 
