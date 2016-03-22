@@ -58,7 +58,7 @@ namespace TradeServices.Classes
                         PartnerId = new Guid(row["PartnerID"].ToString()),
                         PartnerName = row["PartnerName"].ToString().Trim(),
                         address = row["address"].ToString().Trim(),
-                        IsRoute = 1//Int32.Parse(row["IsRoute"].ToString())
+                        IsRoute = Int32.Parse(row["IsRoute"].ToString())
                     };
             
             return result.Cast<RouteSet>().ToArray();
