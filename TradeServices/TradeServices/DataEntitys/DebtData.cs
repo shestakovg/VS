@@ -29,5 +29,7 @@ namespace TradeServices.DataEntitys
         public double overdueDebt;
         [DataMember(Name = "overdueDays")]
         public int overdueDays;
+        [DataMember(Name = "color")]
+        public string color;
     }
 }

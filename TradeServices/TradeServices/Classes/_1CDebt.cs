@@ -36,17 +36,27 @@ namespace TradeServices.Classes
 	                                                ЕСТЬNULL(РасчетыСКлиентамиОстатки.ЗаказКлиента.ДатаПлатежа, &Период) КАК ДатаПлатежа,
 	                                                РасчетыСКлиентамиОстатки.СуммаОстаток КАК ТекущаяЗадолженность,
 	                                                ВЫБОР
-		                                                КОГДА НАЧАЛОПЕРИОДА(&Период, ДЕНЬ) > ЕСТЬNULL(РасчетыСКлиентамиОстатки.ЗаказКлиента.ДатаПлатежа, &Период)
+		                                                КОГДА НАЧАЛОПЕРИОДА(ДОБАВИТЬКДАТЕ(&Период,ДЕНЬ,1), ДЕНЬ) >= ЕСТЬNULL(РасчетыСКлиентамиОстатки.ЗаказКлиента.ДатаПлатежа, &Период)
 			                                                ТОГДА РасчетыСКлиентамиОстатки.СуммаОстаток
 		                                                ИНАЧЕ 0
 	                                                КОНЕЦ КАК ПросроченныйДолг,
-	                                                РАЗНОСТЬДАТ(ЕСТЬNULL(РасчетыСКлиентамиОстатки.ЗаказКлиента.ДатаПлатежа, &Период), &Период, ДЕНЬ) КАК ДнейПросрочки
+	                                                РАЗНОСТЬДАТ(ЕСТЬNULL(РасчетыСКлиентамиОстатки.ЗаказКлиента.ДатаПлатежа, &Период), ДОБАВИТЬКДАТЕ(&Период,ДЕНЬ,1), ДЕНЬ) КАК ДнейПросрочки,
 	                                                //ВЫБОР
 	                                                //	КОГДА НЕ РасчетыСКлиентамиОстатки.ЗаказКлиента ССЫЛКА Справочник.ДоговорыКонтрагентов
 	                                                //			И НЕ РасчетыСКлиентамиОстатки.ЗаказКлиента = НЕОПРЕДЕЛЕНО
 	                                                //		ТОГДА РасчетыСКлиентамиОстатки.ЗаказКлиента
 	                                                //	ИНАЧЕ НЕОПРЕДЕЛЕНО
 	                                                //КОНЕЦ КАК Сделка
+	                                                ВЫБОР
+		                                                КОГДА НАЧАЛОПЕРИОДА(ДОБАВИТЬКДАТЕ(&Период,ДЕНЬ,1), ДЕНЬ) = ЕСТЬNULL(РасчетыСКлиентамиОстатки.ЗаказКлиента.ДатаПлатежа, &Период)
+			                                                ТОГДА ""#FFFCFF05""
+														КОГДА НАЧАЛОПЕРИОДА(ДОБАВИТЬКДАТЕ(&Период,ДЕНЬ,0), ДЕНЬ) = ЕСТЬNULL(РасчетыСКлиентамиОстатки.ЗаказКлиента.ДатаПлатежа, &Период)
+			                                                ТОГДА ""#FFFCFF05""			                
+			                                            КОГДА НАЧАЛОПЕРИОДА(ДОБАВИТЬКДАТЕ(&Период,ДЕНЬ,0), ДЕНЬ) > ЕСТЬNULL(РасчетыСКлиентамиОстатки.ЗаказКлиента.ДатаПлатежа, &Период)
+			                                                ТОГДА ""#ffff2d58""                                    
+		                                                ИНАЧЕ ""#FF95AAFF""	                                                
+		                                            КОНЕЦ КАК Color
+		                                            //, РасчетыСКлиентамиОстатки.ЗаказКлиента.ДатаПлатежа
                                                 ИЗ
 	                                                РегистрНакопления.РасчетыСКлиентами.Остатки(&Период, АналитикаУчетаПоПартнерам.Контрагент в
 		                                                (выбрать CustomerId из Маршрут)
@@ -63,7 +73,7 @@ namespace TradeServices.Classes
              {
                  var entParameter = new _1CUtilsEnterra._1CEntParameter();
                  entParameter.AddCatalogReferenceParameterByID(this.ConnectionUt, "МаршрутыТорговыхПредставителей", routeId, "RouteID");
-                 _1CUtilsEnterra._1CEntParameter paramDate = new _1CUtilsEnterra._1CEntParameter("Период", DateTime.Today.AddDays(1));
+                 _1CUtilsEnterra._1CEntParameter paramDate = new _1CUtilsEnterra._1CEntParameter("Период", DateTime.Today.AddDays(0));
                  //_1CUtilsEnterra._1CEntParameter paramDate = new _1CUtilsEnterra._1CEntParameter("имя_параметра", DateTime.Today);
                  this.paramList = new _1CUtilsEnterra._1CEntParameter[2] { entParameter, paramDate};
              }
@@ -95,7 +105,8 @@ namespace TradeServices.Classes
                         paymentDate = TradeUtils.Convert1CDateToTextDate(row["ДатаПлатежа"].ToString()),
                         debt = Convert.ToDouble(row["ТекущаяЗадолженность"]),
                         overdueDebt = Convert.ToDouble(row["ПросроченныйДолг"]),
-                        overdueDays = Convert.ToInt32(row["ДнейПросрочки"])
+                        overdueDays = Convert.ToInt32(row["ДнейПросрочки"]),
+                        color = row["Color"].ToString()
                     };
             return result.Cast<DebtData>().ToArray();
         }
