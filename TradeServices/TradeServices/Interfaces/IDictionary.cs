@@ -43,6 +43,14 @@ namespace TradeServices
 
         [OperationContract]
         [WebGet(
+            UriTemplate = "/getoutletinfo/{routeid}",
+            //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+           ]
+        OutletInfo[] GetOutletInfo(string routeid);
+
+        [OperationContract]
+        [WebGet(
             UriTemplate = "/getcontract/{routeid}",
             //BodyStyle = WebMessageBodyStyle.WrappedRequest,
             ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)

@@ -85,6 +85,7 @@
     <Compile Include="Classes\TradeUtils.cs" />
     <Compile Include="Classes\_1CConnection.cs" />
     <Compile Include="Classes\_1CDebt.cs" />
+    <Compile Include="Classes\_1COutletInfo.cs" />
     <Compile Include="Classes\_1CRouteDebtParams.cs" />
     <Compile Include="Classes\_1CSkuFact.cs" />
     <Compile Include="Classes\_1CSpecification.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Classes\Order.cs" />
     <Compile Include="Classes\OrderWareHouse.cs" />
     <Compile Include="DataEntitys\OrderPosition.cs" />
+    <Compile Include="DataEntitys\OutletInfo.cs" />
     <Compile Include="DataEntitys\Price.cs" />
     <Compile Include="DataEntitys\RouteDebtParams.cs" />
     <Compile Include="DataEntitys\RouteSet.cs" />

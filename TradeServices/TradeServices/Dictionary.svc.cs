@@ -197,5 +197,14 @@ namespace TradeServices
             (getsku as _1CUtManager).Dispose();
             return res;
         }
+
+
+        public OutletInfo[] GetOutletInfo(string routeid)
+        {
+            _1COutletInfo routeSet = new _1COutletInfo(routeid);
+            var res = routeSet.ConvertToArray() as OutletInfo[];
+            (routeSet as _1CUtManager).Dispose();
+            return res;
+        }
     }
 }
