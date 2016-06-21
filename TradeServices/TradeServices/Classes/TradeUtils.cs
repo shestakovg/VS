@@ -35,5 +35,10 @@ namespace TradeServices.Classes
 
         }
 
+        public static string FilterString(string inputStr)
+        {
+            return new String(inputStr.Where(c => (char.IsLetterOrDigit(c) ||
+                             char.IsWhiteSpace(c) || c == '-' || c == ':' || c == ';' || c == '!' || c == '+' || c == '_' || c == '"' || c == '\'' || c == ' ' || c == ',' || c == '.' || c == ']' || c == '}' || c == '=')).ToArray());
+        }
     }
 }

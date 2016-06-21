@@ -77,7 +77,7 @@ namespace TradeServices.Classes
             cmdDml.Parameters.AddWithValue("orderDate", header.orderDate);
             cmdDml.Parameters.AddWithValue("deliveryDate", header.deliveryDate);
             cmdDml.Parameters.AddWithValue("orderNumber", header.orderNumber);
-            cmdDml.Parameters.AddWithValue("notes",TradeUtils.EncodeCyrilicString(header.notes));
+            cmdDml.Parameters.AddWithValue("notes",TradeUtils.FilterString( TradeUtils.EncodeCyrilicString(header.notes)));
             cmdDml.Parameters.AddWithValue("payType", header.payType);
             cmdDml.Parameters.AddWithValue("autoLoad", header.autoLoad);
             cmdDml.Parameters.AddWithValue("routeId", new Guid(header.routeId));
