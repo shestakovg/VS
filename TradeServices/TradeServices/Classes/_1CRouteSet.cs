@@ -25,7 +25,10 @@ namespace TradeServices.Classes
 	                                            СоставМаршрутаТорговогоАгентаСрезПоследних.ТорговаяТочка.Владелец.Партнер КАК PartnerID,
 	                                            СоставМаршрутаТорговогоАгентаСрезПоследних.ТорговаяТочка.Владелец.Партнер.Наименование КАК PartnerName,
                                                 СоставМаршрутаТорговогоАгентаСрезПоследних.ТорговаяТочка.Адрес как Address,
-                                                case when ДниПосещенияТорговыхТочек.ДеньВизита.Порядок = &DayOfWeek then 1 else 0 end IsRoute
+                                                case when ДниПосещенияТорговыхТочек.ДеньВизита.Порядок = &DayOfWeek then 1 else 0 end IsRoute,
+                                               //ISNULL(ПРЕДСТАВЛЕНИЕССЫЛКИ(СоставМаршрутаТорговогоАгентаСрезПоследних.ТорговаяТочка.Владелец.Класс.Ссылка),""Неопределено"") 
+                                                ПРЕДСТАВЛЕНИЕ(СоставМаршрутаТорговогоАгентаСрезПоследних.ТорговаяТочка.Владелец.Класс)
+                                                as CustomerClass
                                             ИЗ
 	                                            РегистрСведений.СоставМаршрутаТорговогоАгента.СрезПоследних() КАК СоставМаршрутаТорговогоАгентаСрезПоследних
 		                                            ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ДниПосещенияТорговыхТочек КАК ДниПосещенияТорговыхТочек
@@ -58,7 +61,8 @@ namespace TradeServices.Classes
                         PartnerId = new Guid(row["PartnerID"].ToString()),
                         PartnerName = row["PartnerName"].ToString().Trim(),
                         address = row["address"].ToString().Trim(),
-                        IsRoute = 1//Int32.Parse(row["IsRoute"].ToString())
+                        IsRoute = 1,//Int32.Parse(row["IsRoute"].ToString())
+                        CustomerClass = row["CustomerClass"].ToString().Trim()
                     };
             
             return result.Cast<RouteSet>().ToArray();

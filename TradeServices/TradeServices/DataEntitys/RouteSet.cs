@@ -32,5 +32,8 @@ namespace TradeServices.DataEntitys
 
         [DataMember(Name = "IsRoute")]
         public int IsRoute { get; set; }
+
+        [DataMember(Name = "CustomerClass")]
+        public string CustomerClass { get; set; }
     }
 }
