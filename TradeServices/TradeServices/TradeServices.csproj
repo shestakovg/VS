@@ -83,12 +83,14 @@
     <Compile Include="Classes\ProcessOrderLog.cs" />
     <Compile Include="Classes\SaveData.cs" />
     <Compile Include="Classes\TradeUtils.cs" />
+    <Compile Include="Classes\_1CCLientCardSku.cs" />
     <Compile Include="Classes\_1CConnection.cs" />
     <Compile Include="Classes\_1CDebt.cs" />
     <Compile Include="Classes\_1COutletInfo.cs" />
     <Compile Include="Classes\_1CRouteDebtParams.cs" />
     <Compile Include="Classes\_1CSkuFact.cs" />
     <Compile Include="Classes\_1CSpecification.cs" />
+    <Compile Include="DataEntitys\ClientCardSku.cs" />
     <Compile Include="DataEntitys\DebtData.cs" />
     <Compile Include="DataEntitys\IncomingData\ClaimedPays.cs" />
     <Compile Include="DataEntitys\IncomingData\MarcOrder.cs" />

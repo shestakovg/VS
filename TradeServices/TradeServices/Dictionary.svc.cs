@@ -36,6 +36,13 @@ namespace TradeServices
             return res;
         }
 
+        public ClientCardSku[] GetClientCardSku(string routeid)
+        {
+            _1CClientCardSku branches = new _1CClientCardSku(routeid);
+            var res = branches.ConvertToArray() as ClientCardSku[];
+            (branches as _1CUtManager).Dispose();
+            return res;
+        }
 
         public RouteSet[] GetRouteSet(string routeid)
         {

@@ -43,6 +43,14 @@ namespace TradeServices
 
         [OperationContract]
         [WebGet(
+           UriTemplate = "/getclientcardsku/{routeid}",
+           //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+           ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+          ]
+        ClientCardSku[] GetClientCardSku(string routeid);
+
+        [OperationContract]
+        [WebGet(
             UriTemplate = "/getoutletinfo/{routeid}",
             //BodyStyle = WebMessageBodyStyle.WrappedRequest,
             ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
