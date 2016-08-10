@@ -13,5 +13,11 @@ namespace TradeServices.DataEntitys
          public Guid SkuId { get; set; }
          [DataMember(Name = "OutletId")]
          public Guid OutletId { get; set; }
+
+         [DataMember(Name = "LastDate")]
+         public string LastDate { get; set; }
+
+         [DataMember(Name = "Qty")]
+         public int Qty { get; set; }
     }
 }

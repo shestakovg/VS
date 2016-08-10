@@ -42,5 +42,3 @@ C:\Users\shestakov.g\Source\Repos\VS\TradeServices\UnitTestTradeService\bin\Debu
 C:\Users\shestakov.g\Source\Repos\VS\TradeServices\UnitTestTradeService\obj\Debug\UnitTestTradeService.csprojResolveAssemblyReference.cache
 C:\Users\shestakov.g\Source\Repos\VS\TradeServices\UnitTestTradeService\obj\Debug\UnitTestTradeService.dll
 C:\Users\shestakov.g\Source\Repos\VS\TradeServices\UnitTestTradeService\obj\Debug\UnitTestTradeService.pdb
-C:\Users\shestakov.g\Source\Repos\VS\TradeServices\UnitTestTradeService\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
-C:\Users\shestakov.g\Source\Repos\VS\TradeServices\UnitTestTradeService\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
