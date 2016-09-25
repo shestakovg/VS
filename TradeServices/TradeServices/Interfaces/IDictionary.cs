@@ -181,5 +181,20 @@ namespace TradeServices
             ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
         void SavePay(ClaimedPays clamedPays);
         #endregion
+
+        [OperationContract]
+        [WebInvoke(Method = "POST",
+            UriTemplate = "checkin",
+            BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        void SaveCheckIn(OutletCheckIn[] checkInArray);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST",
+            UriTemplate = "tracking",
+            BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        void SaveTracking(TrackingEntity[] checkInArray);
+
     }
 }

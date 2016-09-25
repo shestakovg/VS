@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -73,6 +74,7 @@
     <Content Include="Dictionary.svc" />
     <Content Include="Lib\_1C8Trade_Srv.dll" />
     <Content Include="Lib\_1CUtilsEnterra.dll" />
+    <Content Include="Location.svc" />
     <Content Include="MobileApp1C.txt" />
     <Content Include="SVC\Service1.svc" />
     <Content Include="Web.config" />
@@ -107,6 +109,8 @@
     <Compile Include="DataEntitys\Contract.cs" />
     <Compile Include="Classes\Order.cs" />
     <Compile Include="Classes\OrderWareHouse.cs" />
+    <Compile Include="DataEntitys\IncomingData\OutletCheckIn.cs" />
+    <Compile Include="DataEntitys\IncomingData\TrackingEntity.cs" />
     <Compile Include="DataEntitys\OrderPosition.cs" />
     <Compile Include="DataEntitys\OutletInfo.cs" />
     <Compile Include="DataEntitys\Price.cs" />
@@ -122,11 +126,15 @@
     <Compile Include="DataEntitys\SkuGroup.cs" />
     <Compile Include="DataEntitys\Specification.cs" />
     <Compile Include="DataEntitys\Versions.cs" />
+    <Compile Include="Interfaces\ILocation.cs" />
     <Compile Include="Interfaces\IResultArray.cs" />
     <Compile Include="Dictionary.svc.cs">
       <DependentUpon>Dictionary.svc</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IDictionary.cs" />
+    <Compile Include="Location.svc.cs">
+      <DependentUpon>Location.svc</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>

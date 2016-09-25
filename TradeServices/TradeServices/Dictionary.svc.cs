@@ -213,5 +213,72 @@ namespace TradeServices
             (routeSet as _1CUtManager).Dispose();
             return res;
         }
+
+        public void SaveCheckIn(OutletCheckIn[] checkInArray)
+        {
+           
+            string cmdText = @"INSERT INTO [dbo].[OutletCheckIn]
+                                   ([routeId]
+                                   ,[outletId]
+                                   ,[checkInTime]
+                                   ,[latitude]
+                                   ,[longtitude])
+                             VALUES
+                                   (@routeId
+                                   ,@outletId
+                                   ,@checkInTime
+                                   ,@latitude
+                                   ,@longtitude)";
+            SqlConnection con = SaveData.getConnection();
+
+            foreach (OutletCheckIn checkIn in checkInArray)
+            {
+                SqlCommand cmd = con.CreateCommand();
+                cmd.CommandText = cmdText;
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("routeId", new Guid(checkIn.routeId));
+                cmd.Parameters.AddWithValue("outletId", new Guid(checkIn.outletId));
+                cmd.Parameters.AddWithValue("checkInTime", checkIn.sateliteTime);
+                cmd.Parameters.AddWithValue("latitude", Convert.ToDecimal(checkIn.latitude));
+                cmd.Parameters.AddWithValue("longtitude", Convert.ToDecimal(checkIn.longtitude));
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+               // cmd.Dispose();
+            }
+            con.Close();
+           
+        }
+
+        public void SaveTracking(TrackingEntity[] checkInArray)
+        {
+
+            string cmdText = @"INSERT INTO [dbo].[LocationTraking]
+                                   ([routeId]
+                                   ,[checkInTime]
+                                   ,[latitude]
+                                   ,[longtitude])
+                             VALUES
+                                   (@routeId
+                                   ,@checkInTime
+                                   ,@latitude
+                                   ,@longtitude)";
+            SqlConnection con = SaveData.getConnection();
+
+            foreach (TrackingEntity checkIn in checkInArray)
+            {
+                SqlCommand cmd = con.CreateCommand();
+                cmd.CommandText = cmdText;
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("routeId", new Guid(checkIn.routeId));
+                cmd.Parameters.AddWithValue("checkInTime", checkIn.sateliteTime);
+                cmd.Parameters.AddWithValue("latitude", Convert.ToDecimal(checkIn.latitude));
+                cmd.Parameters.AddWithValue("longtitude", Convert.ToDecimal(checkIn.longtitude));
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                // cmd.Dispose();
+            }
+            con.Close();
+
+        }
     }
 }
