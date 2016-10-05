@@ -80,6 +80,14 @@ namespace TradeServices
             return res;
         }
 
+        public SkuExt[] GetSkuExt(string routeid)
+        {
+            _1CSkuExt getsku = new _1CSkuExt(routeid);
+            SkuExt[] res = getsku.ConvertToArray() as SkuExt[];
+            (getsku as _1CUtManager).Dispose();
+            return res;
+        }
+
 
         public Price[] GetPrice(string priceId)
         {

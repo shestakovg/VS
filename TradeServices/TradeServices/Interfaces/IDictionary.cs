@@ -90,6 +90,14 @@ namespace TradeServices
 
         [OperationContract]
         [WebGet(
+           UriTemplate = "/getskuext/{routeid}",
+           //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+           ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+          ]
+        SkuExt[] GetSkuExt(string routeid);
+
+        [OperationContract]
+        [WebGet(
             UriTemplate = "/getskufact",
             //BodyStyle = WebMessageBodyStyle.WrappedRequest,
             ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
