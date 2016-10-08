@@ -21,5 +21,10 @@ namespace TradeServices.DataEntitys
         [DataMember(Name = "GroupParentName")]
         public string GroupParentName { get; set; }
 
+        [DataMember(Name = "Amount")]
+        public double Amount { get; set; }
+
+        [DataMember(Name = "OutletCount")]
+        public int OutletCount { get; set; }
     }
 }
