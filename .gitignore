@@ -14,9 +14,14 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 *.suo
+*.dll
+*.exe
+*.pdb
 # Windows shortcuts
 *.lnk
 *.suo
+*.txt
+*.cache
 # =========================
 # Operating System Files
 # =========================

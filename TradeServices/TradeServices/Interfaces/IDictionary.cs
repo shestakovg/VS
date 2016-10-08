@@ -98,6 +98,14 @@ namespace TradeServices
 
         [OperationContract]
         [WebGet(
+          UriTemplate = "/getsalesfact/{routeid}",
+          //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+          ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+         ]
+        SalesFact[] GetSalesFact(string routeid);
+
+        [OperationContract]
+        [WebGet(
             UriTemplate = "/getskufact",
             //BodyStyle = WebMessageBodyStyle.WrappedRequest,
             ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)

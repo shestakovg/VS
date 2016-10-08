@@ -90,6 +90,7 @@
     <Compile Include="Classes\_1CDebt.cs" />
     <Compile Include="Classes\_1COutletInfo.cs" />
     <Compile Include="Classes\_1CRouteDebtParams.cs" />
+    <Compile Include="Classes\_1CSalesFact.cs" />
     <Compile Include="Classes\_1CSkuExt.cs" />
     <Compile Include="Classes\_1CSkuFact.cs" />
     <Compile Include="Classes\_1CSpecification.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="Classes\_1CUtManager.cs" />
     <Compile Include="DataEntitys\Branch.cs" />
     <Compile Include="DataEntitys\Route.cs" />
+    <Compile Include="DataEntitys\SalesFact.cs" />
     <Compile Include="DataEntitys\Sku.cs" />
     <Compile Include="DataEntitys\SkuExt.cs" />
     <Compile Include="DataEntitys\SkuFact.cs" />

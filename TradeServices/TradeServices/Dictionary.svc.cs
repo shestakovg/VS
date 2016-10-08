@@ -88,6 +88,14 @@ namespace TradeServices
             return res;
         }
 
+        public SalesFact[] GetSalesFact(string routeid)
+        {
+            _1CSalesFact getsku = new _1CSalesFact(routeid);
+            SalesFact[] res = getsku.ConvertToArray() as SalesFact[];
+            (getsku as _1CUtManager).Dispose();
+            return res;
+        }
+
 
         public Price[] GetPrice(string priceId)
         {
