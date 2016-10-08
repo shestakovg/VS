@@ -70,7 +70,13 @@ namespace TradeServices.Classes
 		                                                    группы.GroupParentId,
 		                                                    группы.GroupParentName,
 		                                                    isnull(п.Сумма,0) Amount,
-		                                                    isnull(п.КоличествоТТ,0) OutletCount
+		                                                    isnull(п.КоличествоТТ,0) OutletCount,
+		                                                    case when isnull(п.КоличествоТТ,0) +  isnull(п.Сумма,0) > 0 then ""#FF040B97""
+		                                                     else  ""#FFA29A9A""
+
+                                                            end Color
+
+
                                                     из
                                                     (ВЫБРАТЬ
                                                                     Номенклатура.Ссылка как GroupId,
@@ -80,7 +86,7 @@ namespace TradeServices.Classes
                                                                 ИЗ
                                                                     Справочник.Номенклатура КАК Номенклатура
                                                                 ГДЕ
-                                                    Номенклатура.Ссылка в иерархии (выбрать groupid из группы)            
+                                                    Номенклатура.Ссылка в иерархии (выбрать groupid из группы)
                                                      и Номенклатура.ЭтоГруппа
                                                     объединить
                                                     ВЫБРАТЬ
@@ -90,9 +96,9 @@ namespace TradeServices.Classes
                                                                     Номенклатура.Родитель.Наименование как GroupParentName
                                                                 ИЗ
                                                                     Справочник.Номенклатура КАК Номенклатура
-                                                    внутреннее соединение группы по группы.groupid.Родитель =   Номенклатура.Ссылка 
-                                                    ГДЕ   Номенклатура.Родитель=ЗНАЧЕНИЕ(Справочник.Номенклатура.ПустаяСсылка) и Номенклатура.ЭтоГРуппа) группы
-                                                    левое соединение Планы п по п.НоменклатураПлан = группы.GroupId 	";
+                                                    внутреннее соединение группы по группы.groupid.Родитель = Номенклатура.Ссылка
+                                                    ГДЕ Номенклатура.Родитель= ЗНАЧЕНИЕ(Справочник.Номенклатура.ПустаяСсылка) и Номенклатура.ЭтоГРуппа) группы
+                                                   левое соединение Планы п по п.НоменклатураПлан = группы.GroupId 	";
         #endregion
         public SkuGroup[] ConvertToArray(IQueryable<System.Data.DataRow> queryable =  null)
         {
@@ -110,7 +116,8 @@ namespace TradeServices.Classes
                         GroupParentId = (row["GroupParentId"] == System.DBNull.Value ? Guid.Empty : new Guid(row["GroupParentId"].ToString())),
                         GroupParentName = row["GroupParentName"].ToString().Trim(),
                         Amount = Convert.ToDouble(row["Amount"]),
-                        OutletCount = Convert.ToInt32(row["OutletCount"])
+                        OutletCount = Convert.ToInt32(row["OutletCount"]),
+                        Color = row["Color"].ToString()
                     };
             return result.Cast<SkuGroup>().ToArray();
         }

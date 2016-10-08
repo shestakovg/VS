@@ -26,5 +26,7 @@ namespace TradeServices.DataEntitys
 
         [DataMember(Name = "OutletCount")]
         public int OutletCount { get; set; }
+        [DataMember(Name = "Color")]
+        public String Color { get; set; }
     }
 }
