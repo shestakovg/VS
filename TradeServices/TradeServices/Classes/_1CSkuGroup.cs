@@ -71,7 +71,7 @@ namespace TradeServices.Classes
 		                                                    группы.GroupParentName,
 		                                                    isnull(п.Сумма,0) Amount,
 		                                                    isnull(п.КоличествоТТ,0) OutletCount,
-		                                                    case when isnull(п.КоличествоТТ,0) +  isnull(п.Сумма,0) > 0 then ""#FF040B97""
+		                                                    case when isnull(п.КоличествоТТ,0) +  isnull(п.Сумма,0) > 0 then ""#FF5F9BDB""
 		                                                     else  ""#FFA29A9A""
 
                                                             end Color
