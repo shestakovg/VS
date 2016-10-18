@@ -40,6 +40,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ActiveUp.Net.Common">
+      <HintPath>..\..\..\..\..\Documents\Visual Studio 2015\Projects\testGmail\testGmail\mailLib\ActiveUp.Net.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveUp.Net.Imap4">
+      <HintPath>..\..\..\..\..\Documents\Visual Studio 2015\Projects\testGmail\testGmail\mailLib\ActiveUp.Net.Imap4.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveUp.Net.Mail">
+      <HintPath>..\..\..\..\..\Documents\Visual Studio 2015\Projects\testGmail\testGmail\mailLib\ActiveUp.Net.Mail.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
@@ -81,6 +90,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\ClaimedPay.cs" />
+    <Compile Include="Classes\MailLocation.cs" />
+    <Compile Include="Classes\MailRepository.cs" />
     <Compile Include="Classes\ProcessIncomingData.cs" />
     <Compile Include="Classes\ProcessOrderLog.cs" />
     <Compile Include="Classes\SaveData.cs" />
