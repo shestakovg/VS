@@ -81,6 +81,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Dictionary.svc" />
+    <Content Include="Lib\ActiveUp.Net.Common.dll" />
+    <Content Include="Lib\ActiveUp.Net.Dns.dll" />
+    <Content Include="Lib\ActiveUp.Net.Groupware.dll" />
+    <Content Include="Lib\ActiveUp.Net.Imap4.dll" />
+    <Content Include="Lib\ActiveUp.Net.Mail.dll" />
+    <Content Include="Lib\ActiveUp.Net.Nntp.dll" />
+    <Content Include="Lib\ActiveUp.Net.OpenPGP.dll" />
+    <Content Include="Lib\ActiveUp.Net.Pop3.dll" />
+    <Content Include="Lib\ActiveUp.Net.Smtp.dll" />
+    <Content Include="Lib\ActiveUp.Net.WhoIs.dll" />
     <Content Include="Lib\_1C8Trade_Srv.dll" />
     <Content Include="Lib\_1CUtilsEnterra.dll" />
     <Content Include="Location.svc" />
