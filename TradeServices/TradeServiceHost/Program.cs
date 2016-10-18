@@ -14,7 +14,7 @@ namespace TradeServiceHost
         /// </summary>
         static void Main()
         {
-            if (DateTime.Today < new DateTime(2015, 8, 1))
+            //if (DateTime.Today < new DateTime(2015, 8, 1))
             {
                 ServiceBase[] ServicesToRun;
                 ServicesToRun = new ServiceBase[] 
@@ -23,10 +23,10 @@ namespace TradeServiceHost
                 };
                 ServiceBase.Run(ServicesToRun);
             }
-            else
-            {
-               // throw new Exception("No many no hunny");
-            }
+            //else
+            //{
+            //   // throw new Exception("No many no hunny");
+            //}
         }
     }
 }

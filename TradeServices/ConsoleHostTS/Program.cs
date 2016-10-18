@@ -23,16 +23,20 @@ namespace ConsoleHostTS
             //stp.HttpHelpPageEnabled = false;
 
             //host.Open();
-            WebServiceHost host = new WebServiceHost(typeof(Dictionary));
+
+            /*WebServiceHost host = new WebServiceHost(typeof(Dictionary));
             ServiceDebugBehavior stp = host.Description.Behaviors.Find<ServiceDebugBehavior>();
             stp.HttpHelpPageEnabled = false;
 
-            host.Open();
+            host.Open();*/
+            MailLocation.GetInstance("uniclocationdata@gmail.com", "Uniclocationdata8");
+            if (MailLocation.IsInstance()) MailLocation.GetInstance().Start();
             Console.WriteLine("Service is up and running");
             Console.WriteLine("Press enter to quit ");
             Console.ReadLine();
-            host.Close();
-            
+            if (MailLocation.IsInstance()) MailLocation.GetInstance().Dispose();
+            //host.Close();
+
             //ProcessIncomingData.Start();
 
             Uri baseAddress = new Uri("http://localhost:8100/GettingStarted/");
