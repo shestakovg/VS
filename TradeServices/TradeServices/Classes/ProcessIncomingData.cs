@@ -90,8 +90,11 @@ namespace TradeServices.Classes
         }
         public static void ProcessData()
         {
+
             while (allowProcess)
             {
+             ///  continue;
+
                 bool isAvaliableNewOrder = false;
                 SqlConnection connection = getConnection();
                 V8DbConnection _1cConnection = null;

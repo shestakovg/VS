@@ -17,7 +17,6 @@ namespace TradeServices.Classes
             else
                 Client.Connect(mailServer, port);
             Client.Login(login, password);
-
         }
 
         public IEnumerable<Message> GetAllMails(string mailBox)
@@ -39,7 +38,6 @@ namespace TradeServices.Classes
         {
             Mailbox mails = Client.SelectMailbox(mailBox);
             MessageCollection messages = mails.SearchParse(searchPhrase);
-
             return messages;
         }
 
