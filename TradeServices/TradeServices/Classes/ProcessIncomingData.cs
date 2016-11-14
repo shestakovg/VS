@@ -119,6 +119,7 @@ namespace TradeServices.Classes
                     {
                         marcOrderProceed(connection, id, OrdersWH.MainWareHouse);
                     }
+                    wh.Dispose();
                     wh = null;
                }
             //   GC.Collect();
@@ -127,7 +128,7 @@ namespace TradeServices.Classes
                 foreach (long id in getUnprocessOrder(connection, OrdersWH.ReatilWareHose))
                 {
                     isAvaliableNewOrder = true;
-                    if (_1cConnection == null)
+                   // if (_1cConnection == null)
                         _1cConnection = _1CConnection.CreateAndOpenConnection();
                     if (_1cConnection == null) break;
                     OrderWareHouse wh = new OrderWareHouse(id, connection, OrdersWH.ReatilWareHose, _1cConnection);
@@ -146,7 +147,7 @@ namespace TradeServices.Classes
                     {
                         marcOrderProceed(connection, id, OrdersWH.ReatilWareHose);
                     }
-
+                    wh.Dispose();
                     wh = null;
                     //GC.Collect();
                 }
@@ -169,8 +170,8 @@ namespace TradeServices.Classes
                 if (_1cConnection != null)
                 {
                     _1CConnection.Close1CConnection(_1cConnection);
-                    V8.ReleaseComObject(_1cConnection);
-                    _1cConnection = null;
+                    //V8.ReleaseComObject(_1cConnection);
+                   // _1cConnection = null;
                 }
 
                 if (isAvaliableNewOrder)
@@ -181,7 +182,7 @@ namespace TradeServices.Classes
                     GC.Collect(2);
                    // GC.WaitForFullGCComplete(500);
                 }
-                Thread.Sleep(1500);
+                Thread.Sleep(3000);
             }
         }
 

@@ -142,6 +142,7 @@ namespace TradeServices.Classes
                         }
                     }
                     mailRepository.DeleteMessages(emailList, "inbox");
+                    mailRepository = null;
                     Thread.Sleep(60 * 1000 * 3);
                 }
             }

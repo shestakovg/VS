@@ -196,17 +196,19 @@ namespace TradeServices.DataEntitys
             //}
             if (orderStructure != null)
             {
-
+                //orderStructure.Dispose();
                 V8.ReleaseComObject(orderStructure);
                 orderStructure = null;
             }
             if (headerStucture != null)
             {
+                //headerStucture.Dispose();
                 V8.ReleaseComObject(headerStucture);
                 headerStucture = null;
             }
             if (positionValueTable != null)
             {
+                //positionValueTable.Dispose();
                 V8.ReleaseComObject(positionValueTable);
                 positionValueTable = null;
             }

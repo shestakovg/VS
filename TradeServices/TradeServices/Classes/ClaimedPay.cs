@@ -85,6 +85,7 @@ namespace TradeServices.Classes
             {
                 if ( this.stucture != null)
                 {
+                   // this.stucture.Dispose();
                     V8.ReleaseComObject(this.stucture);
                     this.stucture = null;
                 }
