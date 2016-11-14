@@ -93,94 +93,120 @@ namespace TradeServices.Classes
 
             while (allowProcess)
             {
-             ///  continue;
-
-                bool isAvaliableNewOrder = false;
-                SqlConnection connection = getConnection();
-                V8DbConnection _1cConnection = null;
-                foreach (long id in getUnprocessOrder(connection, OrdersWH.MainWareHouse))
+                ///  continue;
+                try
                 {
-                    isAvaliableNewOrder = true;
-                    _1cConnection = _1CConnection.CreateAndOpenConnection();
-                    if (_1cConnection == null) break;
-                    OrderWareHouse wh = new OrderWareHouse(id, connection, OrdersWH.MainWareHouse, _1cConnection);
-                    
-                    if (wh.Initialized)
+                    bool isAvaliableNewOrder = false;
+                    SqlConnection connection = getConnection();
+                    V8DbConnection _1cConnection = null;
+                    long[] unprocOrders = getUnprocessOrder(connection, OrdersWH.MainWareHouse);
+                    if (unprocOrders.Length > 0)
                     {
-                        if (wh.prepare1CStructure())
-                            if (wh.createOrder())
-                            {
-                                wh.ApplyToSql();
-                                (wh as Order).Dispose();
-                                marcOrderProceed(connection, id, OrdersWH.MainWareHouse);
-                            }
-                    }
-                    else
-                    {
-                        marcOrderProceed(connection, id, OrdersWH.MainWareHouse);
-                    }
-                    wh.Dispose();
-                    wh = null;
-               }
-            //   GC.Collect();
-            
-
-                foreach (long id in getUnprocessOrder(connection, OrdersWH.ReatilWareHose))
-                {
-                    isAvaliableNewOrder = true;
-                   // if (_1cConnection == null)
                         _1cConnection = _1CConnection.CreateAndOpenConnection();
-                    if (_1cConnection == null) break;
-                    OrderWareHouse wh = new OrderWareHouse(id, connection, OrdersWH.ReatilWareHose, _1cConnection);
-                    if (wh.Initialized)
-                    {
-                        if (wh.prepare1CStructure())
-                            if (wh.createOrder())
-                            {
-                                wh.ApplyToSql();
-                                (wh as Order).Dispose();
-                                marcOrderProceed(connection, id, OrdersWH.ReatilWareHose);
-                                wh = null;
-                            }
+                        if (_1cConnection == null) continue;
                     }
-                    else
-                    {
-                        marcOrderProceed(connection, id, OrdersWH.ReatilWareHose);
-                    }
-                    wh.Dispose();
-                    wh = null;
-                    //GC.Collect();
-                }
 
-                if (TradeServices.Classes.ClaimedPay.ExistsNewPays(connection))
-                {
-                    if (_1cConnection == null)
+                    foreach (long id in unprocOrders)
+                    {
+                        isAvaliableNewOrder = true;
+                        //  _1cConnection = _1CConnection.CreateAndOpenConnection();
+                        if (_1cConnection == null) continue;
+                        OrderWareHouse wh = new OrderWareHouse(id, connection, OrdersWH.MainWareHouse, _1cConnection);
+
+                        if (wh.Initialized)
+                        {
+                            if (wh.prepare1CStructure())
+                                if (wh.createOrder())
+                                {
+                                    wh.ApplyToSql();
+                                    (wh as Order).Dispose();
+                                    marcOrderProceed(connection, id, OrdersWH.MainWareHouse);
+                                }
+                        }
+                        else
+                        {
+                            marcOrderProceed(connection, id, OrdersWH.MainWareHouse);
+                        }
+                       // wh.Dispose();
+                        wh = null;
+                        // _1CConnection.Close1CConnection(_1cConnection);
+                    }
+                    if (unprocOrders.Length > 0)
+                        _1CConnection.Close1CConnection(_1cConnection);
+                    //   GC.Collect();
+
+                    long[] unprocOrders2 = getUnprocessOrder(connection, OrdersWH.ReatilWareHose);
+                    if (unprocOrders2.Length > 0)
+                    {
                         _1cConnection = _1CConnection.CreateAndOpenConnection();
-                    if (_1cConnection != null)
+                        if (_1cConnection == null) continue;
+                    }
+                    foreach (long id in unprocOrders2)
                     {
-                        TradeServices.Classes.ClaimedPay pays = new ClaimedPay(_1cConnection , connection);
-                        pays.ProcessPays();
-                        pays = null;
+                        isAvaliableNewOrder = true;
+                        // if (_1cConnection == null)
+
+                        //  if (_1cConnection == null) break;
+                        OrderWareHouse wh = new OrderWareHouse(id, connection, OrdersWH.ReatilWareHose, _1cConnection);
+                        if (wh.Initialized)
+                        {
+                            if (wh.prepare1CStructure())
+                                if (wh.createOrder())
+                                {
+                                    wh.ApplyToSql();
+                                    (wh as Order).Dispose();
+                                    marcOrderProceed(connection, id, OrdersWH.ReatilWareHose);
+                                    wh = null;
+                                }
+                        }
+                        else
+                        {
+                            marcOrderProceed(connection, id, OrdersWH.ReatilWareHose);
+                        }
+                      //  wh.Dispose();
+                        wh = null;
+                        //GC.Collect();
+                    }
+                    if (unprocOrders2.Length > 0)
+                        _1CConnection.Close1CConnection(_1cConnection);
+
+                    if (TradeServices.Classes.ClaimedPay.ExistsNewPays(connection))
+                    {
+                        //if (_1cConnection == null)
+                        _1cConnection = _1CConnection.CreateAndOpenConnection();
+                        if (_1cConnection != null)
+                        {
+                            TradeServices.Classes.ClaimedPay pays = new ClaimedPay(_1cConnection, connection);
+                            pays.ProcessPays();
+                            pays = null;
+                        }
+                        _1CConnection.Close1CConnection(_1cConnection);
+                    }
+
+                    connection.Close();
+                    connection.Dispose();
+                    //connection = null;
+                    //if (_1cConnection != null)
+                    //{
+                    //    _1CConnection.Close1CConnection(_1cConnection);
+                    //    //V8.ReleaseComObject(_1cConnection);
+                    //   // _1cConnection = null;
+                    //}
+
+                    if (isAvaliableNewOrder)
+                    {
+                        //GC.WaitForPendingFinalizers();
+                        GC.Collect();
+                        //GC.Collect(1);
+                        //GC.Collect(2);
+                        // GC.WaitForFullGCComplete(500);
                     }
                 }
-
-                connection.Close();
-                connection.Dispose();
-                connection = null;
-                if (_1cConnection != null)
+                catch (Exception e)
                 {
-                    _1CConnection.Close1CConnection(_1cConnection);
-                    //V8.ReleaseComObject(_1cConnection);
-                   // _1cConnection = null;
-                }
+                    ProcessOrderLog log = new ProcessOrderLog(getConnection());
+                    log.WriteLog(Guid.Empty, "Main thread exception: " + e.Message);
 
-                if (isAvaliableNewOrder)
-                {
-                    GC.WaitForPendingFinalizers();
-                    GC.Collect();
-                    GC.Collect(1);
-                    GC.Collect(2);
-                   // GC.WaitForFullGCComplete(500);
                 }
                 Thread.Sleep(3000);
             }

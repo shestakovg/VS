@@ -35,14 +35,8 @@ namespace TradeServiceHost
             stp.HttpHelpPageEnabled = false;
 
             host.Open();
-            ProcessOrderLog l = new ProcessOrderLog(SaveData.getConnection());
-            l.WriteLog(Guid.NewGuid(), "Service has been started");
-            MailLocation.GetInstance("uniclocationdata@gmail.com", "Uniclocationdata8");
-            if (MailLocation.IsInstance()) MailLocation.GetInstance().Start();
-            l.WriteLog(Guid.NewGuid(), "MailLocation has been started");
 
-            ProcessIncomingData.Start();
-            l.WriteLog(Guid.NewGuid(), "ProcessIncomingData has been started");
+            
         }
 
         protected override void OnStop()
@@ -54,10 +48,7 @@ namespace TradeServiceHost
                 
             }
 
-            if (MailLocation.IsInstance()) MailLocation.GetInstance().Dispose();
-
-            ProcessIncomingData.Stop();
-            GC.Collect();
+            
         }
     }
 }
