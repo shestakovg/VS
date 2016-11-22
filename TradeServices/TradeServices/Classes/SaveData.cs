@@ -200,6 +200,75 @@ namespace TradeServices.Classes
             }
             con.Close();
         }
+
+        public static void SaveNewCustomer(NewCustomers newCustomer)
+        {
+            const string commandText = @"INSERT INTO [dbo].[NewCustomers]
+                                               ([RegistrationDate]
+                                               ,[Territory]
+                                               ,[RouteId]
+                                               ,[CustomerName]
+                                               ,[DeliveryAddress]
+                                               ,[OutletCategoty]
+                                               ,[PriceType]
+                                               ,[VisitDay]
+                                               ,[DeliveryDay]
+                                               ,[Manager1Name]
+                                               ,[Manager1Phone]
+                                               ,[Manager2Name]
+                                               ,[Manager2Phone]
+                                               ,[AdditionalInfo]
+                                               ,[processed])
+                                         VALUES
+                                               (convert(datetime,@RegistrationDate,104)
+                                               ,@Territory
+                                               ,@RouteId
+                                               ,@CustomerName
+                                               ,@DeliveryAddress
+                                               ,@OutletCategoty
+                                               ,@PriceType
+                                               ,@VisitDay
+                                               ,@DeliveryDay
+                                               ,@Manager1Name
+                                               ,@Manager1Phone
+                                               ,@Manager2Name
+                                               ,@Manager2Phone
+                                               ,@AdditionalInfo
+                                               ,0)";
+            SqlConnection con = getConnection();
+            using (SqlCommand cmd = con.CreateCommand())
+            {
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = commandText;
+                cmd.Parameters.AddWithValue("RegistrationDate", newCustomer.registrationDate);
+                cmd.Parameters.AddWithValue("Territory", new Guid(newCustomer.territory));
+                cmd.Parameters.AddWithValue("RouteId", new Guid(newCustomer.routeId));
+                cmd.Parameters.AddWithValue("CustomerName", TradeUtils.FilterString(TradeUtils.EncodeCyrilicString(newCustomer.CustomerName)));
+                cmd.Parameters.AddWithValue("DeliveryAddress", TradeUtils.FilterString(TradeUtils.EncodeCyrilicString(newCustomer.DeliveryAddress)));
+                cmd.Parameters.AddWithValue("OutletCategoty", Convert.ToInt32(newCustomer.OutletCategoty));
+                cmd.Parameters.AddWithValue("PriceType", new Guid(newCustomer.PriceType));
+                cmd.Parameters.AddWithValue("VisitDay", Convert.ToInt32(newCustomer.VisitDay));
+                cmd.Parameters.AddWithValue("DeliveryDay", Convert.ToInt32(newCustomer.DeliveryDay));
+                cmd.Parameters.AddWithValue("Manager1Name", TradeUtils.FilterString(TradeUtils.EncodeCyrilicString(newCustomer.Manager1Name)));
+                cmd.Parameters.AddWithValue("Manager2Name", TradeUtils.FilterString(TradeUtils.EncodeCyrilicString(newCustomer.Manager2Name)));
+                cmd.Parameters.AddWithValue("Manager1Phone", TradeUtils.FilterString(TradeUtils.EncodeCyrilicString(newCustomer.Manager1Phone)));
+                cmd.Parameters.AddWithValue("Manager2Phone", TradeUtils.FilterString(TradeUtils.EncodeCyrilicString(newCustomer.Manager2Phone)));
+                cmd.Parameters.AddWithValue("AdditionalInfo", TradeUtils.FilterString(TradeUtils.EncodeCyrilicString(newCustomer.AdditionalInfo)));
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch(Exception e)
+                {
+
+                }
+                finally
+                {
+                    cmd.Parameters.Clear();
+                }
+            }
+            con.Close();
+        }
     }
     
     

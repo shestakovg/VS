@@ -144,6 +144,27 @@ namespace TradeServices
           ]
         Specification[] GetSpecification(string routeId);
 
+        [WebGet(
+           UriTemplate = "/getoutletcategory",
+           //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+           ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+          ]
+        Enum1c[] GetOutletCategory();
+
+        [WebGet(
+           UriTemplate = "/getroutedays",
+           //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+           ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+          ]
+        Enum1c[] GetRouteDays();
+
+        [WebGet(
+           UriTemplate = "/getdeliveryarea",
+           //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+           ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+          ]
+        DeliveryArea[] GetDeliveryArea();
+
         [OperationContract]
         [WebGet(
             UriTemplate = "/getapk"
@@ -196,6 +217,13 @@ namespace TradeServices
             BodyStyle = WebMessageBodyStyle.WrappedRequest,
             ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
         void SavePay(ClaimedPays clamedPays);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST",
+            UriTemplate = "savenewcustomer",
+            BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        void SaveNewCustomer(NewCustomers  newCustomer);
         #endregion
 
         [OperationContract]
