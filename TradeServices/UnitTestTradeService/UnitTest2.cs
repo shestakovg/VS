@@ -37,27 +37,27 @@ namespace UnitTestTradeService
         [TestMethod]
         public void TestCheckIn()
         {
-            Location loc = new Location();
-            OutletCheckIn[] chinAr = new OutletCheckIn[2]
-                {
-                     new OutletCheckIn()
-                    {
-                        routeId = Guid.NewGuid().ToString(),
-                        outletId = Guid.NewGuid().ToString(),
-                        sateliteTime = "18.09.2016 12:12:12 PM",
-                        latitude = 45.789923,
-                        longtitude = 56.898324
-                    },
-                      new OutletCheckIn()
-                    {
-                        routeId = Guid.NewGuid().ToString(),
-                        outletId = Guid.NewGuid().ToString(),
-                        sateliteTime = "18.09.2016 12:10:10 PM",
-                        latitude = 45.789923,
-                        longtitude = 56.898324
-                    }
-                };
-            loc.SaveCheckIn(chinAr);
+            //Location loc = new Location();
+            //OutletCheckIn[] chinAr = new OutletCheckIn[2]
+            //    {
+            //         new OutletCheckIn()
+            //        {
+            //            routeId = Guid.NewGuid().ToString(),
+            //            outletId = Guid.NewGuid().ToString(),
+            //            sateliteTime = "18.09.2016 12:12:12 PM",
+            //            latitude = 45.789923,
+            //            longtitude = 56.898324
+            //        },
+            //          new OutletCheckIn()
+            //        {
+            //            routeId = Guid.NewGuid().ToString(),
+            //            outletId = Guid.NewGuid().ToString(),
+            //            sateliteTime = "18.09.2016 12:10:10 PM",
+            //            latitude = 45.789923,
+            //            longtitude = 56.898324
+            //        }
+            //    };
+            //loc.SaveCheckIn(chinAr);
         }
     }
 }

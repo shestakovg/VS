@@ -49,7 +49,16 @@
     <Reference Include="ActiveUp.Net.Mail">
       <HintPath>..\..\..\..\..\Documents\Visual Studio 2015\Projects\testGmail\testGmail\mailLib\ActiveUp.Net.Mail.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -100,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\ClaimedPay.cs" />
+    <Compile Include="Classes\DateTimeExtensions.cs" />
     <Compile Include="Classes\MailLocation.cs" />
     <Compile Include="Classes\MailRepository.cs" />
     <Compile Include="Classes\ProcessIncomingData.cs" />
@@ -109,7 +119,10 @@
     <Compile Include="Classes\_1CCLientCardSku.cs" />
     <Compile Include="Classes\_1CConnection.cs" />
     <Compile Include="Classes\_1CDebt.cs" />
+    <Compile Include="Classes\_1CDeliveryArea.cs" />
+    <Compile Include="Classes\_1COutletCategory.cs" />
     <Compile Include="Classes\_1COutletInfo.cs" />
+    <Compile Include="Classes\_1CRouteDay.cs" />
     <Compile Include="Classes\_1CRouteDebtParams.cs" />
     <Compile Include="Classes\_1CSalesFact.cs" />
     <Compile Include="Classes\_1CSkuExt.cs" />
@@ -117,8 +130,11 @@
     <Compile Include="Classes\_1CSpecification.cs" />
     <Compile Include="DataEntitys\ClientCardSku.cs" />
     <Compile Include="DataEntitys\DebtData.cs" />
+    <Compile Include="DataEntitys\DeliveryArea.cs" />
+    <Compile Include="DataEntitys\Enum1c.cs" />
     <Compile Include="DataEntitys\IncomingData\ClaimedPays.cs" />
     <Compile Include="DataEntitys\IncomingData\MarcOrder.cs" />
+    <Compile Include="DataEntitys\IncomingData\NewCustomers.cs" />
     <Compile Include="DataEntitys\IncomingData\OrderDetail.cs" />
     <Compile Include="DataEntitys\IncomingData\OrderHeader.cs" />
     <Compile Include="Classes\_1CBalanceSku.cs" />
@@ -135,6 +151,7 @@
     <Compile Include="DataEntitys\IncomingData\OutletCheckIn.cs" />
     <Compile Include="DataEntitys\IncomingData\TrackingEntity.cs" />
     <Compile Include="DataEntitys\OrderPosition.cs" />
+    <Compile Include="DataEntitys\OutletCategory.cs" />
     <Compile Include="DataEntitys\OutletInfo.cs" />
     <Compile Include="DataEntitys\Price.cs" />
     <Compile Include="DataEntitys\RouteDebtParams.cs" />
@@ -160,6 +177,12 @@
     <Compile Include="Location.svc.cs">
       <DependentUpon>Location.svc</DependentUpon>
     </Compile>
+    <Compile Include="Models\Outlet.cs" />
+    <Compile Include="Models\ModelOutletCheckIn.cs" />
+    <Compile Include="Models\Route.cs" />
+    <Compile Include="Models\RouteTrip.cs" />
+    <Compile Include="Models\RouteTripEx.cs" />
+    <Compile Include="Models\TradeContext.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -175,6 +198,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

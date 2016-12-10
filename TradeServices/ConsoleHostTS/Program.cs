@@ -29,17 +29,36 @@ namespace ConsoleHostTS
             stp.HttpHelpPageEnabled = false;
 
             host.Open();*/
-            MailLocation.GetInstance("uniclocationdata@gmail.com", "Uniclocationdata8");
-            if (MailLocation.IsInstance()) MailLocation.GetInstance().Start();
-            Console.WriteLine("Service is up and running");
-            Console.WriteLine("Press enter to quit ");
+            //MailLocation.GetInstance("uniclocationdata@gmail.com", "Uniclocationdata8");
+            //if (MailLocation.IsInstance()) MailLocation.GetInstance().Start();
+            //Console.WriteLine("Service is up and running");
+            //Console.WriteLine("Press enter to quit ");
+            //Console.ReadLine();
+            //if (MailLocation.IsInstance()) MailLocation.GetInstance().Dispose();
+            ////host.Close();
+
+            ////ProcessIncomingData.Start();
+
+            //Uri baseAddress = new Uri("http://localhost:8100/GettingStarted/");
+            WebServiceHost host = new WebServiceHost(typeof(Dictionary));
+            ServiceDebugBehavior stp = host.Description.Behaviors.Find<ServiceDebugBehavior>();
+            stp.HttpHelpPageEnabled = false;
+
+            host.Open();
+            foreach (var address in host.BaseAddresses )
+                    Console.WriteLine(address + "  "+ host.State );
+
+            WebServiceHost host2 = new WebServiceHost(typeof(Location));
+            ServiceDebugBehavior stp2 = host2.Description.Behaviors.Find<ServiceDebugBehavior>();
+            stp2.HttpHelpPageEnabled = false;
+
+            host2.Open();
+            foreach (var address in host2.BaseAddresses)
+                Console.WriteLine(address + "  " + host2.State);
             Console.ReadLine();
-            if (MailLocation.IsInstance()) MailLocation.GetInstance().Dispose();
-            //host.Close();
 
-            //ProcessIncomingData.Start();
-
-            Uri baseAddress = new Uri("http://localhost:8100/GettingStarted/");
+            host.Close();
+            host2.Close();
         }
     }
 }

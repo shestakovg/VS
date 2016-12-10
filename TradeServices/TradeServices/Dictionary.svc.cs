@@ -296,5 +296,34 @@ namespace TradeServices
             con.Close();
 
         }
+
+        public Enum1c[] GetOutletCategory()
+        {
+            _1COutletCategory getcategory = new _1COutletCategory();
+            Enum1c[] res = getcategory.ConvertToArray() as Enum1c[];
+            (getcategory as _1CUtManager).Dispose();
+            return res;
+        }
+
+        public Enum1c[] GetRouteDays()
+        {
+            _1CRouteDay getcategory = new _1CRouteDay();
+            Enum1c[] res = getcategory.ConvertToArray() as Enum1c[];
+            (getcategory as _1CUtManager).Dispose();
+            return res;
+        }
+
+        public DeliveryArea[] GetDeliveryArea()
+        {
+            _1CDeliveryArea getcategory = new _1CDeliveryArea();
+            DeliveryArea[] res = getcategory.ConvertToArray() as DeliveryArea[];
+            (getcategory as _1CUtManager).Dispose();
+            return res;
+        }
+
+        public void SaveNewCustomer(NewCustomers newCustomer)
+        {
+            SaveData.SaveNewCustomer(newCustomer);
+        }
     }
 }
