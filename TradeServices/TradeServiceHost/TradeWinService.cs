@@ -35,8 +35,12 @@ namespace TradeServiceHost
             stp.HttpHelpPageEnabled = false;
 
             host.Open();
+            WebServiceHost host2 = new WebServiceHost(typeof(Location));
+            //  ServiceDebugBehavior stp2 = host2.Description.Behaviors.Find<ServiceDebugBehavior>();
+            //stp2.HttpHelpPageEnabled = false;
 
-            
+            host2.Open();
+
         }
 
         protected override void OnStop()

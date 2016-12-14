@@ -1,0 +1,91 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+thead {
+    background-color:darkgrey;
+    color: black;
+    font-size:15px;
+    text-align:left;
+     font-weight: bold;
+}
+table{
+     border: 2px ridge grey;
+     border-collapse: collapse ;
+     width: 100%;
+}
+ td, th {
+     border: 1px ridge grey;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size:12px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+tr:nth-child(even) {background: #CCC}
+tr:nth-child(odd) {background: #FFF}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    /*height: 35px;*/
+    align-content: space-around
+}
+
+a.checkinbtn
+{
+    background: url("http://maps.google.com/mapfiles/ms/icons/blue-dot.png") no-repeat top left;
+     display: block;
+     width: 50px;
+     height: 50px;
+     text-indent: -9999px; /* hides the link text */
+}
+
+.uloutlets
+{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size:11px;
+    color: gray;
+}
+
+
+.outletInfo {
+    height: auto;
+    width: auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size:12px;
+    font-weight: bold;
+    color: black;
+}
+
+input.expcollapse {
+    width:20px;  height: 18px;
+    font-size:8px;
+    -moz-border-radius:  4px; /* Firefox */
+    -webkit-border-radius:  4px; /* Safari 4 */
+    border-radius:  4px;
+}

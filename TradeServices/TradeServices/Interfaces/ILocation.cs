@@ -18,30 +18,37 @@ namespace TradeServices
         [OperationContract]
         [WebGet(
            UriTemplate = "/getteststring",
-           //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+           BodyStyle = WebMessageBodyStyle.Wrapped,
            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
           ]
         string GetTestString();
 
         [OperationContract]
         [WebGet(
-          UriTemplate = "/getallactiveroutes",
+          UriTemplate = "/getallactiveroutes", BodyStyle = WebMessageBodyStyle.Wrapped ,
           ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
          ]
         TradeServices.Models.Route[] GetAllActiveRoutes();
 
         [OperationContract]
         [WebGet(
-          UriTemplate = "/getroutetrip/{routeTripDate}",
+          UriTemplate = "/getroutetrip/{routeTripDate}",  BodyStyle = WebMessageBodyStyle.Wrapped ,
           ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
          ]
         RouteTripEx[] GetRouteTrip(string routeTripDate);
 
         [OperationContract]
         [WebGet(
-         UriTemplate = "/getcheckin/{routeTripDate}&{routeId}",
-         ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+         UriTemplate = "/getcheckin/{routeTripDate}&{routeId}",  BodyStyle = WebMessageBodyStyle.Wrapped
+         ,ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
         ]
         ModelOutletCheckInEx[] GetCheckIn(string routeTripDate, string routeId);
+
+        [OperationContract]
+        [WebGet(
+         UriTemplate = "/getlocationtraking/{routeTripDate}&{routeId}", BodyStyle = WebMessageBodyStyle.Wrapped
+         , ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+        ]
+        ModelRouteTripEx[] GetLocationTraking(string routeTripDate, string routeId);
     }
 }

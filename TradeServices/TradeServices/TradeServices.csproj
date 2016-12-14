@@ -177,6 +177,8 @@
     <Compile Include="Location.svc.cs">
       <DependentUpon>Location.svc</DependentUpon>
     </Compile>
+    <Compile Include="Models\InputRouteLocation.cs" />
+    <Compile Include="Models\ModelRouteTrip.cs" />
     <Compile Include="Models\Outlet.cs" />
     <Compile Include="Models\ModelOutletCheckIn.cs" />
     <Compile Include="Models\Route.cs" />

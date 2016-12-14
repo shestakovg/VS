@@ -97,6 +97,35 @@ namespace TradeServices
             return result;
         }
 
+        public ModelRouteTripEx[] GetLocationTraking(string routeTripDate, string routeId)
+        {
+            DateTime locRouteTripDateStart = routeTripDate.ToDateTime();
+            DateTime locRouteTripDatEnd = locRouteTripDateStart.AddDays(1).AddMilliseconds(-1);
+
+            ModelRouteTripEx[] result = null;
+           
+            using (TradeContext db = new TradeContext())
+            {
+                
+
+                var selection = from c in db.Trips
+                                where c.CheckInTime >= locRouteTripDateStart && c.CheckInTime <= locRouteTripDatEnd && c.RouteId == new Guid(routeId)
+                                orderby c.CheckInTime
+                                select new ModelRouteTripEx
+                                {
+                                    Id = c.Id,
+                                    CheckInTime = c.CheckInTime,
+                                    CheckInTimeString = String.Empty,
+                                    RouteId = c.RouteId,
+                                    Latitude = c.Latitude,
+                                    Longtitude = c.Longtitude,
+                                    RowNum = 0
+                                };
+                result = selection.ToArray();
+            }
+            return result;
+        }
+
         public string GetTestString()
         {
             return "Recived from service";

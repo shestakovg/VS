@@ -58,6 +58,13 @@ namespace UnitTestTradeService
             //        }
             //    };
             //loc.SaveCheckIn(chinAr);
+            using (ServiceReference1.LocationClient cl = new ServiceReference1.LocationClient())
+            {
+                cl.Open();
+                var b = cl.GetTestString();
+                var s= cl.GetRouteTrip("09122016");
+                var c = cl.GetCheckIn("09122016", "A0683EC4-DA9D-11E4-826D-240A64C9314E");
+            }
         }
     }
 }

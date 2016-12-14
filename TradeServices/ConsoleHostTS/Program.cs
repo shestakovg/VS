@@ -49,8 +49,8 @@ namespace ConsoleHostTS
                     Console.WriteLine(address + "  "+ host.State );
 
             WebServiceHost host2 = new WebServiceHost(typeof(Location));
-            ServiceDebugBehavior stp2 = host2.Description.Behaviors.Find<ServiceDebugBehavior>();
-            stp2.HttpHelpPageEnabled = false;
+          //  ServiceDebugBehavior stp2 = host2.Description.Behaviors.Find<ServiceDebugBehavior>();
+            //stp2.HttpHelpPageEnabled = false;
 
             host2.Open();
             foreach (var address in host2.BaseAddresses)
