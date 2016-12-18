@@ -70,6 +70,23 @@ namespace UnicomWeb.Controllers
 
         }
 
+        public ActionResult CheckInMapWithTrip(string routedate, string routeid, string routename)
+        {
+            ViewBag.RouteDate = routedate.ToDateTime().ToString("dd.MM.yyyy");
+            ViewBag.RouteId = routeid;
+            ViewBag.RouteName = routename;
+            ViewBag.DisplayType = EnumDisplayRouteType.Both.ToString();
+            ModelOutletCheckInEx[] checkInArray = null;
+            using (LocationService.LocationClient client = new LocationService.LocationClient())
+            {
+                client.Open();
+                checkInArray = client.GetCheckIn(routedate, routeid);
+            }
+            if (checkInArray == null) return HttpNotFound();
+            return View("CheckInMap", checkInArray);
+
+        }
+
         public JsonResult GetJSONCheckIn(string routedate, string idroute)
         {
             ModelOutletCheckInEx[] checkInArray = null;

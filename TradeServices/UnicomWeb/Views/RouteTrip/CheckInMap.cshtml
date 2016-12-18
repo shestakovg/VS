@@ -22,11 +22,150 @@
      $(document).ready(function () {
          varDisplayType = "@displayType";
          console.log(varDisplayType);
-         if (varDisplayType==="CheckIn")
-             GetMap();
+         if (varDisplayType === "CheckIn")
+             GetMap('undefined');
+         else if (varDisplayType === "Both")
+         {
+             GetLocationTrip2("show");
+         }
          else
              GetLocationTrip();
     });
+
+    function GetLocationTrip2(showCheckIn) {
+        google.maps.visualRefresh = true;
+        var map;
+        var currentPlace = new google.maps.LatLng(46.4254183333333, 30.71911);
+        var mapOptions = {
+            zoom: 14,
+            center: currentPlace,
+            mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP//ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById("canvas"), mapOptions);
+
+        $.getJSON('@Html.Raw(@Url.Action("GetJSONTrip", "RouteTrip", new { @routedate = @ViewBag.RouteDate, @idroute = @ViewBag.RouteId }))', function (data) {
+            var currentPlace = new google.maps.LatLng(data[0].Latitude, data[0].Longtitude);
+            map.setCenter(new google.maps.LatLng(data[0].Latitude, data[0].Longtitude));
+            var iconsetngs = {
+                path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW
+            };
+            var polylineoptns = {
+                strokeOpacity: 0.8,
+                strokeColor:'red',
+                strokeWeight: 2,
+                map: map,
+                icons: [{
+                    repeat: '50px', //CHANGE THIS VALUE TO CHANGE THE DISTANCE BETWEEN ARROWS
+                    icon: iconsetngs,
+                    offset: '50%'
+                }]
+            };
+            polyline = new google.maps.Polyline(polylineoptns);
+
+            var colorLabel = 'blue';
+            var titleLabel = "";
+            var iconPath = google.maps.SymbolPath.CIRCLE;
+            var scale = 3;
+            var counter = 0;
+            var infoWindowText = "";
+
+            var z = 0;
+            var path = [];
+            path[z] = polyline.getPath();
+            for (var i = 0; i < data.length; i++) //LOOP TO DISPLAY THE MARKERS
+            {
+                if (i == 0) {
+                    colorLabel = 'red';
+                    titleLabel = "С";
+                    iconPath = google.maps.SymbolPath.BACKWARD_CLOSED_ARROW;
+                    scale = 5;
+                    var infoWindowText = "Старт";
+                    console.log(colorLabel);
+                }
+                else if (i == data.length - 1) {
+                    colorLabel = 'green';
+                    titleLabel = "Ф";
+                    iconPath = google.maps.SymbolPath.BACKWARD_CLOSED_ARROW;
+                    scale = 5;
+                    var infoWindowText = "Финиш";
+                }
+                else {
+                    colorLabel = 'blue';
+                    titleLabel = "";
+                    iconPath = google.maps.SymbolPath.CIRCLE;
+                    scale = 3;
+                    var infoWindowText = "";
+                }
+
+                var pos = data[i];
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(pos.Latitude, pos.Longtitude),
+                    map: map,
+                    title:titleLabel+"   "+ pos.CheckInTimeString,
+                    label: titleLabel//
+                });
+
+                marker.setIcon({
+                    path: iconPath,// google.maps.SymbolPath.CIRCLE,
+                    scale: scale,
+                    fillColor: colorLabel,// "#00F",
+                    fillOpacity: 0.9,
+                    strokeWeight: 1
+                })
+
+                //var infowindow = new google.maps.InfoWindow({
+                //    content: "<div class='outletInfo'>" + infoWindowText + "</div><div class='outletInfo'>Время: " + pos.CheckInTimeString + "</div>"
+                //});
+
+
+                //google.maps.event.addListener(marker, 'click', function () {
+                //    infowindow.open(map, marker);
+                //});
+
+                path[z].push(marker.getPosition()); //PUSH THE NEWLY CREATED MARKER'S POSITION TO THE PATH ARRAY
+            }
+        });
+
+
+        $.getJSON('@Html.Raw(@Url.Action("GetJSONCheckIn", "RouteTrip", new { @routedate = @ViewBag.RouteDate, @idroute = @ViewBag.RouteId }))', function (data) {
+            var currentPlace = new google.maps.LatLng(data[0].Latitude, data[0].Longtitude);
+            map.setCenter(currentPlace);
+            var curNum = 0;
+
+            $.each(data, function (i, item) {
+                console.log(item.Outlet + "  " + item.Longtitude + "    " + item.Latitude);
+                var marker = new google.maps.Marker({
+
+                    'position': new google.maps.LatLng(item.Latitude, item.Longtitude),
+                    'map': map,
+                    'title': item.Outlet + ":  " + item.CheckInTimeStr,
+                    'label': item.CheckInNumber.toString()
+                });
+                //marker.setIcon({
+                //    path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+                //    scale: 4,
+                //    fillColor: 'red',
+                //    fillOpacity: 0.3,
+                //    strokeWeight: 1
+                //})
+
+                marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
+
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: "<div class='outletInfo'>Торговая точка: " + item.Outlet + "</div><div class='outletInfo'> Время визита: " + item.CheckInTimeStr + "</div>"
+                });
+
+
+                google.maps.event.addListener(marker, 'click', function () {
+                    infowindow.open(map, marker);
+                });
+            })
+        });
+        return map;
+    }
+
+
 
     function GetLocationTrip() {
         google.maps.visualRefresh = true;
@@ -78,7 +217,7 @@
                     'title': item.CheckInTimeString,
                     'label':titleLabel// item.RowNum.toString()
                 });
-                 
+
                 marker.setIcon({
                     path:iconPath,// google.maps.SymbolPath.CIRCLE,
                     scale: scale,
@@ -102,8 +241,8 @@
             })
         });
     }
-    
-    function GetMap() {
+
+    function GetMap(existmap) {
 
         google.maps.visualRefresh = true;
         // установка основных координат
@@ -139,11 +278,17 @@
                 center: currentPlace,
                 mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
             };
-            var map = new google.maps.Map(document.getElementById("canvas"), mapOptions);
+            var map;
+            if (existmap != 'undefined') {
+                map = existmap;
+                console.log("Exist map");
+            }
+            else
+                map = new google.maps.Map(document.getElementById("canvas"), mapOptions);
             var curNum = 0;
 
             $.each(data, function (i, item) {
-               // console.log(item.Outlet + "  " + item.Longtitude + "    " + item.Latitude);
+                console.log(item.Outlet + "  " + item.Longtitude + "    " + item.Latitude);
                 var marker = new google.maps.Marker({
 
                     'position': new google.maps.LatLng(item.Latitude, item.Longtitude),
@@ -151,15 +296,15 @@
                     'title': item.Outlet + ":  " + item.CheckInTimeStr,
                     'label': item.CheckInNumber.toString()
                 });
-                //marker.setIcon({
-                //    path: google.maps.SymbolPath.CIRCLE,
-                //    scale: 3,
-                //    fillColor: "#00F",
-                //    fillOpacity: 0.3,
-                //    strokeWeight: 1
-                //})
+                marker.setIcon({
+                    path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+                    scale: 4,
+                    fillColor: 'red',
+                    fillOpacity: 0.3,
+                    strokeWeight: 1
+                })
 
-                //  marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
+                  marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
 
 
                 var infowindow = new google.maps.InfoWindow({

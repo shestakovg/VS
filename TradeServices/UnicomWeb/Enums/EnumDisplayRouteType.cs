@@ -8,6 +8,7 @@ namespace UnicomWeb.Enums
     public enum EnumDisplayRouteType
     {
         CheckIn,
-        Trip
+        Trip,
+        Both
     }
 }

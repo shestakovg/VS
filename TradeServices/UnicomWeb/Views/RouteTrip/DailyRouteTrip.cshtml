@@ -15,6 +15,7 @@
                 <td>Конец</td>
                 <td>Отметки в торговых точках</td>
                 <td>Маршрут</td>
+                <td>Маршрут/Отметки</td>
             </tr>
         </thead>
         @foreach (RouteTripEx trip in Model)
@@ -40,6 +41,11 @@
                 </td>
                 <td>
                     @Html.ActionLink("Показать", "LocationMap", "RouteTrip",
+                             new { routedate = @ViewBag.RouteDate, routeid = @trip.RouteId, routename = @trip.RouteName },
+                  new { target = "_blank" })
+                </td>
+                <td>
+                    @Html.ActionLink("Показать", "CheckInMapWithTrip", "RouteTrip",
                              new { routedate = @ViewBag.RouteDate, routeid = @trip.RouteId, routename = @trip.RouteName },
                   new { target = "_blank" })
                 </td>
