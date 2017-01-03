@@ -1,0 +1,55 @@
+﻿@using UnicomWeb.LocationService;
+@using TradeUtils;
+@model IEnumerable<UnicomWeb.LocationService.RouteTripEx>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <td>Маршрут</td>
+                <td>Общий пробег, км</td>
+                <td>Пробег между точками, км</td>
+                <td>Первая точка</td>
+                <td>Последняя точка</td>
+                <td>Начало</td>
+                <td>Конец</td>
+                <td>Отметки в торговых точках</td>
+                <td>Маршрут</td>
+                <td>Маршрут/Отметки</td>
+            </tr>
+        </thead>
+        @foreach (RouteTripEx trip in Model)
+        {
+            @*@if (trip.RouteName.IsEmpty()) { continue; };*@
+
+            <tr>
+                <td>@trip.RouteName</td>
+                <td>
+                    @string.Format("{0:0.00}", trip.Distance / 1000).Replace(";", "")
+                </td>
+                <td>
+                    @string.Format("{0:0.00}", trip.DistanceBetweenCheckIn / 1000).Replace(";", "")
+                </td>
+                <td>@trip.FirstOutletName</td>
+                <td>@trip.LastOutletName</td>
+                <td>@TradeUtils.FormatHelper.FormatDateToTimeSimple(trip.MinCheckInTime)</td>
+                <td>@TradeUtils.FormatHelper.FormatDateToTimeSimple(trip.MaxCheckInTime)</td>
+                <td>
+                    @Html.ActionLink("Показать", "CheckInMap", "RouteTrip",
+                             new { routedate = @ViewBag.RouteDate, routeid = @trip.RouteId, routename = @trip.RouteName },
+                  new { target = "_blank" })
+                </td>
+                <td>
+                    @Html.ActionLink("Показать", "LocationMap", "RouteTrip",
+                             new { routedate = @ViewBag.RouteDate, routeid = @trip.RouteId, routename = @trip.RouteName },
+                  new { target = "_blank" })
+                </td>
+                <td>
+                    @Html.ActionLink("Показать", "CheckInMapWithTrip", "RouteTrip",
+                             new { routedate = @ViewBag.RouteDate, routeid = @trip.RouteId, routename = @trip.RouteName },
+                  new { target = "_blank" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

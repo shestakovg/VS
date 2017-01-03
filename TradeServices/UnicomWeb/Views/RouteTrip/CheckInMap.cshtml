@@ -1,19 +1,19 @@
 ﻿@using UnicomWeb.LocationService;
 @using TradeUtils;
 @using UnicomWeb.Enums;
-@model IEnumerable < UnicomWeb.LocationService.ModelOutletCheckInEx>
+@model IEnumerable <UnicomWeb.LocationService.ModelOutletCheckInEx>
 
 @{
     ViewBag.Title = "Посещенные торговые точки";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/site.css")
     //  @Scripts.Render("~/bundles/modernizr")
-
+   
     String displayType = @ViewBag.DisplayType.ToString();
 }
 
 <script src="http://maps.google.com/maps/api/js?key=AIzaSyDqd3og1zPoWdVVZqvUHEfZGvrLcbLmLBQ" type="text/javascript"></script>
-
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 
 @section scripts {
     <script type="text/javascript">
@@ -26,11 +26,176 @@
              GetMap('undefined');
          else if (varDisplayType === "Both")
          {
-             GetLocationTrip2("show");
+             // GetLocationTrip2("show");
+             GetLocationTripclusters("show");
          }
          else
-             GetLocationTrip();
+             //GetLocationTrip();
+             GetLocationTrip2("show");
     });
+
+    function GetLocationTripclusters(showCheckIn) {
+
+        google.maps.visualRefresh = true;
+        var iconsetngs = {
+            path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW
+        };
+       
+
+        var map;
+        var currentPlace = new google.maps.LatLng(46.4254183333333, 30.71911);
+        var mapOptions = {
+            zoom: 12,
+            center: currentPlace,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById("canvas"), mapOptions);
+        $.getJSON('@Html.Raw(@Url.Action("GetJSONTrip", "RouteTrip", new { @routedate = @ViewBag.RouteDate, @idroute = @ViewBag.RouteId }))', function (data) {
+        map.setCenter(new google.maps.LatLng(data[0].Latitude, data[0].Longtitude));
+
+        var polylineoptns = {
+            strokeOpacity: 0.8,
+            strokeColor: 'red',
+            strokeWeight: 2,
+            map: map,
+            icons: [{
+                repeat: '50px', //CHANGE THIS VALUE TO CHANGE THE DISTANCE BETWEEN ARROWS
+                icon: iconsetngs,
+                offset: '50%'
+            }]
+        };
+        polyline = new google.maps.Polyline(polylineoptns);
+
+        var colorLabel = 'blue';
+        var titleLabel = "";
+        var iconPath = google.maps.SymbolPath.CIRCLE;
+        var scale = 3;
+        var counter = 0;
+        var infoWindowText = "";
+
+        var z = 0;
+        var path = [];
+        path[z] = polyline.getPath();
+
+            var markers = data.map(function (location, i) {
+                marker= new google.maps.Marker({
+                    position: { lat: location.Latitude, lng: location.Longtitude },
+                    title: location.CheckInTimeString
+                });
+                marker.setIcon({
+                    path: google.maps.SymbolPath.CIRCLE,
+                    scale:3,
+                });
+                
+                return marker;
+            });
+            var markerCluster = new MarkerClusterer(map, markers,
+                {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+                calculator: function (marks, numStyles) {
+                        //var index = 0;
+                        //var title = "";
+                        //var count = data.length.toString();
+
+                        //var dv = count;
+                        //while (dv !== 0) {
+                        //    dv = parseInt(dv / 10, 10);
+                        //    index++;
+                        //}
+
+                        //index = Math.min(index, numStyles);
+                        return {
+                            text: "",
+                            index: 0,
+                            title: 0
+                        };
+                    }
+                });
+            
+            for (var i = 0; i < data.length; i++) //LOOP TO DISPLAY THE MARKERS
+            {
+                if (i == 0) {
+                    colorLabel = 'red';
+                    titleLabel = "С";
+                    iconPath = google.maps.SymbolPath.BACKWARD_CLOSED_ARROW;
+                    scale = 5;
+                    infoWindowText = "Старт";
+                    console.log(colorLabel);
+                }
+                else if (i == data.length - 1) {
+                    colorLabel = 'green';
+                    titleLabel = "Ф";
+                    iconPath = google.maps.SymbolPath.BACKWARD_CLOSED_ARROW;
+                    scale =5;
+                    infoWindowText = "Финиш";
+                }
+                else {
+                    colorLabel = 'blue';
+                    titleLabel = "";
+                    iconPath = 'undefined'; // google.maps.SymbolPath.CIRCLE;
+                    scale = 0.1;
+                    infoWindowText = "";
+                }
+
+                var pos = data[i];
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(pos.Latitude, pos.Longtitude),
+                    map: map,
+                    title: titleLabel + "   " + pos.CheckInTimeString,
+                    //label: titleLabel//
+                });
+                
+                //marker.setIcon({
+                //    path: 'undefined'
+                //});
+                marker.setIcon({
+                    path: iconPath,// google.maps.SymbolPath.CIRCLE,
+                    scale: scale,
+                    fillColor: colorLabel,// "#00F",
+                    fillOpacity: 0.9,
+                    strokeWeight: 1
+                });
+
+                path[z].push(marker.getPosition());
+                //path[z].push(google.maps.LatLng(data[i].Latitude, data[i].Longtitude));
+            }
+        });
+
+        $.getJSON('@Html.Raw(@Url.Action("GetJSONCheckIn", "RouteTrip", new { @routedate = @ViewBag.RouteDate, @idroute = @ViewBag.RouteId }))', function (data) {
+            var currentPlace = new google.maps.LatLng(data[0].Latitude, data[0].Longtitude);
+            map.setCenter(currentPlace);
+            var curNum = 0;
+
+            $.each(data, function (i, item) {
+                console.log(item.Outlet + "  " + item.Longtitude + "    " + item.Latitude);
+                var marker = new google.maps.Marker({
+
+                    'position': new google.maps.LatLng(item.Latitude, item.Longtitude),
+                    'map': map,
+                    'title': item.Outlet + ":  " + item.CheckInTimeStr,
+                    'label': item.CheckInNumber.toString()
+                });
+                //marker.setIcon({
+                //    path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+                //    scale: 4,
+                //    fillColor: 'red',
+                //    fillOpacity: 0.3,
+                //    strokeWeight: 1
+                //})
+
+                marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
+
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: "<div class='outletInfo'>Торговая точка: " + item.Outlet + "</div><div class='outletInfo'> Время визита: " + item.CheckInTimeStr + "</div>"
+                });
+
+
+                google.maps.event.addListener(marker, 'click', function () {
+                    infowindow.open(map, marker);
+                });
+            })
+        });
+    }
 
     function GetLocationTrip2(showCheckIn) {
         google.maps.visualRefresh = true;
@@ -337,32 +502,47 @@
          }
     });
 
-    </script>
+</script>
     }
 
 @if (ViewBag.DisplayType == "CheckIn")
 {
-    <h4>Посещенные торговые точки по маршруту <b>  @ViewBag.RouteName </b> за <b>@ViewBag.RouteDate</b></h4>
+    <h4>Посещенные торговые точки по маршруту  @ViewBag.RouteName  за @ViewBag.RouteDate</h4>
 
     <hr />
     <div>
             <input type="button" value="-" class="expcollapse" id = "expcolbtn" />
       
     </div>
-    <div class="uloutlets" id = "outletlist">
-        <ul class="uloutlets">
+    <div class="uloutletlist" id="outletlist">
+        <table>
+            <thead>
+                <tr>
+                    <td>№</td>
+                    <td>Торговая точка</td>
+                    <td>Время</td>
+               </tr>
+            </thead>
             @{ int i = 1; }
-            @foreach (ModelOutletCheckInEx checkin in Model)
-            {
-                <li><b>@i</b>   @checkin.Outlet    :  <b>@TradeUtils.FormatHelper.FormatDateToTimeSimple(checkin.CheckInTime)</b></li>
-                i++;
-            }
-        </ul>
-    </div>
+                @foreach (ModelOutletCheckInEx checkin in Model)
+                {
+                    <tr>
+                        <td>
+                            @i
+                        </td>
+                        <td>
+                            @checkin.Outlet    
+                        </td>
+                        <td>@TradeUtils.FormatHelper.FormatDateToTimeSimple(checkin.CheckInTime)    </td>
+                    </tr>
+                    i++;
+                }
+        </table>    
+        </div>
 }
 else
 {
-    <h4>Маршрут <b>  @ViewBag.RouteName </b> за <b>@ViewBag.RouteDate</b></h4>
+    <h4>Маршрут  @ViewBag.RouteName  за @ViewBag.RouteDate</h4>
 }
 <hr />
     <div id="canvas" style="height: 1200px; width:auto;"></div>

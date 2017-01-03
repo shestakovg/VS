@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Пробег за день";
+   // Layout = "~/Views/Shared/_Layout.cshtml";
+   
+}
+@Scripts.Render("~/Scripts/jquery-3.1.1.js")
+@Scripts.Render("~/Scripts/jquery - ui - 1.12.1.min.js")
+@Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
+
+
+
+
+
+
+<div>
+    <h3>Пробег за день</h3>
+    
+    @using (Ajax.BeginForm("DailyRouteTrip", new AjaxOptions { UpdateTargetId = "results", LoadingElementId = "loading"}))
+    {
+        <input type="date" value=@DateTime.Today.ToString("yyyy-MM-dd") name="routedate" id="routedate" />
+        <input type="submit" value="Обновить" />
+    }
+    
+    <p></p>
+    <p></p>
+    <div id="loading" style="display:none; color:blue; font-weight:bold;">
+        <p>Загрузка пробега...</p>
+    </div>
+    <div id="results">
+        
+    </div>
+
+</div>
+
+

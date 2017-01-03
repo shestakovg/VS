@@ -1,8 +1,10 @@
 ﻿@using UnicomWeb.LocationService;
 @using TradeUtils;
 @model IEnumerable<UnicomWeb.LocationService.RouteTripEx>
+@Styles.Render("~/Content/site.css")
 
 <div>
+    <div class="tripCaption">Пробег за @ViewBag.SelectedDate</div>
     <table>
         <thead>
             <tr>
@@ -21,7 +23,6 @@
         @foreach (RouteTripEx trip in Model)
         {
             @*@if (trip.RouteName.IsEmpty()) { continue; };*@
-
             <tr>
                 <td>@trip.RouteName</td>
                 <td>
