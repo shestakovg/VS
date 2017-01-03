@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Unicom</title>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: black;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        li {
+            float: left;
+        }
+
+            li a, .dropbtn {
+                display: inline-block;
+                color: lightgray;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+                .dropbtn:hover {
+                    background-color: gray;
+                    color: #fff;
+                    text-decoration:none
+                }
+
+
+
+            li .dropdown:hover {
+                background-color: gray;
+                color: green;
+            }
+
+
+
+            li.dropdown {
+                display: inline-block;
+            }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,1.6);
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                color: black;
+                text-align: left;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: lightgray;
+                    color: #000;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropbtn {
+                    display: inline-block;
+                    color: lightgray;
+                    text-align: center;
+                    padding: 14px 16px;
+                    text-decoration: none;
+                }
+    </style>
+    @Styles.Render("~/Content/site.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div>
+            <ul class="ulmenumain">
+                <li class="dropdown">@Html.ActionLink("Home", "Index", "Home")</li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Навигация</a>
+                    <div class="dropdown-content">
+                        @Html.ActionLink("Пробег", "Index", "RouteTrip")
+                        @*<a href="http://microsoft.com">News 2</a>
+                        <a href="#">News 3</a>*@
+                    </div>
+                </li>
+            </ul>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Unicom Web</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)   
+</body>
+</html>

@@ -31,6 +31,7 @@ namespace UnicomWeb.Controllers
             }
             if (tripArray == null) return HttpNotFound();
             ViewBag.RouteDate = locDt.ToString("ddMMyyyy");
+            ViewBag.SelectedDate = locDt.ToString("dd.MM.yyyy"); ;
             return PartialView(tripArray.Where(c => !String.IsNullOrEmpty(c.RouteName)));
 
         }
