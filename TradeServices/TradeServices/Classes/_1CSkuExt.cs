@@ -68,8 +68,8 @@ namespace TradeServices.Classes
 
                                                                 иначе ""#bdbdbd""
 
-                                                        Конец OutStockColor
-
+                                                        Конец OutStockColor,
+                                                        Номенклатура.МинимальноеКоличествоЗаказа	MinOrderQty
 
                                                     ИЗ
                                                         Справочник.Номенклатура КАК Номенклатура
@@ -104,7 +104,8 @@ namespace TradeServices.Classes
                         CheckCountInBox = Int32.Parse(row["checkCountInBox"].ToString()),
                         OnlyMWH = Int32.Parse(row["onlyMWH"].ToString()),
                         Color = row["Color"].ToString(),
-                        OutStockColor = row["OutStockColor"].ToString()
+                        OutStockColor = row["OutStockColor"].ToString(),
+                        MinOrderQty = Convert.ToInt32(row["MinOrderQty"])
                     };
             return result.Cast<SkuExt>().ToArray();
         }
