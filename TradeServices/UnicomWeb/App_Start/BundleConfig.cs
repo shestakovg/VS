@@ -26,6 +26,10 @@ namespace UnicomWeb
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            //my bundle
+            bundles.Add(new ScriptBundle("~/bundles/gscommon").Include(
+                        "~/Scripts/gsScripts/gsUtils.js"));
+
         }
     }
 }

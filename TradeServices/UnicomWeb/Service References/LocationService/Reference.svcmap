@@ -19,13 +19,13 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8100/Location/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="http://192.168.0.108:8100/Location/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="d3bd12b9-9bec-4d66-8789-024c099233d7" SourceId="1" SourceUrl="http://localhost:8100/Location/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="f389818e-9d87-43dc-9e61-04c38958d833" SourceId="1" SourceUrl="http://localhost:8100/Location/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="8a2799a7-c6f9-4bd8-96bf-3507755291f0" SourceId="1" SourceUrl="http://localhost:8100/Location/mex" />
-    <MetadataFile FileName="TradeServices.Models.xsd" MetadataType="Schema" ID="da06d95b-7a38-4e50-830b-9e203acf150d" SourceId="1" SourceUrl="http://localhost:8100/Location/mex" />
+    <MetadataFile FileName="service1.wsdl" MetadataType="Wsdl" ID="7e28907d-65c3-461f-a2fe-771fca65df5e" SourceId="1" SourceUrl="http://192.168.0.108:8100/Location/mex" />
+    <MetadataFile FileName="service2.xsd" MetadataType="Schema" ID="7ff10b4d-41f0-4a97-9bb4-a37bb0aa65cd" SourceId="1" SourceUrl="http://192.168.0.108:8100/Location/mex" />
+    <MetadataFile FileName="service21.xsd" MetadataType="Schema" ID="50b317b0-1f77-4706-8965-05583a2733fb" SourceId="1" SourceUrl="http://192.168.0.108:8100/Location/mex" />
+    <MetadataFile FileName="TradeServices.Models1.xsd" MetadataType="Schema" ID="7cf56521-fa94-4b4c-ab7a-a7309ced23b5" SourceId="1" SourceUrl="http://192.168.0.108:8100/Location/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

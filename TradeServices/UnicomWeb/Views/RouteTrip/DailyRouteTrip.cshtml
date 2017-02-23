@@ -1,9 +1,10 @@
-﻿@using UnicomWeb.LocationService;
-@using TradeUtils;
-@model IEnumerable<UnicomWeb.LocationService.RouteTripEx>
-@Styles.Render("~/Content/site.css")
+﻿@using TradeServices.Models
+@*@using UnicomWeb.LocationService;
+@using TradeUtils;*@
+@model IEnumerable<RouteTripEx>
+@*@Styles.Render("~/Content/site.css")*@
 
-<div>
+<div class="col-sm-12 table-responsive">
     <div class="tripCaption">Пробег за @ViewBag.SelectedDate</div>
     <table>
         <thead>

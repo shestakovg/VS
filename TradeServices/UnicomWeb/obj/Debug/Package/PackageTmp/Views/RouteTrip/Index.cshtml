@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Пробег за день";
+   // Layout = "~/Views/Shared/_Layout.cshtml";
+   
+}
+@Scripts.Render("~/Scripts/jquery-3.1.1.js")
+@Scripts.Render("~/Scripts/jquery - ui - 1.12.1.min.js")
+@Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
+
+<script type="text/javascript">
+    function OnBegin() {
+        $("#results").hide();
+        $("#loadfailed").hide();
+    }
+
+    function OnSuccess(data) {
+        $("#results").show();
+        $("#loadfailed").hide();
+    }
+
+    function OnFailure(request, error) {
+        $("#loadfailed").html("Не удалось загрузить пробег за " + $('#routedate').val() );
+        $("#loadfailed").show();
+        console.log(error);
+        console.log(request);
+    }
+</script>
+
+
+<div>
+    <h3>Пробег за день</h3>
+    
+    @using (Ajax.BeginForm("DailyRouteTrip", new AjaxOptions { UpdateTargetId = "results", LoadingElementId = "loading", OnBegin = "OnBegin", OnSuccess = "OnSuccess",   OnFailure = "OnFailure"}))
+    {
+        <input type="date" value=@DateTime.Today.ToString("yyyy-MM-dd") name="routedate" id="routedate" />
+        <input type="submit" value="Обновить" />
+    }
+    
+    <p></p>
+    <p></p>
+    <div id="loading" class="loadingDiv">
+        <p>Загрузка пробега...</p>
+    </div>
+    <div id="results">
+        
+    </div>
+    
+    <div id="loadfailed"  class="loadingFailedDiv">
+
+    </div>
+</div>
+
+

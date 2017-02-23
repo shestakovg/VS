@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/TradeServices.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/TradeServices.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfRoute">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Route" nillable="true" type="tns:Route" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRoute" nillable="true" type="tns:ArrayOfRoute" />
+  <xs:complexType name="Route">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="ParentId" type="ser:guid" />
+      <xs:element minOccurs="0" name="isDeleted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="isFolder" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Route" nillable="true" type="tns:Route" />
+  <xs:complexType name="ArrayOfRouteTripEx">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RouteTripEx" nillable="true" type="tns:RouteTripEx" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRouteTripEx" nillable="true" type="tns:ArrayOfRouteTripEx" />
+  <xs:complexType name="RouteTripEx">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RouteTrip">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FirstOutletAdrress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FirstOutletName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LastOutletAdrress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LastOutletName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RouteName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RouteTripEx" nillable="true" type="tns:RouteTripEx" />
+  <xs:complexType name="RouteTrip">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Distance" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="DistanceBetweenCheckIn" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="FirstOutlet" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="LastOutlet" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="MaxCheckInTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MinCheckInTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RouteDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RouteId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RouteTrip" nillable="true" type="tns:RouteTrip" />
+  <xs:complexType name="ArrayOfModelOutletCheckInEx">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ModelOutletCheckInEx" nillable="true" type="tns:ModelOutletCheckInEx" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfModelOutletCheckInEx" nillable="true" type="tns:ArrayOfModelOutletCheckInEx" />
+  <xs:complexType name="ModelOutletCheckInEx">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelOutletCheckIn">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Outlet" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModelOutletCheckInEx" nillable="true" type="tns:ModelOutletCheckInEx" />
+  <xs:complexType name="ModelOutletCheckIn">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CheckInTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Latitude" type="xs:double" />
+      <xs:element minOccurs="0" name="Longtitude" type="xs:double" />
+      <xs:element minOccurs="0" name="OutletId" type="ser:guid" />
+      <xs:element minOccurs="0" name="RouteId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ModelOutletCheckIn" nillable="true" type="tns:ModelOutletCheckIn" />
+  <xs:complexType name="ArrayOfModelRouteTripEx">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ModelRouteTripEx" nillable="true" type="tns:ModelRouteTripEx" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfModelRouteTripEx" nillable="true" type="tns:ArrayOfModelRouteTripEx" />
+  <xs:complexType name="ModelRouteTripEx">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelRouteTrip">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CheckInTimeString" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RowNum" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModelRouteTripEx" nillable="true" type="tns:ModelRouteTripEx" />
+  <xs:complexType name="ModelRouteTrip">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CheckInTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="Latitude" type="xs:double" />
+      <xs:element minOccurs="0" name="Longtitude" type="xs:double" />
+      <xs:element minOccurs="0" name="RouteId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ModelRouteTrip" nillable="true" type="tns:ModelRouteTrip" />
+  <xs:complexType name="ArrayOfRouteSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RouteSet" nillable="true" type="tns:RouteSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRouteSet" nillable="true" type="tns:ArrayOfRouteSet" />
+  <xs:complexType name="RouteSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Adrress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Longtitude" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="OutletName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Outletid" type="ser:guid" />
+      <xs:element minOccurs="0" name="RouteId" type="ser:guid" />
+      <xs:element minOccurs="0" name="RouteName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RouteSet" nillable="true" type="tns:RouteSet" />
+  <xs:complexType name="ArrayOfKnownOutletLocation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KnownOutletLocation" nillable="true" type="tns:KnownOutletLocation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKnownOutletLocation" nillable="true" type="tns:ArrayOfKnownOutletLocation" />
+  <xs:complexType name="KnownOutletLocation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Latitude" type="xs:double" />
+      <xs:element minOccurs="0" name="Longtitude" type="xs:double" />
+      <xs:element minOccurs="0" name="OutletId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="KnownOutletLocation" nillable="true" type="tns:KnownOutletLocation" />
+</xs:schema>

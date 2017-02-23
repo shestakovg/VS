@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using TradeServices.Models;
 using UnicomWeb.LocationService;
 
 namespace UnicomWeb.ModelForJS

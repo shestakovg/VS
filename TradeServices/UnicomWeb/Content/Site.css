@@ -1,17 +1,20 @@
-﻿body {
+﻿
+body {
     padding-top: 0px;
     padding-bottom: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-right: 0px;
+    background: linear-gradient(50deg, #EECFBA, #C5DDE8);
     /*background-color: #eee;*/
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 50px;
-    padding-right: 10px;
+    /*padding-right: 10px;*/
     /*background-color: #eee;*/
     /*height: 200px;*/
-    margin-right: 170px;
+    /*margin-right: 170px;*/
 }
 
  .right bar

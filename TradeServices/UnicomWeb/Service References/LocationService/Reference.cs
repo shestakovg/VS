@@ -15,234 +15,34 @@ namespace UnicomWeb.LocationService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Route", Namespace="http://schemas.datacontract.org/2004/07/TradeServices.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RouteSet", Namespace="http://schemas.datacontract.org/2004/07/TradeServices.Models")]
     [System.SerializableAttribute()]
-    public partial class Route : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class RouteSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
+        private string AdrressField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid IdField;
+        private System.Nullable<double> LatitudeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid ParentIdField;
+        private System.Nullable<double> LongtitudeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool isDeletedField;
+        private string OutletNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool isFolderField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid ParentId {
-            get {
-                return this.ParentIdField;
-            }
-            set {
-                if ((this.ParentIdField.Equals(value) != true)) {
-                    this.ParentIdField = value;
-                    this.RaisePropertyChanged("ParentId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool isDeleted {
-            get {
-                return this.isDeletedField;
-            }
-            set {
-                if ((this.isDeletedField.Equals(value) != true)) {
-                    this.isDeletedField = value;
-                    this.RaisePropertyChanged("isDeleted");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool isFolder {
-            get {
-                return this.isFolderField;
-            }
-            set {
-                if ((this.isFolderField.Equals(value) != true)) {
-                    this.isFolderField = value;
-                    this.RaisePropertyChanged("isFolder");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="RouteTripEx", Namespace="http://schemas.datacontract.org/2004/07/TradeServices.Models")]
-    [System.SerializableAttribute()]
-    public partial class RouteTripEx : UnicomWeb.LocationService.RouteTrip {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FirstOutletAdrressField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FirstOutletNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LastOutletAdrressField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LastOutletNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RouteNameField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FirstOutletAdrress {
-            get {
-                return this.FirstOutletAdrressField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FirstOutletAdrressField, value) != true)) {
-                    this.FirstOutletAdrressField = value;
-                    this.RaisePropertyChanged("FirstOutletAdrress");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FirstOutletName {
-            get {
-                return this.FirstOutletNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FirstOutletNameField, value) != true)) {
-                    this.FirstOutletNameField = value;
-                    this.RaisePropertyChanged("FirstOutletName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LastOutletAdrress {
-            get {
-                return this.LastOutletAdrressField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LastOutletAdrressField, value) != true)) {
-                    this.LastOutletAdrressField = value;
-                    this.RaisePropertyChanged("LastOutletAdrress");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LastOutletName {
-            get {
-                return this.LastOutletNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LastOutletNameField, value) != true)) {
-                    this.LastOutletNameField = value;
-                    this.RaisePropertyChanged("LastOutletName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string RouteName {
-            get {
-                return this.RouteNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RouteNameField, value) != true)) {
-                    this.RouteNameField = value;
-                    this.RaisePropertyChanged("RouteName");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="RouteTrip", Namespace="http://schemas.datacontract.org/2004/07/TradeServices.Models")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UnicomWeb.LocationService.RouteTripEx))]
-    public partial class RouteTrip : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<double> DistanceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<double> DistanceBetweenCheckInField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.Guid> FirstOutletField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.Guid> LastOutletField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> MaxCheckInTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> MinCheckInTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime RouteDateField;
+        private System.Guid OutletidField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Guid RouteIdField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RouteNameField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -254,92 +54,66 @@ namespace UnicomWeb.LocationService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<double> Distance {
+        public string Adrress {
             get {
-                return this.DistanceField;
+                return this.AdrressField;
             }
             set {
-                if ((this.DistanceField.Equals(value) != true)) {
-                    this.DistanceField = value;
-                    this.RaisePropertyChanged("Distance");
+                if ((object.ReferenceEquals(this.AdrressField, value) != true)) {
+                    this.AdrressField = value;
+                    this.RaisePropertyChanged("Adrress");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<double> DistanceBetweenCheckIn {
+        public System.Nullable<double> Latitude {
             get {
-                return this.DistanceBetweenCheckInField;
+                return this.LatitudeField;
             }
             set {
-                if ((this.DistanceBetweenCheckInField.Equals(value) != true)) {
-                    this.DistanceBetweenCheckInField = value;
-                    this.RaisePropertyChanged("DistanceBetweenCheckIn");
+                if ((this.LatitudeField.Equals(value) != true)) {
+                    this.LatitudeField = value;
+                    this.RaisePropertyChanged("Latitude");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.Guid> FirstOutlet {
+        public System.Nullable<double> Longtitude {
             get {
-                return this.FirstOutletField;
+                return this.LongtitudeField;
             }
             set {
-                if ((this.FirstOutletField.Equals(value) != true)) {
-                    this.FirstOutletField = value;
-                    this.RaisePropertyChanged("FirstOutlet");
+                if ((this.LongtitudeField.Equals(value) != true)) {
+                    this.LongtitudeField = value;
+                    this.RaisePropertyChanged("Longtitude");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.Guid> LastOutlet {
+        public string OutletName {
             get {
-                return this.LastOutletField;
+                return this.OutletNameField;
             }
             set {
-                if ((this.LastOutletField.Equals(value) != true)) {
-                    this.LastOutletField = value;
-                    this.RaisePropertyChanged("LastOutlet");
+                if ((object.ReferenceEquals(this.OutletNameField, value) != true)) {
+                    this.OutletNameField = value;
+                    this.RaisePropertyChanged("OutletName");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> MaxCheckInTime {
+        public System.Guid Outletid {
             get {
-                return this.MaxCheckInTimeField;
+                return this.OutletidField;
             }
             set {
-                if ((this.MaxCheckInTimeField.Equals(value) != true)) {
-                    this.MaxCheckInTimeField = value;
-                    this.RaisePropertyChanged("MaxCheckInTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> MinCheckInTime {
-            get {
-                return this.MinCheckInTimeField;
-            }
-            set {
-                if ((this.MinCheckInTimeField.Equals(value) != true)) {
-                    this.MinCheckInTimeField = value;
-                    this.RaisePropertyChanged("MinCheckInTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime RouteDate {
-            get {
-                return this.RouteDateField;
-            }
-            set {
-                if ((this.RouteDateField.Equals(value) != true)) {
-                    this.RouteDateField = value;
-                    this.RaisePropertyChanged("RouteDate");
+                if ((this.OutletidField.Equals(value) != true)) {
+                    this.OutletidField = value;
+                    this.RaisePropertyChanged("Outletid");
                 }
             }
         }
@@ -357,6 +131,19 @@ namespace UnicomWeb.LocationService {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RouteName {
+            get {
+                return this.RouteNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RouteNameField, value) != true)) {
+                    this.RouteNameField = value;
+                    this.RaisePropertyChanged("RouteName");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -369,42 +156,12 @@ namespace UnicomWeb.LocationService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ModelOutletCheckInEx", Namespace="http://schemas.datacontract.org/2004/07/TradeServices.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="KnownOutletLocation", Namespace="http://schemas.datacontract.org/2004/07/TradeServices.Models")]
     [System.SerializableAttribute()]
-    public partial class ModelOutletCheckInEx : UnicomWeb.LocationService.ModelOutletCheckIn {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string OutletField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Outlet {
-            get {
-                return this.OutletField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OutletField, value) != true)) {
-                    this.OutletField = value;
-                    this.RaisePropertyChanged("Outlet");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ModelOutletCheckIn", Namespace="http://schemas.datacontract.org/2004/07/TradeServices.Models")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UnicomWeb.LocationService.ModelOutletCheckInEx))]
-    public partial class ModelOutletCheckIn : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class KnownOutletLocation : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime CheckInTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private double LatitudeField;
@@ -415,9 +172,6 @@ namespace UnicomWeb.LocationService {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Guid OutletIdField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid RouteIdField;
-        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -425,32 +179,6 @@ namespace UnicomWeb.LocationService {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime CheckInTime {
-            get {
-                return this.CheckInTimeField;
-            }
-            set {
-                if ((this.CheckInTimeField.Equals(value) != true)) {
-                    this.CheckInTimeField = value;
-                    this.RaisePropertyChanged("CheckInTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
             }
         }
         
@@ -493,168 +221,6 @@ namespace UnicomWeb.LocationService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid RouteId {
-            get {
-                return this.RouteIdField;
-            }
-            set {
-                if ((this.RouteIdField.Equals(value) != true)) {
-                    this.RouteIdField = value;
-                    this.RaisePropertyChanged("RouteId");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ModelRouteTripEx", Namespace="http://schemas.datacontract.org/2004/07/TradeServices.Models")]
-    [System.SerializableAttribute()]
-    public partial class ModelRouteTripEx : UnicomWeb.LocationService.ModelRouteTrip {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CheckInTimeStringField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int RowNumField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CheckInTimeString {
-            get {
-                return this.CheckInTimeStringField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CheckInTimeStringField, value) != true)) {
-                    this.CheckInTimeStringField = value;
-                    this.RaisePropertyChanged("CheckInTimeString");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int RowNum {
-            get {
-                return this.RowNumField;
-            }
-            set {
-                if ((this.RowNumField.Equals(value) != true)) {
-                    this.RowNumField = value;
-                    this.RaisePropertyChanged("RowNum");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ModelRouteTrip", Namespace="http://schemas.datacontract.org/2004/07/TradeServices.Models")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UnicomWeb.LocationService.ModelRouteTripEx))]
-    public partial class ModelRouteTrip : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime CheckInTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private long IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double LatitudeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double LongtitudeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid RouteIdField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime CheckInTime {
-            get {
-                return this.CheckInTimeField;
-            }
-            set {
-                if ((this.CheckInTimeField.Equals(value) != true)) {
-                    this.CheckInTimeField = value;
-                    this.RaisePropertyChanged("CheckInTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public long Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double Latitude {
-            get {
-                return this.LatitudeField;
-            }
-            set {
-                if ((this.LatitudeField.Equals(value) != true)) {
-                    this.LatitudeField = value;
-                    this.RaisePropertyChanged("Latitude");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double Longtitude {
-            get {
-                return this.LongtitudeField;
-            }
-            set {
-                if ((this.LongtitudeField.Equals(value) != true)) {
-                    this.LongtitudeField = value;
-                    this.RaisePropertyChanged("Longtitude");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid RouteId {
-            get {
-                return this.RouteIdField;
-            }
-            set {
-                if ((this.RouteIdField.Equals(value) != true)) {
-                    this.RouteIdField = value;
-                    this.RaisePropertyChanged("RouteId");
-                }
-            }
-        }
-        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -676,28 +242,46 @@ namespace UnicomWeb.LocationService {
         System.Threading.Tasks.Task<string> GetTestStringAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILocation/GetAllActiveRoutes", ReplyAction="http://tempuri.org/ILocation/GetAllActiveRoutesResponse")]
-        UnicomWeb.LocationService.Route[] GetAllActiveRoutes();
+        TradeServices.Models.Route[] GetAllActiveRoutes();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILocation/GetAllActiveRoutes", ReplyAction="http://tempuri.org/ILocation/GetAllActiveRoutesResponse")]
-        System.Threading.Tasks.Task<UnicomWeb.LocationService.Route[]> GetAllActiveRoutesAsync();
+        System.Threading.Tasks.Task<TradeServices.Models.Route[]> GetAllActiveRoutesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILocation/GetRouteTrip", ReplyAction="http://tempuri.org/ILocation/GetRouteTripResponse")]
-        UnicomWeb.LocationService.RouteTripEx[] GetRouteTrip(string routeTripDate);
+        TradeServices.Models.RouteTripEx[] GetRouteTrip(string routeTripDate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILocation/GetRouteTrip", ReplyAction="http://tempuri.org/ILocation/GetRouteTripResponse")]
-        System.Threading.Tasks.Task<UnicomWeb.LocationService.RouteTripEx[]> GetRouteTripAsync(string routeTripDate);
+        System.Threading.Tasks.Task<TradeServices.Models.RouteTripEx[]> GetRouteTripAsync(string routeTripDate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILocation/GetCheckIn", ReplyAction="http://tempuri.org/ILocation/GetCheckInResponse")]
-        UnicomWeb.LocationService.ModelOutletCheckInEx[] GetCheckIn(string routeTripDate, string routeId);
+        TradeServices.Models.ModelOutletCheckInEx[] GetCheckIn(string routeTripDate, string routeId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILocation/GetCheckIn", ReplyAction="http://tempuri.org/ILocation/GetCheckInResponse")]
-        System.Threading.Tasks.Task<UnicomWeb.LocationService.ModelOutletCheckInEx[]> GetCheckInAsync(string routeTripDate, string routeId);
+        System.Threading.Tasks.Task<TradeServices.Models.ModelOutletCheckInEx[]> GetCheckInAsync(string routeTripDate, string routeId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILocation/GetLocationTraking", ReplyAction="http://tempuri.org/ILocation/GetLocationTrakingResponse")]
-        UnicomWeb.LocationService.ModelRouteTripEx[] GetLocationTraking(string routeTripDate, string routeId);
+        TradeServices.Models.ModelRouteTripEx[] GetLocationTraking(string routeTripDate, string routeId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILocation/GetLocationTraking", ReplyAction="http://tempuri.org/ILocation/GetLocationTrakingResponse")]
-        System.Threading.Tasks.Task<UnicomWeb.LocationService.ModelRouteTripEx[]> GetLocationTrakingAsync(string routeTripDate, string routeId);
+        System.Threading.Tasks.Task<TradeServices.Models.ModelRouteTripEx[]> GetLocationTrakingAsync(string routeTripDate, string routeId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILocation/GetRouteSet", ReplyAction="http://tempuri.org/ILocation/GetRouteSetResponse")]
+        UnicomWeb.LocationService.RouteSet[] GetRouteSet(string routeId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILocation/GetRouteSet", ReplyAction="http://tempuri.org/ILocation/GetRouteSetResponse")]
+        System.Threading.Tasks.Task<UnicomWeb.LocationService.RouteSet[]> GetRouteSetAsync(string routeId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILocation/GetKnownLocation", ReplyAction="http://tempuri.org/ILocation/GetKnownLocationResponse")]
+        UnicomWeb.LocationService.KnownOutletLocation[] GetKnownLocation(string outletid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILocation/GetKnownLocation", ReplyAction="http://tempuri.org/ILocation/GetKnownLocationResponse")]
+        System.Threading.Tasks.Task<UnicomWeb.LocationService.KnownOutletLocation[]> GetKnownLocationAsync(string outletid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILocation/SaveApprovedLocation", ReplyAction="http://tempuri.org/ILocation/SaveApprovedLocationResponse")]
+        bool SaveApprovedLocation(UnicomWeb.LocationService.KnownOutletLocation location);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILocation/SaveApprovedLocation", ReplyAction="http://tempuri.org/ILocation/SaveApprovedLocationResponse")]
+        System.Threading.Tasks.Task<bool> SaveApprovedLocationAsync(UnicomWeb.LocationService.KnownOutletLocation location);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -735,36 +319,60 @@ namespace UnicomWeb.LocationService {
             return base.Channel.GetTestStringAsync();
         }
         
-        public UnicomWeb.LocationService.Route[] GetAllActiveRoutes() {
+        public TradeServices.Models.Route[] GetAllActiveRoutes() {
             return base.Channel.GetAllActiveRoutes();
         }
         
-        public System.Threading.Tasks.Task<UnicomWeb.LocationService.Route[]> GetAllActiveRoutesAsync() {
+        public System.Threading.Tasks.Task<TradeServices.Models.Route[]> GetAllActiveRoutesAsync() {
             return base.Channel.GetAllActiveRoutesAsync();
         }
         
-        public UnicomWeb.LocationService.RouteTripEx[] GetRouteTrip(string routeTripDate) {
+        public TradeServices.Models.RouteTripEx[] GetRouteTrip(string routeTripDate) {
             return base.Channel.GetRouteTrip(routeTripDate);
         }
         
-        public System.Threading.Tasks.Task<UnicomWeb.LocationService.RouteTripEx[]> GetRouteTripAsync(string routeTripDate) {
+        public System.Threading.Tasks.Task<TradeServices.Models.RouteTripEx[]> GetRouteTripAsync(string routeTripDate) {
             return base.Channel.GetRouteTripAsync(routeTripDate);
         }
         
-        public UnicomWeb.LocationService.ModelOutletCheckInEx[] GetCheckIn(string routeTripDate, string routeId) {
+        public TradeServices.Models.ModelOutletCheckInEx[] GetCheckIn(string routeTripDate, string routeId) {
             return base.Channel.GetCheckIn(routeTripDate, routeId);
         }
         
-        public System.Threading.Tasks.Task<UnicomWeb.LocationService.ModelOutletCheckInEx[]> GetCheckInAsync(string routeTripDate, string routeId) {
+        public System.Threading.Tasks.Task<TradeServices.Models.ModelOutletCheckInEx[]> GetCheckInAsync(string routeTripDate, string routeId) {
             return base.Channel.GetCheckInAsync(routeTripDate, routeId);
         }
         
-        public UnicomWeb.LocationService.ModelRouteTripEx[] GetLocationTraking(string routeTripDate, string routeId) {
+        public TradeServices.Models.ModelRouteTripEx[] GetLocationTraking(string routeTripDate, string routeId) {
             return base.Channel.GetLocationTraking(routeTripDate, routeId);
         }
         
-        public System.Threading.Tasks.Task<UnicomWeb.LocationService.ModelRouteTripEx[]> GetLocationTrakingAsync(string routeTripDate, string routeId) {
+        public System.Threading.Tasks.Task<TradeServices.Models.ModelRouteTripEx[]> GetLocationTrakingAsync(string routeTripDate, string routeId) {
             return base.Channel.GetLocationTrakingAsync(routeTripDate, routeId);
+        }
+        
+        public UnicomWeb.LocationService.RouteSet[] GetRouteSet(string routeId) {
+            return base.Channel.GetRouteSet(routeId);
+        }
+        
+        public System.Threading.Tasks.Task<UnicomWeb.LocationService.RouteSet[]> GetRouteSetAsync(string routeId) {
+            return base.Channel.GetRouteSetAsync(routeId);
+        }
+        
+        public UnicomWeb.LocationService.KnownOutletLocation[] GetKnownLocation(string outletid) {
+            return base.Channel.GetKnownLocation(outletid);
+        }
+        
+        public System.Threading.Tasks.Task<UnicomWeb.LocationService.KnownOutletLocation[]> GetKnownLocationAsync(string outletid) {
+            return base.Channel.GetKnownLocationAsync(outletid);
+        }
+        
+        public bool SaveApprovedLocation(UnicomWeb.LocationService.KnownOutletLocation location) {
+            return base.Channel.SaveApprovedLocation(location);
+        }
+        
+        public System.Threading.Tasks.Task<bool> SaveApprovedLocationAsync(UnicomWeb.LocationService.KnownOutletLocation location) {
+            return base.Channel.SaveApprovedLocationAsync(location);
         }
     }
 }
