@@ -189,17 +189,37 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OutletDestinationValidationController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\RouteTripController.cs" />
+    <Compile Include="Enums\PortalRoles.cs" />
     <Compile Include="Enums\EnumDisplayRouteType.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702271744017_InitialCreate.cs" />
+    <Compile Include="Migrations\201702271744017_InitialCreate.Designer.cs">
+      <DependentUpon>201702271744017_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703011322552_DataMigration.cs" />
+    <Compile Include="Migrations\201703011322552_DataMigration.Designer.cs">
+      <DependentUpon>201703011322552_DataMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelForJS\JSOutletCheckIn.cs" />
     <Compile Include="ModelForJS\JsTreeNode.cs" />
     <Compile Include="Models\ApplicationContext.cs" />
+    <Compile Include="Models\ApplicationRole.cs" />
+    <Compile Include="Models\ApplicationRoleManager.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\ApplicationUserManager.cs" />
+    <Compile Include="Models\CreateRoleModel.cs" />
+    <Compile Include="Models\EditRoleModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\LocationService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -208,6 +228,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-dialog.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap-treeview.css" />
@@ -275,10 +296,12 @@
     <Content Include="Properties\DataSources\TradeServices.Models.ModelRouteTripEx.datasource" />
     <Content Include="Properties\DataSources\TradeServices.Models.Route.datasource" />
     <Content Include="Properties\DataSources\TradeServices.Models.RouteTripEx.datasource" />
+    <Content Include="Content\bootstrap-dialog.less" />
     <None Include="Properties\PublishProfiles\localhost.pubxml" />
     <None Include="Properties\PublishProfiles\Unicom.pubxml" />
     <None Include="Properties\PublishProfiles\UnicomFS.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap-dialog.js" />
     <Content Include="Scripts\bootstrap-treeview.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -345,6 +368,15 @@
     <Content Include="Service References\LocationService\UnicomWeb.LocationService.KnownOutletLocation.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Account\ManageUsers.cshtml" />
+    <Content Include="Views\Account\Delete.cshtml" />
+    <Content Include="Views\Account\EditUser.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -368,6 +400,14 @@
       <Project>{8d53f05c-7788-47eb-80d1-28739142b8ed}</Project>
       <Name>TradeUtils</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201702271744017_InitialCreate.resx">
+      <DependentUpon>201702271744017_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703011322552_DataMigration.resx">
+      <DependentUpon>201703011322552_DataMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

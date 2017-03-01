@@ -1,0 +1,64 @@
+﻿@model UnicomWeb.Models.RegisterModel
+@{
+    ViewBag.Title = "Регистрация пользователя";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Регистрация</h2>
+
+<div class="container">
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div  class="row">
+        <h4>Регистрация пользователя</h4>
+        <hr />
+        @Html.ValidationSummary(false)
+
+        <div>
+            Имя пользователя
+            <div>
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div>
+            Электронный адрес
+            <div>
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        @*<div>
+            Год рождения
+            <div>
+                @Html.EditorFor(model => model.Year)
+            </div>
+        </div>*@
+
+        <div>
+            Пароль
+            <div>
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div>
+            Подтвердить пароль
+            <div>
+                @Html.EditorFor(model => model.PasswordConfirm, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <p>
+            <div>
+                <div>
+                    <input type="submit" value="Зарегистрировать" class="btn btn-primary btn-lg" />
+                </div>
+            </div>
+        </p>
+    </div>
+}
+    </div>
+

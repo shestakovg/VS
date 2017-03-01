@@ -96,3 +96,16 @@ C:\Users\shest\Source\Repos\VS\TradeServices\TradeServices\bin\ActiveUp.Net.Smtp
 C:\Users\shest\Source\Repos\VS\TradeServices\TradeServices\obj\Debug\TradeServices.csprojResolveAssemblyReference.cache
 C:\Users\shest\Source\Repos\VS\TradeServices\TradeServices\obj\Debug\TradeServices.dll
 C:\Users\shest\Source\Repos\VS\TradeServices\TradeServices\obj\Debug\TradeServices.pdb
+C:\Users\shest\Source\Repos\VS\TradeServices\TradeServices\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\shest\Source\Repos\VS\TradeServices\TradeServices\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\shest\Source\Repos\VS\TradeServices\TradeServices\bin\Microsoft.Owin.dll
+C:\Users\shest\Source\Repos\VS\TradeServices\TradeServices\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\shest\Source\Repos\VS\TradeServices\TradeServices\bin\Microsoft.Owin.Security.dll
+C:\Users\shest\Source\Repos\VS\TradeServices\TradeServices\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\shest\Source\Repos\VS\TradeServices\TradeServices\bin\Owin.dll
+C:\Users\shest\Source\Repos\VS\TradeServices\TradeServices\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\shest\Source\Repos\VS\TradeServices\TradeServices\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\shest\Source\Repos\VS\TradeServices\TradeServices\bin\Microsoft.Owin.xml
+C:\Users\shest\Source\Repos\VS\TradeServices\TradeServices\bin\Microsoft.Owin.Security.xml
+C:\Users\shest\Source\Repos\VS\TradeServices\TradeServices\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\shest\Source\Repos\VS\TradeServices\TradeServices\bin\Microsoft.Owin.Security.OAuth.xml

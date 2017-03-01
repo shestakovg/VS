@@ -1,0 +1,54 @@
+﻿@model UnicomWeb.Models.EditModel
+
+    @{
+        ViewBag.Title = "Изменить пароль для пользователя: ";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Изменить пароль для пользователя: @Model.UserName </h2>
+
+    @using (Html.BeginForm("SaveUserPassword", "Account"))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            
+            <hr />
+            @Html.ValidationSummary(false)
+
+            @*<div>
+                Имя пользователя
+                <div>
+                    @Html.LabelFor(model => Model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>*@
+            
+            @Html.HiddenFor(model => model.UserName)
+            @Html.HiddenFor(model => model.UserId)
+            <div>
+                Пароль
+                <div>
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div>
+                Подтвердить пароль
+                <div>
+                    @Html.EditorFor(model => model.PasswordConfirm, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <p>
+                <div>
+                    <div>
+                        <input type="submit"    value="Сохранить" class="btn btn-primary btn-lg" />
+                    </div>
+                </div>
+            </p>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Список пользователей", "ManageUsers")
+    </div>

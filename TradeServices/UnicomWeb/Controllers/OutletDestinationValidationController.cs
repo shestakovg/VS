@@ -14,12 +14,13 @@ namespace UnicomWeb.Controllers
     public class OutletDestinationValidationController : Controller
     {
         // GET: OutletDestinationValidation
+        [Authorize]
         public ActionResult Index()
         {
             return View();
         }
 
-      
+        [Authorize]
         public string GetAllRoutes()
         {
            Route[] routeArray = null;
@@ -34,6 +35,7 @@ namespace UnicomWeb.Controllers
         }
 
 #if DEBUG
+        [Authorize]
         public Route[] GetRoutes()
         {
             Route[] routeArray = null;
@@ -45,6 +47,7 @@ namespace UnicomWeb.Controllers
             return routeArray;
         }
 #endif
+        [Authorize]
         private  List<JsTreeNode> GetRouteTreeList(Route[] source, Guid parentId)
         {
             List<JsTreeNode> nodeList = new List<JsTreeNode>();
@@ -71,6 +74,7 @@ namespace UnicomWeb.Controllers
             return nodeList;
         }
 
+        [Authorize]
         public JsonResult GetRouteSet(string routeId, bool showOnlyUnknown)
         {
             if (routeId == null) routeId = Guid.Empty.ToString();
@@ -90,6 +94,7 @@ namespace UnicomWeb.Controllers
                  select r), JsonRequestBehavior = JsonRequestBehavior.AllowGet, MaxJsonLength = Int32.MaxValue };
         }
 
+        [Authorize]
         public JsonResult GetKnownLocation(string outletid)
         {
             KnownOutletLocation[] ol = null;
@@ -101,7 +106,8 @@ namespace UnicomWeb.Controllers
             return new JsonResult() {Data = ol, JsonRequestBehavior = JsonRequestBehavior.AllowGet, MaxJsonLength = Int32.MaxValue };
         }
 
-       // [HttpPost]
+        // [HttpPost]
+        [Authorize]
         public bool SaveApprovedLocation(KnownOutletLocation location)
         {
             bool result = true;

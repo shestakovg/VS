@@ -15,12 +15,14 @@ namespace UnicomWeb.Controllers
     public class RouteTripController : Controller
     {
         // GET: RouteTrip
+        [Authorize]
         public ActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult DailyRouteTrip(string routedate)
         {
             RouteTripEx[] tripArray = null;
@@ -37,7 +39,7 @@ namespace UnicomWeb.Controllers
 
         }
 
-
+        [Authorize]
         public ActionResult CheckInMap(string routedate, string routeid, string routename)
         {
             ViewBag.RouteDate = routedate.ToDateTime().ToString("dd.MM.yyyy");
@@ -54,7 +56,7 @@ namespace UnicomWeb.Controllers
             return View(checkInArray);
 
         }
-
+        [Authorize]
         public ActionResult LocationMap(string routedate, string routeid, string routename)
         {
             ViewBag.RouteDate = routedate.ToDateTime().ToString("dd.MM.yyyy");
@@ -71,7 +73,7 @@ namespace UnicomWeb.Controllers
             return View("CheckInMap", checkInArray);
 
         }
-
+        [Authorize]
         public ActionResult CheckInMapWithTrip(string routedate, string routeid, string routename)
         {
             ViewBag.RouteDate = routedate.ToDateTime().ToString("dd.MM.yyyy");
@@ -88,7 +90,7 @@ namespace UnicomWeb.Controllers
             return View("CheckInMap", checkInArray);
 
         }
-
+        [Authorize]
         public JsonResult GetJSONCheckIn(string routedate, string idroute)
         {
             ModelOutletCheckInEx[] checkInArray = null;
@@ -116,6 +118,7 @@ namespace UnicomWeb.Controllers
                             , JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         public JsonResult GetJSONTrip(string routedate, string idroute)
         {
             ModelRouteTripEx[] checkInArray = null;

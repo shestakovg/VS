@@ -1,0 +1,32 @@
+﻿@model UnicomWeb.Models.LoginModel
+
+
+@{
+    ViewBag.Title = "Вход в систему";
+   // Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Вход в систему</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                @Html.ValidationSummary()
+                <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
+                <p>
+                    <label>Пользователь</label><br />
+                    @Html.EditorFor(x => x.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                </p>
+                <p>
+                    <label>Пароль</label><br />
+                    @Html.EditorFor(x => x.Password, new { htmlAttributes = new { @class = "form-control" } })
+                </p>
+                <p><button type="submit" class="btn btn-primary btn-lg">Войти</button></p>
+            </div>
+        </div>
+    </div>
+}
