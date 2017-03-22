@@ -135,6 +135,7 @@
     <Compile Include="DataEntitys\IncomingData\ClaimedPays.cs" />
     <Compile Include="DataEntitys\IncomingData\MarcOrder.cs" />
     <Compile Include="DataEntitys\IncomingData\NewCustomers.cs" />
+    <Compile Include="DataEntitys\IncomingData\NoResultData.cs" />
     <Compile Include="DataEntitys\IncomingData\OrderDetail.cs" />
     <Compile Include="DataEntitys\IncomingData\OrderHeader.cs" />
     <Compile Include="Classes\_1CBalanceSku.cs" />
@@ -177,11 +178,13 @@
     <Compile Include="Location.svc.cs">
       <DependentUpon>Location.svc</DependentUpon>
     </Compile>
+    <Compile Include="Models\ApprovedOutletLocation.cs" />
     <Compile Include="Models\InputRouteLocation.cs" />
     <Compile Include="Models\ModelRouteTrip.cs" />
     <Compile Include="Models\Outlet.cs" />
     <Compile Include="Models\ModelOutletCheckIn.cs" />
     <Compile Include="Models\Route.cs" />
+    <Compile Include="Models\RouteSet.cs" />
     <Compile Include="Models\RouteTrip.cs" />
     <Compile Include="Models\RouteTripEx.cs" />
     <Compile Include="Models\TradeContext.cs" />

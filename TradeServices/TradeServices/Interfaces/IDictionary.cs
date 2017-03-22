@@ -240,5 +240,12 @@ namespace TradeServices
             ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
         void SaveTracking(TrackingEntity[] checkInArray);
 
+        [OperationContract]
+        [WebInvoke(Method = "POST",
+           UriTemplate = "savenoresult",
+           BodyStyle = WebMessageBodyStyle.WrappedRequest,
+           ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        void SaveNoResult(NoResultData[] noresult);
+
     }
 }

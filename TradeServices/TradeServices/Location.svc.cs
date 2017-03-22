@@ -22,14 +22,16 @@ namespace TradeServices
             using (TradeContext db = new TradeContext())
             {
                 IQueryable<TradeServices.Models.Route>  res = from r in db.Routes
-                             where !r.isDeleted && !r.isFolder
+                             where !r.isDeleted// && !r.isFolder
+                                    && !r.Description.ToUpper().Equals("Сотрудники")
+                             orderby r.Description
                              select r;
                 result = res.ToArray();
 
             }
             return result;
         }
-
+    
         public ModelOutletCheckInEx[] GetCheckIn(string routeTripDate, string routeId)
         {
             DateTime locRouteTripDateStart = routeTripDate.ToDateTime();
@@ -129,6 +131,58 @@ namespace TradeServices
         public string GetTestString()
         {
             return "Recived from service";
+        }
+
+        public RouteSet[] GetRouteSet(string routeId)
+        {
+            RouteSet[] result = null;
+            using (TradeContext db = new TradeContext())
+            {
+                System.Data.SqlClient.SqlParameter param = new System.Data.SqlClient.SqlParameter("@routeId",new Guid(routeId));
+                var selection = db.Database.SqlQuery<RouteSet>("select * from dbo.GetRouteSet(@routeId)", param);
+                result = selection.ToArray();
+            }
+            return result;
+        }
+
+        public KnownOutletLocation[] GetKnownLocation(string outletid)
+        {
+            KnownOutletLocation[] result = null;
+            using (TradeContext db = new TradeContext())
+            {
+                System.Data.SqlClient.SqlParameter param = new System.Data.SqlClient.SqlParameter("@outletid", new Guid(outletid));
+                var selection = db.Database.SqlQuery<KnownOutletLocation>("select * from dbo.[GetKnownLocation](@outletid)", param);
+                result = selection.ToArray();
+            }
+            return result;
+
+        }
+
+        public bool SaveApprovedLocation(KnownOutletLocation location)
+        {
+            bool result = true;
+            try
+            {
+                using (TradeContext db = new TradeContext())
+                {
+                    var sel = from l in db.ApprovedOutletLocation
+                               where l.OutletId == location.OutletId
+                             // where l.Equals(location)
+                              select l;
+                    foreach (var l in sel)
+                    {
+                        db.ApprovedOutletLocation.Remove(l);
+                    }
+
+                    db.ApprovedOutletLocation.Add(location);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+            return result;
         }
     }
 }

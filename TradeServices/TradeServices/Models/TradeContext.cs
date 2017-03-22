@@ -23,6 +23,6 @@ namespace TradeServices.Models
         public DbSet<RouteTrip> RouteTrips { get; set; }
         public DbSet<ModelOutletCheckIn> CheckIns { get; set; }
         public DbSet<ModelRouteTrip> Trips { get; set; }
-
+        public DbSet<KnownOutletLocation> ApprovedOutletLocation { get; set; }
     }
 }

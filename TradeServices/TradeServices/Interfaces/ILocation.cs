@@ -50,5 +50,26 @@ namespace TradeServices
          , ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
         ]
         ModelRouteTripEx[] GetLocationTraking(string routeTripDate, string routeId);
+
+        [OperationContract]
+        [WebGet(
+        UriTemplate = "/getrouteset/{routeId}", BodyStyle = WebMessageBodyStyle.Wrapped
+        , ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+       ]
+        RouteSet[] GetRouteSet(string routeId);
+
+        [OperationContract]
+        [WebGet(
+        UriTemplate = "/getknownlocation/{outletid}", BodyStyle = WebMessageBodyStyle.Wrapped
+        , ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+       ]
+        KnownOutletLocation[] GetKnownLocation(String outletid);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST",
+            UriTemplate = "saveapprovedlocation",
+            BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        bool SaveApprovedLocation(KnownOutletLocation location);
     }
 }

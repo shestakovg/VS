@@ -325,5 +325,10 @@ namespace TradeServices
         {
             SaveData.SaveNewCustomer(newCustomer);
         }
+
+        public void SaveNoResult(NoResultData[] noresult)
+        {
+            SaveData.SaveNoResult(noresult);
+        }
     }
 }

@@ -269,6 +269,33 @@ namespace TradeServices.Classes
             }
             con.Close();
         }
+
+        public static void SaveNoResult(NoResultData[] noresult)
+        {
+            const string commandText = @"
+                                        INSERT INTO [dbo].[NoResultVisitReasons]
+                                                   ([Date]
+                                                   ,[outletid]
+                                                   ,[reasonid])
+                                             VALUES
+                                                   (convert(datetime,@Date,101)
+                                                   ,@outletid
+                                                   ,@reasonid)";
+            SqlConnection con = getConnection();
+            foreach (var item in noresult)
+            {
+                using (SqlCommand cmd = con.CreateCommand())
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = commandText;
+                    cmd.Parameters.AddWithValue("Date", item.Date);
+                    cmd.Parameters.AddWithValue("outletid",new Guid(item.OutletId));
+                    cmd.Parameters.AddWithValue("reasonid", item.ReasonId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            con.Close();
+        }
     }
     
     
