@@ -29,6 +29,7 @@ namespace TradeServices.Classes
                                                //ISNULL(ПРЕДСТАВЛЕНИЕССЫЛКИ(СоставМаршрутаТорговогоАгентаСрезПоследних.ТорговаяТочка.Владелец.Класс.Ссылка),""Неопределено"") 
                                                 ПРЕДСТАВЛЕНИЕ(СоставМаршрутаТорговогоАгентаСрезПоследних.ТорговаяТочка.Владелец.Класс)
                                                 as CustomerClass
+                                               
                                             ИЗ
 	                                            РегистрСведений.СоставМаршрутаТорговогоАгента.СрезПоследних() КАК СоставМаршрутаТорговогоАгентаСрезПоследних
 		                                            ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ДниПосещенияТорговыхТочек КАК ДниПосещенияТорговыхТочек
@@ -61,7 +62,7 @@ namespace TradeServices.Classes
                         PartnerId = new Guid(row["PartnerID"].ToString()),
                         PartnerName = row["PartnerName"].ToString().Trim(),
                         address = row["address"].ToString().Trim(),
-                        IsRoute = 1,//Int32.Parse(row["IsRoute"].ToString())
+                        IsRoute = Int32.Parse(row["VisitOrder"].ToString()),
                         CustomerClass = row["CustomerClass"].ToString().Trim()
                     };
             
