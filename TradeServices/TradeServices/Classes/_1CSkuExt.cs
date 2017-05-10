@@ -69,8 +69,8 @@ namespace TradeServices.Classes
                                                                 иначе ""#bdbdbd""
 
                                                         Конец OutStockColor,
-                                                        Номенклатура.МинимальноеКоличествоЗаказа	MinOrderQty
-
+                                                        Номенклатура.МинимальноеКоличествоЗаказа	MinOrderQty,
+                                                        Выбор когда Номенклатура.ПрайсХорека тогда 1 иначе 0 конец isHoreca
                                                     ИЗ
                                                         Справочник.Номенклатура КАК Номенклатура
                                                     ЛЕВОЕ СОЕДИНЕНИЕ Справочник.УпаковкиНоменклатуры КАК УпаковкиНоменклатуры
@@ -105,7 +105,8 @@ namespace TradeServices.Classes
                         OnlyMWH = Int32.Parse(row["onlyMWH"].ToString()),
                         Color = row["Color"].ToString(),
                         OutStockColor = row["OutStockColor"].ToString(),
-                        MinOrderQty = Convert.ToInt32(row["MinOrderQty"])
+                        MinOrderQty = Convert.ToInt32(row["MinOrderQty"]),
+                        IsHoreca = Convert.ToInt32(row["isHoreca"])
                     };
             return result.Cast<SkuExt>().ToArray();
         }

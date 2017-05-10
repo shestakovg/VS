@@ -16,6 +16,7 @@ namespace TradeServices.DataEntitys
         public String OutStockColor { get; set; }
         [DataMember(Name = "MinOrderQty")]
         public int MinOrderQty { get; set; }
-
+        [DataMember(Name = "IsHoreca")]
+        public int IsHoreca;
     }
 }
