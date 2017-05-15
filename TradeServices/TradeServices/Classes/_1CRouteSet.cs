@@ -62,7 +62,7 @@ namespace TradeServices.Classes
                         PartnerId = new Guid(row["PartnerID"].ToString()),
                         PartnerName = row["PartnerName"].ToString().Trim(),
                         address = row["address"].ToString().Trim(),
-                        IsRoute = Int32.Parse(row["VisitOrder"].ToString()),
+                        IsRoute = Int32.Parse(row["IsRoute"].ToString()),
                         CustomerClass = row["CustomerClass"].ToString().Trim()
                     };
             
