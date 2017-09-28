@@ -10,6 +10,7 @@ namespace TradeServices.Classes
 {
     public class _1CRouteSet: _1CUtManager, IResultArray<RouteSet>
     {
+        int dayOfWeek;
         private _1CUtilsEnterra._1CEntParameter[] paramList;
 
         #region 1cquery
@@ -48,6 +49,7 @@ namespace TradeServices.Classes
                 queryable = this.GetQueryResult() as IQueryable<DataRow>;
             }
 
+            int[] days = new int[] { getDayOfWeek(dayOfWeek - 1), getDayOfWeek(dayOfWeek), getDayOfWeek(dayOfWeek + 1) };
             IEnumerable<RouteSet> result =
                     from row in queryable
                     select new RouteSet()
@@ -62,7 +64,7 @@ namespace TradeServices.Classes
                         PartnerId = new Guid(row["PartnerID"].ToString()),
                         PartnerName = row["PartnerName"].ToString().Trim(),
                         address = row["address"].ToString().Trim(),
-                        IsRoute = Int32.Parse(row["IsRoute"].ToString()),
+                        IsRoute = days.Contains(Int32.Parse(row["VisitDayId"].ToString())) ? 1 : 0,
                         CustomerClass = row["CustomerClass"].ToString().Trim()
                     };
             
@@ -78,8 +80,8 @@ namespace TradeServices.Classes
                  var entParameter = new _1CUtilsEnterra._1CEntParameter();
                  entParameter.AddCatalogReferenceParameterByID(this.ConnectionUt, "МаршрутыТорговыхПредставителей", routeId, "RouteID");
                  //_1CUtilsEnterra._1CEntParameter paramDate = new _1CUtilsEnterra._1CEntParameter("имя_параметра", DateTime.Today);
-                int dayOfWeek = (int) DateTime.Today.DayOfWeek;
-                 dayOfWeek = (dayOfWeek == 0 ? 6 : dayOfWeek - 1); 
+                 dayOfWeek = (int) DateTime.Today.DayOfWeek;
+                 //dayOfWeek = (dayOfWeek == 0 ? 6 : dayOfWeek - 1); 
                 _1CUtilsEnterra._1CEntParameter paramDayOfWeek = new _1CUtilsEnterra._1CEntParameter("DayOfWeek",dayOfWeek);
 
                 this.paramList = new _1CUtilsEnterra._1CEntParameter[2] { entParameter, paramDayOfWeek };
@@ -88,6 +90,13 @@ namespace TradeServices.Classes
              {
                 // throw new Exception("routeId is empty");
              }
+        }
+
+        private int getDayOfWeek(int dayOfWeek)
+        {
+           if (dayOfWeek < 0) return  5;
+           if (dayOfWeek == 7) return 6;
+           return  (dayOfWeek == 0 ? 6 : dayOfWeek - 1);
         }
 
         public override IQueryable GetQueryResult()
