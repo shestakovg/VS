@@ -28,5 +28,7 @@ namespace TradeServices.DataEntitys
         public int OutletCount { get; set; }
         [DataMember(Name = "Color")]
         public String Color { get; set; }
+        [DataMember(Name = "DontUseAmountValidation")]
+        public int DontUseAmountValidation { get; set; }
     }
 }
