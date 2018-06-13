@@ -9,7 +9,9 @@ namespace TradeServices.Classes
 {
     public class _1CSkuExt: _1CUtManager, IResultArray<SkuExt>
     {
-    
+        const int maxOrderQtyDefaultValue = 1000000;
+
+
          private _1CUtilsEnterra._1CEntParameter[] paramList;
 
         #region 1cquery
@@ -70,7 +72,8 @@ namespace TradeServices.Classes
 
                                                         Конец OutStockColor,
                                                         Номенклатура.МинимальноеКоличествоЗаказа	MinOrderQty,
-                                                        Выбор когда Номенклатура.ПрайсХорека тогда 1 иначе 0 конец isHoreca
+                                                        Выбор когда Номенклатура.ПрайсХорека тогда 1 иначе 0 конец isHoreca,
+                                                        Номенклатура.МаксимальноеКоличествоЗаказа MaxOrderQty
                                                     ИЗ
                                                         Справочник.Номенклатура КАК Номенклатура
                                                     ЛЕВОЕ СОЕДИНЕНИЕ Справочник.УпаковкиНоменклатуры КАК УпаковкиНоменклатуры
@@ -106,7 +109,8 @@ namespace TradeServices.Classes
                         Color = row["Color"].ToString(),
                         OutStockColor = row["OutStockColor"].ToString(),
                         MinOrderQty = Convert.ToInt32(row["MinOrderQty"]),
-                        IsHoreca = Convert.ToInt32(row["isHoreca"])
+                        IsHoreca = Convert.ToInt32(row["isHoreca"]),
+                        MaxOrderQty = Convert.ToInt32(row["MaxOrderQty"]) == 0 ? maxOrderQtyDefaultValue : Convert.ToInt32(row["MaxOrderQty"])
                     };
             return result.Cast<SkuExt>().ToArray();
         }

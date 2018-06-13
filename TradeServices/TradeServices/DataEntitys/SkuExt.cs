@@ -17,6 +17,8 @@ namespace TradeServices.DataEntitys
         [DataMember(Name = "MinOrderQty")]
         public int MinOrderQty { get; set; }
         [DataMember(Name = "IsHoreca")]
-        public int IsHoreca;
+        public int IsHoreca { get; set;}
+        [DataMember(Name = "MaxOrderQty")]
+        public int MaxOrderQty { get; set; }
     }
 }
