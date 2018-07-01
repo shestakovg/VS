@@ -165,6 +165,13 @@ namespace TradeServices
           ]
         DeliveryArea[] GetDeliveryArea();
 
+        [WebGet(
+           UriTemplate = "/gettasks/{routeid}",
+           //BodyStyle = WebMessageBodyStyle.WrappedRequest,
+           ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+          ]
+        ManagersTask[] GetTasks(string routeid);
+
         [OperationContract]
         [WebGet(
             UriTemplate = "/getapk"

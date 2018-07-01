@@ -5,6 +5,7 @@ using TradeServices.Classes.IncomingData;
 using TradeServices.Classes;
 using TradeServices;
 using TradeServices.DataEntitys.IncomingData;
+using TradeServices.DataEntitys;
 
 namespace TradeServices.Tests
 {
@@ -108,13 +109,22 @@ namespace UnitTestTradeService
             dic.GetSkuFact();
         }
 
-          [TestMethod]
-          public void TestDayOfWeek()
-          {
-             DateTime dt = new DateTime(2015,12,13);
-             var d = (int)dt.DayOfWeek;
-          }
+        [TestMethod]
+        public void TestDayOfWeek()
+        {
+            DateTime dt = new DateTime(2015,12,13);
+            var d = (int)dt.DayOfWeek;
+        }
 
+        [TestMethod]
+        public void TestGetTask()
+        {
+
+            _1CTask gettask = new _1CTask("a0683ec4-da9d-11e4-826d-240a64c9314e");
+            ManagersTask[] res = gettask.ConvertToArray() as ManagersTask[];
+            (gettask as _1CUtManager).Dispose();
+            
+        }
 
     }
 }

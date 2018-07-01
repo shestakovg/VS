@@ -21,6 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -128,6 +129,7 @@
     <Compile Include="Classes\_1CSkuExt.cs" />
     <Compile Include="Classes\_1CSkuFact.cs" />
     <Compile Include="Classes\_1CSpecification.cs" />
+    <Compile Include="Classes\_1CTask.cs" />
     <Compile Include="DataEntitys\ClientCardSku.cs" />
     <Compile Include="DataEntitys\DebtData.cs" />
     <Compile Include="DataEntitys\DeliveryArea.cs" />
@@ -168,6 +170,7 @@
     <Compile Include="DataEntitys\SkuFact.cs" />
     <Compile Include="DataEntitys\SkuGroup.cs" />
     <Compile Include="DataEntitys\Specification.cs" />
+    <Compile Include="DataEntitys\ManagersTask.cs" />
     <Compile Include="DataEntitys\Versions.cs" />
     <Compile Include="Interfaces\ILocation.cs" />
     <Compile Include="Interfaces\IResultArray.cs" />

@@ -330,5 +330,13 @@ namespace TradeServices
         {
             SaveData.SaveNoResult(noresult);
         }
+
+        public ManagersTask[] GetTasks(string routeid)
+        {
+            _1CTask gettask = new _1CTask("a0683ec4-da9d-11e4-826d-240a64c9314e");
+            ManagersTask[] res = gettask.ConvertToArray() as ManagersTask[];
+            (gettask as _1CUtManager).Dispose();
+            return res;
+        }
     }
 }
