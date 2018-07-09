@@ -20,8 +20,9 @@ namespace TradeServices.Classes
 	                                        ЗадачаТорговогоПредставителя.ОписаниеЗадачи Description
                                         ИЗ
 	                                        Документ.ЗадачаТорговогоПредставителя КАК ЗадачаТорговогоПредставителя
-                                        где Дата между НАЧАЛОПЕРИОДА(&Период, День) и КОНЕЦПЕРИОДА(&Период, День)
-                                        и ЗадачаТорговогоПредставителя.МаршрутТорговогоПредставителя = &RouteID
+                                        где 
+                                        //Дата между НАЧАЛОПЕРИОДА(&Период, День) и КОНЕЦПЕРИОДА(&Период, День) и
+                                        ЗадачаТорговогоПредставителя.МаршрутТорговогоПредставителя = &RouteID
                                         и ЗадачаТорговогоПредставителя.Статус = ЗНАЧЕНИЕ(Перечисление.СтатусЗадачТорговогоПредставителя.Создана)
                                         и ЗадачаТорговогоПредставителя.Проведен";
 
@@ -31,8 +32,8 @@ namespace TradeServices.Classes
             {
                 var entParameter = new _1CUtilsEnterra._1CEntParameter();
                 entParameter.AddCatalogReferenceParameterByID(this.ConnectionUt, "МаршрутыТорговыхПредставителей", routeId, "RouteID");
-                _1CUtilsEnterra._1CEntParameter paramDate = new _1CUtilsEnterra._1CEntParameter("Период", DateTime.Today.AddDays(0));
-                this.paramList = new _1CUtilsEnterra._1CEntParameter[2] { entParameter, paramDate };
+                //_1CUtilsEnterra._1CEntParameter paramDate = new _1CUtilsEnterra._1CEntParameter("Период", DateTime.Today.AddDays(0));
+                this.paramList = new _1CUtilsEnterra._1CEntParameter[] { entParameter };
             }
         }
 
