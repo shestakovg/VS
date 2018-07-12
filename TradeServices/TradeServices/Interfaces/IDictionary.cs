@@ -254,5 +254,12 @@ namespace TradeServices
            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
         void SaveNoResult(NoResultData[] noresult);
 
+        [OperationContract]
+        [WebInvoke(Method = "POST",
+           UriTemplate = "savetask",
+           BodyStyle = WebMessageBodyStyle.WrappedRequest,
+           ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        void SaveTask(ManagersTask[] tasks);
+
     }
 }

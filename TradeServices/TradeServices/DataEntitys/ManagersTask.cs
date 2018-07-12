@@ -17,7 +17,14 @@ namespace TradeServices.DataEntitys
         public Guid RouteId { get; set; }
         [DataMember(Name = "outletId")]
         public Guid OutletId { get; set; }
-        [DataMember(Name = "Description")]
+        [DataMember(Name = "description")]
         public string Description { get; set; }
+        [DataMember(Name = "resultDescription")]
+        public string ResultDescription { get; set; } = String.Empty;
+        [DataMember(Name = "status")]
+        public int Status { get; set; } = 0;
+
+        public override string ToString() => $"Number {this.Number} Status {this.Status}  ResultDescription {ResultDescription}";
+        
     }
 }

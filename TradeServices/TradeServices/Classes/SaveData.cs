@@ -7,6 +7,8 @@ using System.Web;
 using TradeServices.Classes.IncomingData;
 using System.Data;
 using TradeServices.DataEntitys.IncomingData;
+using TradeServices.DataEntitys;
+using System.Diagnostics;
 
 namespace TradeServices.Classes
 {
@@ -19,6 +21,14 @@ namespace TradeServices.Classes
             con.Open();
             return con;
         }
+
+        public static SqlConnection get1cConnection()
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.AppSettings["Connection1CString"]);
+            con.Open();
+            return con;
+        }
+
         public static bool SaveHeader(OrderHeader header)
         {
             #region Sql Statement
@@ -295,6 +305,36 @@ namespace TradeServices.Classes
                 }
             }
             con.Close();
+        }
+
+        public static void SaveTask(ManagersTask[] tasks)
+        {
+            const string commandText = @"update _Document10817
+                                                set _Fld10821RRef = 0x8D3BB07AA22FAF024FBB027A60ACAEAB,
+	                                                _Fld10823 = @descr
+                                                where _Number= @number";
+            SqlConnection con = get1cConnection();
+            foreach (var task in tasks)
+            {
+#if DEBUG
+                Debug.WriteLine(task);
+                Console.WriteLine(task);
+#endif
+                using (SqlCommand cmd = con.CreateCommand())
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = commandText;
+                    cmd.Parameters.AddWithValue("descr", TradeUtils.FilterString(TradeUtils.EncodeCyrilicString(task.ResultDescription)));
+                    cmd.Parameters.AddWithValue("number", task.Number);
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception) { }
+                }
+            }
+            con.Close();
+
         }
     }
     

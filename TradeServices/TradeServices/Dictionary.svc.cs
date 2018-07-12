@@ -338,5 +338,10 @@ namespace TradeServices
             (gettask as _1CUtManager).Dispose();
             return res;
         }
+
+        public void SaveTask(ManagersTask[] tasks)
+        {
+            SaveData.SaveTask(tasks);
+        }
     }
 }
