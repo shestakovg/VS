@@ -122,6 +122,13 @@ namespace TradeServices
 
         [OperationContract]
         [WebGet(
+            UriTemplate = "/getpricechanges",
+            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+           ]
+        PriceChanges[] GetPriceChanges();
+
+        [OperationContract]
+        [WebGet(
             UriTemplate = "/getbalancesku/{branchId}",
             //BodyStyle = WebMessageBodyStyle.WrappedRequest,
             ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)

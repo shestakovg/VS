@@ -122,6 +122,14 @@ namespace TradeServices
             return res;
         }
 
+        public PriceChanges[] GetPriceChanges()
+        {
+            _1CPriceChanges priceChanges = new _1CPriceChanges();
+            PriceChanges[] res = priceChanges.ConvertToArray() as PriceChanges[];
+            (priceChanges as _1CUtManager).Dispose();
+            return res;
+        }
+
         public void SaveHeader(OrderHeader header)
         {
             SaveData.SaveHeader(header);

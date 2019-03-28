@@ -123,6 +123,7 @@
     <Compile Include="Classes\_1CDeliveryArea.cs" />
     <Compile Include="Classes\_1COutletCategory.cs" />
     <Compile Include="Classes\_1COutletInfo.cs" />
+    <Compile Include="Classes\_1CPriceChanges.cs" />
     <Compile Include="Classes\_1CRouteDay.cs" />
     <Compile Include="Classes\_1CRouteDebtParams.cs" />
     <Compile Include="Classes\_1CSalesFact.cs" />
@@ -157,6 +158,7 @@
     <Compile Include="DataEntitys\OutletCategory.cs" />
     <Compile Include="DataEntitys\OutletInfo.cs" />
     <Compile Include="DataEntitys\Price.cs" />
+    <Compile Include="DataEntitys\PriceChanges.cs" />
     <Compile Include="DataEntitys\RouteDebtParams.cs" />
     <Compile Include="DataEntitys\RouteSet.cs" />
     <Compile Include="Classes\_1CBranches.cs" />
