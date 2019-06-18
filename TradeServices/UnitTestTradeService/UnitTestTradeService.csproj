@@ -76,6 +76,10 @@
     <Compile Include="UnitTest2.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\EdiIntegration\ClassLibrary1\EdinLib.csproj">
+      <Project>{de850a70-6ae3-4d09-a32f-07c1bf2a5559}</Project>
+      <Name>EdinLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TradeServices\TradeServices.csproj">
       <Project>{4416409c-aa7b-4b72-aa5c-8d164d487c47}</Project>
       <Name>TradeServices</Name>

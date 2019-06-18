@@ -4,6 +4,9 @@ using TradeServices.Classes;
 using TradeServices.DataEntitys;
 using TradeServices;
 using TradeServices.DataEntitys.IncomingData;
+using EdinLib.Helpers;
+using EdinLib;
+using TradeServices.Edi.Helpers;
 
 namespace UnitTestTradeService
 {
@@ -65,6 +68,19 @@ namespace UnitTestTradeService
                 var s= cl.GetRouteTrip("09122016");
                 var c = cl.GetCheckIn("09122016", "A0683EC4-DA9D-11E4-826D-240A64C9314E");
             }
+        }
+
+        [TestMethod]
+        public void TestSimpleEdin()
+        {
+            var list = EdinFactory.CreateEdin().GetOrderList();
+            Assert.AreNotEqual(list.GetEnumerator().MoveNext(), false);
+        }
+
+        [TestMethod]
+        public void TestEdinOrdersDto()
+        {
+             var orders = EdiServiceHelper.GetOrders();
         }
     }
 }
