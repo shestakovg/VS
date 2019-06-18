@@ -47,7 +47,7 @@
         var mapOptions = {
             zoom: 12,
             center: currentPlace,
-            mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP//ROADMAP
+            mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         map = new google.maps.Map(document.getElementById("canvas"), mapOptions);
         $.getJSON('@Html.Raw(@Url.Action("GetJSONTrip", "RouteTrip", new { @routedate = @ViewBag.RouteDate, @idroute = @ViewBag.RouteId }))', function (data) {
@@ -86,10 +86,30 @@
                     path: google.maps.SymbolPath.CIRCLE,
                     scale:3,
                 });
+                
                 return marker;
             });
             var markerCluster = new MarkerClusterer(map, markers,
-                {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+                {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+                calculator: function (marks, numStyles) {
+                        //var index = 0;
+                        //var title = "";
+                        //var count = data.length.toString();
+
+                        //var dv = count;
+                        //while (dv !== 0) {
+                        //    dv = parseInt(dv / 10, 10);
+                        //    index++;
+                        //}
+
+                        //index = Math.min(index, numStyles);
+                        return {
+                            text: "",
+                            index: 0,
+                            title: 0
+                        };
+                    }
+                });
             
             for (var i = 0; i < data.length; i++) //LOOP TO DISPLAY THE MARKERS
             {
