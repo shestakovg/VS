@@ -29,8 +29,8 @@ namespace TradeServices.Edi.Helpers
                     {
                         EdiDtoOrder dto = new EdiDtoOrder()
                         {
-                            Number = order.Order.Order.Number,
-                            Date = order.Order.Order.Date,
+                            Number = order.OrderModel.Order.Number,
+                            Date = order.OrderModel.Order.Date,
                             FileName = docName
                         };
                         orderList.Add(dto);
