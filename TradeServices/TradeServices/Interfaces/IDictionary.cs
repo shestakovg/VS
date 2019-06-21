@@ -8,6 +8,7 @@ using System.Text;
 using TradeServices.Classes.IncomingData;
 using TradeServices.DataEntitys;
 using TradeServices.DataEntitys.IncomingData;
+using TradeServices.Edi.Dto;
 
 namespace TradeServices
 {
@@ -174,7 +175,6 @@ namespace TradeServices
 
         [WebGet(
            UriTemplate = "/gettasks/{routeid}",
-           //BodyStyle = WebMessageBodyStyle.WrappedRequest,
            ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
           ]
         ManagersTask[] GetTasks(string routeid);
@@ -182,7 +182,6 @@ namespace TradeServices
         [OperationContract]
         [WebGet(
             UriTemplate = "/getapk"
-            //BodyStyle = WebMessageBodyStyle.WrappedRequest,
             )
            ]
         System.IO.Stream getapk();
@@ -190,10 +189,17 @@ namespace TradeServices
         [OperationContract]
         [WebGet(
             UriTemplate = "/getversion",
-            //BodyStyle = WebMessageBodyStyle.WrappedRequest,
             ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
            ]
         VersionApk getversion();
+        //Edi services
+        #region EdiServices
+        [WebGet(
+          UriTemplate = "/getediorders",
+          ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+        ]
+        EdiDtoOrder[] GetEdiOrders();
+        #endregion
         #region Получение данных
         [OperationContract]
         [WebInvoke(Method = "POST",

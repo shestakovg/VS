@@ -11,6 +11,8 @@ using TradeServices.Classes;
 using TradeServices.Classes.IncomingData;
 using TradeServices.DataEntitys;
 using TradeServices.DataEntitys.IncomingData;
+using TradeServices.Edi.Dto;
+using TradeServices.Edi.Helpers;
 
 //dddf
 namespace TradeServices
@@ -351,5 +353,7 @@ namespace TradeServices
         {
             SaveData.SaveTask(tasks);
         }
+
+        public EdiDtoOrder[] GetEdiOrders() => EdiServiceHelper.GetOrders().ToArray();
     }
 }
