@@ -199,6 +199,16 @@ namespace TradeServices
           ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
         ]
         EdiDtoOrder[] GetEdiOrders();
+        [WebGet(
+          UriTemplate = "/newediorder/{edifile}",
+          ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)
+        ]
+        EdiDtoProcessMessage[] NewEdiOrder(string edifile);
+        //[WebGet(
+        //  UriTemplate = "/getediordersxml",
+        //  ResponseFormat = WebMessageFormat.Xml, RequestFormat = WebMessageFormat.Json)
+        //]
+        //EdiDtoOrder[] GetEdiOrdersXml();
         #endregion
         #region Получение данных
         [OperationContract]

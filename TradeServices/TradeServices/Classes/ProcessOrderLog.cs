@@ -16,7 +16,12 @@ namespace TradeServices.Classes
             this.con = con;
         }
 
-        public void WriteLog(Guid orderUUD, string description)
+        public ProcessOrderLog()
+        {
+
+        }
+
+        public virtual void WriteLog(Guid orderUUD, string description)
         {
             SqlCommand cmd = this.con.CreateCommand();
             cmd.CommandType = CommandType.Text;

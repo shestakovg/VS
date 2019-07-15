@@ -355,5 +355,11 @@ namespace TradeServices
         }
 
         public EdiDtoOrder[] GetEdiOrders() => EdiServiceHelper.GetOrders().ToArray();
+
+        public EdiDtoProcessMessage[] NewEdiOrder(string edifile)
+        {
+            return EdiServiceHelper.Create1COrderFromEdinOrder(edifile).ToArray();
+        }
+        //public EdiDtoOrder[] GetEdiOrdersXml() => EdiServiceHelper.GetOrders().ToArray();
     }
 }

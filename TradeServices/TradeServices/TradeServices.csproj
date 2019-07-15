@@ -113,6 +113,7 @@
     <Compile Include="Classes\DateTimeExtensions.cs" />
     <Compile Include="Classes\MailLocation.cs" />
     <Compile Include="Classes\MailRepository.cs" />
+    <Compile Include="Classes\OrderEdi.cs" />
     <Compile Include="Classes\ProcessIncomingData.cs" />
     <Compile Include="Classes\ProcessOrderLog.cs" />
     <Compile Include="Classes\SaveData.cs" />
@@ -175,6 +176,7 @@
     <Compile Include="DataEntitys\ManagersTask.cs" />
     <Compile Include="DataEntitys\Versions.cs" />
     <Compile Include="Edi\Dto\EdiDtoOrder.cs" />
+    <Compile Include="Edi\Dto\EdiDtoProcessMessage.cs" />
     <Compile Include="Edi\Helpers\EdiServiceHelper.cs" />
     <Compile Include="Interfaces\ILocation.cs" />
     <Compile Include="Interfaces\IResultArray.cs" />

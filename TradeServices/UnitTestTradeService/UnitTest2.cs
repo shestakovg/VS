@@ -82,5 +82,12 @@ namespace UnitTestTradeService
         {
              var orders = EdiServiceHelper.GetOrders();
         }
+
+        [TestMethod]
+        public void TestEdinOrdersCreate1COrder()
+        {
+            string fileName = "order_20190625165014_497371924.xml"; 
+            EdiServiceHelper.Create1COrderFromEdinOrder(fileName);
+        }
     }
 }

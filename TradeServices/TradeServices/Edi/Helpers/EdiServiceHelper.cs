@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using TradeServices.Classes;
 using TradeServices.Edi.Dto;
 
 namespace TradeServices.Edi.Helpers
@@ -24,7 +25,7 @@ namespace TradeServices.Edi.Helpers
                 var rawDoc = edin.GetDoc(docName);
                 try
                 {
-                    EdinOrder order = EdinFactory.GetEdinDoc(docName, rawDoc) as EdinOrder;
+                    EdinDocOrder order = EdinFactory.GetEdinDoc(docName, rawDoc) as EdinDocOrder;
                     if (order != null && order.DocIdentified)
                     {
                         EdiDtoOrder dto = new EdiDtoOrder()
@@ -44,6 +45,17 @@ namespace TradeServices.Edi.Helpers
 
             return orderList;
 
+        }
+
+        public static List<EdiDtoProcessMessage> Create1COrderFromEdinOrder(string fileName)
+        {
+            var edin = EdinFactory.CreateEdin();
+            var rawDoc = edin.GetDoc(fileName);
+            EdinDocOrder order = EdinFactory.GetEdinDoc(fileName, rawDoc) as EdinDocOrder;
+            OrderEdi orderEdi = new OrderEdi(order.OrderModel.Order);
+            var checking = orderEdi.GetAllCheckingAndCreate();
+            return checking;
+            // List<EdiDtoProcessMessage> 
         }
     }
 }

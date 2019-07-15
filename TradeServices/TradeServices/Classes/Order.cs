@@ -20,13 +20,14 @@ namespace TradeServices.DataEntitys
         protected DateTime orderDate;
         protected DateTime deliveryDate;
         protected int payType;
-        protected int autoLoad;
+        protected int autoLoad = 0;
         protected Guid _1CDocId = Guid.Empty;
         protected int orderType;
         protected string _1CDocNumber= "без номера";
         protected string wareHouse;
         protected OrderPosition[] positions;
         protected string notes = "";
+        protected string ediOrderNum = String.Empty;
 
         protected V8DbConnection connection;
 
@@ -77,6 +78,10 @@ namespace TradeServices.DataEntitys
             V8.Call(this.connection, this.headerStucture, "Вставить", new object[] { "ТипПродажи", (this.payType.ToString()) });
             V8.Call(this.connection, this.headerStucture, "Вставить", new object[] { "notes", (this.notes.ToString()) });
             V8.Call(this.connection, this.orderStructure, "Вставить", new object[] { "СтруктураШапки", this.headerStucture });
+            if (!String.IsNullOrEmpty(this.ediOrderNum))
+            {
+                V8.Call(this.connection, this.headerStucture, "Вставить", new object[] { "ediOrderNum", (this.ediOrderNum) });
+            }
             log.WriteLog(this.orderUUID, "Завершение обработки шапки для 1С");
         }
 
