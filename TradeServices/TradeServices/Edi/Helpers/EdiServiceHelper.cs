@@ -19,7 +19,7 @@ namespace TradeServices.Edi.Helpers
             list.Reverse();
             List<EdiDtoOrder> orderList = new List<EdiDtoOrder>();
             
-
+            
             foreach (var  docName in list)
             {
                 var rawDoc = edin.GetDoc(docName);
@@ -39,7 +39,13 @@ namespace TradeServices.Edi.Helpers
                 }
                 catch(Exception e)
                 {
-
+                    EdiDtoOrder dto = new EdiDtoOrder()
+                    {
+                        Number = docName,
+                        Date = "2010-01-01",
+                        FileName = rawDoc + e.Message + e.InnerException?.Message ?? "\n" 
+                    };
+                    orderList.Add(dto);
                 }
             }
 
