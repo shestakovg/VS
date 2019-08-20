@@ -47,7 +47,7 @@ namespace TradeServices.Classes
                     messages.Add(new EdiDtoProcessMessage()
                                     {
                                         Error = 1,
-                                        Text = $"Не найдена торговая точка с GLN {edinOrder.Head.DeliveryPlace}"
+                                        Text = $"Не найдена торговая точка с GLN {edinOrder.Head.DeliveryPlace} для контрагента с GLN {edinOrder.Head.Buyer}"
                                     }
                     );
                     return messages;
@@ -135,7 +135,7 @@ namespace TradeServices.Classes
         {
             var result = (utManager.GetQueryResult("ВЫБРАТЬ ТорговыеТочкиКонтрагентов.Ссылка as outletId, ТорговыеТочкиКонтрагентов.Наименование Name ИЗ "+
 	                                        "Справочник.ТорговыеТочкиКонтрагентов КАК ТорговыеТочкиКонтрагентов "+
-                                        $" ГДЕ ТорговыеТочкиКонтрагентов.GLN = \"{edinOrder.Head.DeliveryPlace}\"") as IQueryable<DataRow>)
+                                        $" ГДЕ ТорговыеТочкиКонтрагентов.GLN = \"{edinOrder.Head.DeliveryPlace}\" и ТорговыеТочкиКонтрагентов.Владелец.GLN = \"{edinOrder.Head.Buyer}\"") as IQueryable<DataRow>)
                                         .FirstOrDefault();
 
             if (result!= null)
@@ -152,7 +152,7 @@ namespace TradeServices.Classes
         {
             var result = (utManager.GetQueryResult("ВЫБРАТЬ	ШтрихкодыНоменклатуры.Номенклатура skuId, ШтрихкодыНоменклатуры.Номенклатура.Наименование Name ИЗ "+
                                                    " РегистрСведений.ШтрихкодыНоменклатуры КАК ШтрихкодыНоменклатуры "+
-                                                   $" ГДЕ ШтрихкодыНоменклатуры.Штрихкод = \"{barCode}\"") as IQueryable<DataRow>)
+                                                   $" ГДЕ ШтрихкодыНоменклатуры.Штрихкод = \"{barCode}\" и не ШтрихкодыНоменклатуры.Номенклатура.ПометкаУдаления") as IQueryable<DataRow>)
                                         .FirstOrDefault();
 
             if (result != null)

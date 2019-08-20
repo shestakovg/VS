@@ -82,22 +82,58 @@ namespace TradeServices.Classes
              cmd.ExecuteNonQuery();
              cmd.Dispose();
         }
+
         private static SqlConnection getConnection()
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]);
             con.Open();
             return con;
         }
+
+
+        private static bool isProccessTerminating(SqlConnection connection)
+        {
+            var command = connection.CreateCommand();
+            command.CommandText = "select shouldTerminatre from dbo.terminateHandler with (nolock) where source = 1";
+            return Convert.ToBoolean(command.ExecuteScalar());
+        }
+
+        private static void ReadyToTerminate(SqlConnection connection)
+        {
+            var command = connection.CreateCommand();
+            command.CommandText = "update  dbo.terminateHandler set readyToTerminate = 1 where source = 1";
+            command.ExecuteNonQuery();
+        }
+    
+        private static void  FlushTerminate(SqlConnection connection)
+        {
+            var command = connection.CreateCommand();
+            command.CommandText = "update  dbo.terminateHandler set readyToTerminate = 0, shouldTerminatre = 0 where source = 1";
+            command.ExecuteNonQuery();
+        }
+
         public static void ProcessData()
         {
+            using (SqlConnection con = getConnection())
+            {
+                FlushTerminate(con);
+            }
 
             while (allowProcess)
             {
                 ///  continue;
+                SqlConnection connection = getConnection();
+                if (isProccessTerminating(connection))
+                {
+                    ReadyToTerminate(connection);
+                    ProcessOrderLog log = new ProcessOrderLog(getConnection());
+                    log.WriteLog(Guid.Empty, "Proccess terminated");
+                    return;
+                }
+
                 try
                 {
                     bool isAvaliableNewOrder = false;
-                    SqlConnection connection = getConnection();
                     V8DbConnection _1cConnection = null;
                     long[] unprocOrders = getUnprocessOrder(connection, OrdersWH.MainWareHouse);
                     if (unprocOrders.Length > 0)
