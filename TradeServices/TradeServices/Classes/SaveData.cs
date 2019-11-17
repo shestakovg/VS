@@ -120,6 +120,15 @@ namespace TradeServices.Classes
                 catch (Exception e) { result = false; }
             }
             cmdDml.Parameters.Clear();
+            const string sqlDelete = @"delete from [dbo].[orderDetail] where [orderUUID] = @orderUUID";
+
+            SqlCommand cmd1 = con.CreateCommand();
+            cmd1.CommandType = CommandType.Text;
+            cmd1.CommandText = sqlDelete;
+            cmd1.Parameters.AddWithValue("orderUUID", new Guid(header.orderUUID));
+            cmd1.ExecuteNonQuery();
+            cmd1.Parameters.Clear();
+
             con.Close();
             return result;
         }
