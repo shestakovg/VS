@@ -19,5 +19,7 @@ namespace TradeServices.DataEntitys
 
          [DataMember(Name = "Qty")]
          public int Qty { get; set; }
+         [DataMember(Name = "Warehouse")]
+         public int Warehouse { get; set; }
     }
 }
