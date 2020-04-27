@@ -89,5 +89,12 @@ namespace UnitTestTradeService
             string fileName = "order_20190625165014_497371924.xml"; 
             EdiServiceHelper.Create1COrderFromEdinOrder(fileName);
         }
+
+        [TestMethod]
+        public void GetDbStucture()
+        {
+            _1C.V8.Data.V8DbConnection con = _1CConnection.CreateAndOpenConnection();
+            var res =  _1C.V8.Data.V8.Call(con, con.Connection, "ПолучитьСтруктуруХраненияБазыДанных");
+        }
     }
 }

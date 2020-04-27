@@ -154,3 +154,4 @@ Temporary Items
 /TradeServices/UnicomWeb/obj/Release/AspnetCompileMerge/TempBuildDir/Scripts
 /TradeServices/UnicomWeb/obj/Release/AspnetCompileMerge/TempBuildDir/Service References/LocationService
 /TradeServices/UnitTestTradeService/obj/Release
+/TradeServices/packages/EntityFramework.6.4.0-preview2-19525-03/tools

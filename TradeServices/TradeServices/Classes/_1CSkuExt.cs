@@ -73,7 +73,8 @@ namespace TradeServices.Classes
                                                         Конец OutStockColor,
                                                         Номенклатура.МинимальноеКоличествоЗаказа	MinOrderQty,
                                                         Выбор когда Номенклатура.ПрайсХорека тогда 1 иначе 0 конец isHoreca,
-                                                        Номенклатура.МаксимальноеКоличествоЗаказа MaxOrderQty
+                                                        Номенклатура.МаксимальноеКоличествоЗаказа MaxOrderQty,
+                                                        Номенклатура.Описание as Description
                                                     ИЗ
                                                         Справочник.Номенклатура КАК Номенклатура
                                                     ЛЕВОЕ СОЕДИНЕНИЕ Справочник.УпаковкиНоменклатуры КАК УпаковкиНоменклатуры
@@ -99,10 +100,10 @@ namespace TradeServices.Classes
                     select new SkuExt()
                     {
                         SkuId = new Guid(row["SkuId"].ToString()),
-                        SkuName = row["SkuName"].ToString().Trim(), 
+                        SkuName = row["SkuName"].ToString().Trim(),
                         SkuParentId = (row["SkuParentId"] == System.DBNull.Value ? Guid.Empty : new Guid(row["SkuParentId"].ToString())),
                         Article = row["Article"].ToString().Trim(),
-                        QtyPack = (row["QtyPack"] == System.DBNull.Value ? 0 :double.Parse(row["QtyPack"].ToString().Replace(".",","))),
+                        QtyPack = (row["QtyPack"] == System.DBNull.Value ? 0 : double.Parse(row["QtyPack"].ToString().Replace(".", ","))),
                         OnlyFact = Int32.Parse(row["onlyFact"].ToString()),
                         CheckCountInBox = Int32.Parse(row["checkCountInBox"].ToString()),
                         OnlyMWH = Int32.Parse(row["onlyMWH"].ToString()),
@@ -110,7 +111,8 @@ namespace TradeServices.Classes
                         OutStockColor = row["OutStockColor"].ToString(),
                         MinOrderQty = Convert.ToInt32(row["MinOrderQty"]),
                         IsHoreca = Convert.ToInt32(row["isHoreca"]),
-                        MaxOrderQty = Convert.ToInt32(row["MaxOrderQty"]) == 0 ? maxOrderQtyDefaultValue : Convert.ToInt32(row["MaxOrderQty"])
+                        MaxOrderQty = Convert.ToInt32(row["MaxOrderQty"]) == 0 ? maxOrderQtyDefaultValue : Convert.ToInt32(row["MaxOrderQty"]),
+                        Description = row["Description"].ToString().Trim()
                     };
             return result.Cast<SkuExt>().ToArray();
         }

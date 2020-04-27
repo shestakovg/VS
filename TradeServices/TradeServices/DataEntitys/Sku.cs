@@ -31,5 +31,7 @@ namespace TradeServices.DataEntitys
         public int CheckCountInBox { get; set; }
         [DataMember(Name = "onlyMWH")]
         public int OnlyMWH { get; set; }
+        [DataMember(Name = "Description")]
+        public string Description { get; set; }
     }
 }

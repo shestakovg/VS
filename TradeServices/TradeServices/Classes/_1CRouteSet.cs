@@ -64,7 +64,7 @@ namespace TradeServices.Classes
                         PartnerId = new Guid(row["PartnerID"].ToString()),
                         PartnerName = row["PartnerName"].ToString().Trim(),
                         address = row["address"].ToString().Trim(),
-                        IsRoute = days.Contains(Int32.Parse(row["VisitDayId"].ToString())) ? 1 : 0,
+                        IsRoute = 1, // days.Contains(Int32.Parse(row["VisitDayId"].ToString())) ? 1 : 0,
                         CustomerClass = row["CustomerClass"].ToString().Trim()
                     };
             
